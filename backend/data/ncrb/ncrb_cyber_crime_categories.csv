@@ -1,0 +1,9 @@
+Category,Incident_Count,Percentage,Financial_Loss_Cr,Primary_Motive,Risk_Level
+Financial Fraud (UPI & Net Banking),48240,41.2,1420.50,Financial Gain,CRITICAL
+Identity Theft & Impersonation,21450,18.3,312.40,Fraud & Deception,HIGH
+Cyber Extortion & Blackmail,14820,12.7,185.20,Extortion,HIGH
+Phishing & Social Engineering,12910,11.0,428.60,Credential Harvesting,HIGH
+Sexual Harassment & Cyberstalking,8940,7.6,12.10,Harassment,CRITICAL
+Ransomware & Malware Attacks,5420,4.6,680.00,Ransom Demand,CRITICAL
+Data Breach & Corporate Theft,3410,2.9,290.80,Commercial Espionage,HIGH
+Fake News & Hate Speech,1850,1.7,0.00,Disinformation,MODERATE

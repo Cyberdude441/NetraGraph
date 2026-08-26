@@ -1,0 +1,340 @@
+export interface SyntheticLocation {
+  id: string;
+  name: string;
+  type: "CELL_TOWER" | "SAFEHOUSE" | "SHELL_OFFICE" | "ATM_CDM_KIOSK" | "SERVER_FARM" | "MEETING_POINT";
+  city: string;
+  state: string;
+  latitude: number;
+  longitude: number;
+  threatLevel: "CRITICAL" | "HIGH" | "MEDIUM" | "LOW";
+  connectedEntityIds: string[];
+  associatedCommunity: string;
+  totalEventsCount: number;
+  description: string;
+}
+
+export interface SpatialTimelineEvent {
+  id: string;
+  timestamp: string;
+  eventType: "COMMUNICATION" | "FINANCIAL_TRANSFER" | "PHYSICAL_MEETING" | "SIM_SWITCH" | "CASE_ACTION" | "AI_DETECTION";
+  title: string;
+  description: string;
+  locationId: string;
+  locationName: string;
+  latitude: number;
+  longitude: number;
+  primaryEntityId: string;
+  primaryEntityName: string;
+  associatedEntityIds: string[];
+  severity: "critical" | "high" | "medium" | "low";
+  confidenceScore: number;
+  sourceReference: string;
+  amountINR?: number;
+}
+
+export const SYNTHETIC_LOCATIONS: SyntheticLocation[] = [
+  // 1. Delhi NCR Cluster
+  {
+    id: "LOC-NCR-01",
+    name: "Sector 62 Electronic City Tower 9B",
+    type: "CELL_TOWER",
+    city: "Noida",
+    state: "Uttar Pradesh",
+    latitude: 28.628,
+    longitude: 77.3649,
+    threatLevel: "CRITICAL",
+    connectedEntityIds: ["ENT-P-01", "ENT-P-02", "ENT-P-03", "ENT-D-01"],
+    associatedCommunity: "Noida Tech Support Scam Ring",
+    totalEventsCount: 48,
+    description: "Primary nocturnal VoIP call center operations hub and burner device activation cell.",
+  },
+  {
+    id: "LOC-NCR-02",
+    name: "Apex Global Infotech Headquarters",
+    type: "SHELL_OFFICE",
+    city: "Noida",
+    state: "Uttar Pradesh",
+    latitude: 28.632,
+    longitude: 77.371,
+    threatLevel: "CRITICAL",
+    connectedEntityIds: ["ENT-O-01", "ENT-P-01", "ENT-B-01"],
+    associatedCommunity: "Noida Tech Support Scam Ring",
+    totalEventsCount: 32,
+    description: "Front registered company lease agreement used to channel commercial bank transfers.",
+  },
+  {
+    id: "LOC-NCR-03",
+    name: "Cyber Hub DLF Phase 2 Gateway",
+    type: "MEETING_POINT",
+    city: "Gurugram",
+    state: "Haryana",
+    latitude: 28.495,
+    longitude: 77.089,
+    threatLevel: "HIGH",
+    connectedEntityIds: ["ENT-P-01", "ENT-P-06"],
+    associatedCommunity: "Inter-State Hawala Network",
+    totalEventsCount: 19,
+    description: "Clandestine courier physical cash drop and OTC cryptocurrency handshake rendezvous.",
+  },
+  {
+    id: "LOC-NCR-04",
+    name: "Connaught Place CDM Cash Terminal #44",
+    type: "ATM_CDM_KIOSK",
+    city: "New Delhi",
+    state: "Delhi",
+    latitude: 28.6315,
+    longitude: 77.2167,
+    threatLevel: "HIGH",
+    connectedEntityIds: ["ENT-P-03", "ENT-B-01"],
+    associatedCommunity: "Noida Tech Support Scam Ring",
+    totalEventsCount: 24,
+    description: "Automated deposit terminal for cash dispersion into multi-mule layer accounts.",
+  },
+
+  // 2. Bhubaneswar / Odisha Cluster
+  {
+    id: "LOC-OD-01",
+    name: "Chandrasekharpur SIM Farm Facility",
+    type: "SERVER_FARM",
+    city: "Bhubaneswar",
+    state: "Odisha",
+    latitude: 20.3245,
+    longitude: 85.8189,
+    threatLevel: "CRITICAL",
+    connectedEntityIds: ["ENT-011", "ENT-012", "ENT-015"],
+    associatedCommunity: "Bhubaneswar SIM Box Ring",
+    totalEventsCount: 56,
+    description: "Multi-channel GSM Gateway / SIM Box hub routing fraudulent OTP interception traffic.",
+  },
+  {
+    id: "LOC-OD-02",
+    name: "Patia Telecom Cell Tower Sector 4",
+    type: "CELL_TOWER",
+    city: "Bhubaneswar",
+    state: "Odisha",
+    latitude: 20.354,
+    longitude: 85.821,
+    threatLevel: "HIGH",
+    connectedEntityIds: ["ENT-011", "ENT-016"],
+    associatedCommunity: "Bhubaneswar SIM Box Ring",
+    totalEventsCount: 38,
+    description: "High-density SIM card pre-activation and IMSI cycling tower.",
+  },
+
+  // 3. Mumbai / Maharashtra Cluster
+  {
+    id: "LOC-MH-01",
+    name: "Bandra-Kurla Complex Financial Vault",
+    type: "SHELL_OFFICE",
+    city: "Mumbai",
+    state: "Maharashtra",
+    latitude: 19.0657,
+    longitude: 72.868,
+    threatLevel: "CRITICAL",
+    connectedEntityIds: ["ENT-P-06", "ENT-P-01", "ENT-B-01"],
+    associatedCommunity: "Inter-State Hawala Network",
+    totalEventsCount: 42,
+    description: "Central clearing point for layered RTGS transfers and Angadia bullion couriers.",
+  },
+  {
+    id: "LOC-MH-02",
+    name: "Andheri East Cloud Hosting Server Farm",
+    type: "SERVER_FARM",
+    city: "Mumbai",
+    state: "Maharashtra",
+    latitude: 19.1136,
+    longitude: 72.8697,
+    threatLevel: "HIGH",
+    connectedEntityIds: ["ENT-022", "ENT-023"],
+    associatedCommunity: "LockNet Ransomware Group",
+    totalEventsCount: 29,
+    description: "Reverse-proxy and command-and-control server infrastructure.",
+  },
+
+  // 4. Kolkata / West Bengal Cluster
+  {
+    id: "LOC-WB-01",
+    name: "Salt Lake Sector V Tech Park B-Block",
+    type: "SAFEHOUSE",
+    city: "Kolkata",
+    state: "West Bengal",
+    latitude: 22.5735,
+    longitude: 88.4331,
+    threatLevel: "CRITICAL",
+    connectedEntityIds: ["ENT-009", "ENT-010"],
+    associatedCommunity: "Mule Ledger Syndicate Tier-2",
+    totalEventsCount: 51,
+    description: "Mule account procurement office and forged e-KYC document processing unit.",
+  },
+  {
+    id: "LOC-WB-02",
+    name: "Burrabazar Angadia Gold Vault",
+    type: "MEETING_POINT",
+    city: "Kolkata",
+    state: "West Bengal",
+    latitude: 22.583,
+    longitude: 88.354,
+    threatLevel: "HIGH",
+    connectedEntityIds: ["ENT-009", "ENT-P-06"],
+    associatedCommunity: "Inter-State Hawala Network",
+    totalEventsCount: 33,
+    description: "Hawala cash-to-crypto OTC clearing facility.",
+  },
+
+  // 5. Bengaluru / Karnataka Cluster
+  {
+    id: "LOC-KA-01",
+    name: "Whitefield Software Park Node 04",
+    type: "SERVER_FARM",
+    city: "Bengaluru",
+    state: "Karnataka",
+    latitude: 12.9698,
+    longitude: 77.7499,
+    threatLevel: "MEDIUM",
+    connectedEntityIds: ["ENT-024", "ENT-025"],
+    associatedCommunity: "LockNet Ransomware Group",
+    totalEventsCount: 21,
+    description: "Compromised VPN gateway used for ransomware payload distribution.",
+  },
+];
+
+export const SYNTHETIC_SPATIAL_EVENTS: SpatialTimelineEvent[] = [
+  {
+    id: "EVT-GEO-001",
+    timestamp: "2026-08-26T14:32:00Z",
+    eventType: "FINANCIAL_TRANSFER",
+    title: "RTGS Layered Fund Transfer: ₹1.54 Cr",
+    description: "ICICI Mule Account transferred ₹1.54 Cr to Apex Global Infotech commercial account.",
+    locationId: "LOC-NCR-02",
+    locationName: "Apex Global Infotech Headquarters, Noida",
+    latitude: 28.632,
+    longitude: 77.371,
+    primaryEntityId: "ENT-B-01",
+    primaryEntityName: "ICICI Mule Account #908129",
+    associatedEntityIds: ["ENT-O-01", "ENT-P-01"],
+    severity: "critical",
+    confidenceScore: 96,
+    sourceReference: "FIU-IND STR #908129",
+    amountINR: 15400000,
+  },
+  {
+    id: "EVT-GEO-002",
+    timestamp: "2026-08-26T11:15:00Z",
+    eventType: "SIM_SWITCH",
+    title: "Burner IMEI Activated on 8th IMSI SIM",
+    description: "Device IMEI 864902049182019 switched active SIM subscription to BSNL Odisha circle.",
+    locationId: "LOC-NCR-01",
+    locationName: "Sector 62 Electronic City Tower 9B, Noida",
+    latitude: 28.628,
+    longitude: 77.3649,
+    primaryEntityId: "ENT-D-01",
+    primaryEntityName: "OnePlus Nord Burner Device",
+    associatedEntityIds: ["ENT-P-01", "ENT-P-02"],
+    severity: "critical",
+    confidenceScore: 94,
+    sourceReference: "CEIR National IMEI Telemetry",
+  },
+  {
+    id: "EVT-GEO-003",
+    timestamp: "2026-08-25T20:10:00Z",
+    eventType: "COMMUNICATION",
+    title: "VoIP Extortion Call Burst (+350% Surge)",
+    description: "54 spoofed VoIP calls dispatched to overseas victims from Sector 62 facility.",
+    locationId: "LOC-NCR-01",
+    locationName: "Sector 62 Electronic City Tower 9B, Noida",
+    latitude: 28.628,
+    longitude: 77.3649,
+    primaryEntityId: "ENT-P-02",
+    primaryEntityName: "Pooja Sharma",
+    associatedEntityIds: ["ENT-P-01", "ENT-P-03"],
+    severity: "high",
+    confidenceScore: 88,
+    sourceReference: "CDR Tower Sector Dump Log #N09-402",
+  },
+  {
+    id: "EVT-GEO-004",
+    timestamp: "2026-08-25T18:20:00Z",
+    eventType: "PHYSICAL_MEETING",
+    title: "Hawala Cash Drop Rendezvous",
+    description: "Physical handshake meeting between Vikramaditya Rawat and Arjun Menon at Cyber Hub.",
+    locationId: "LOC-NCR-03",
+    locationName: "Cyber Hub DLF Phase 2 Gateway, Gurugram",
+    latitude: 28.495,
+    longitude: 77.089,
+    primaryEntityId: "ENT-P-01",
+    primaryEntityName: "Vikramaditya Rawat",
+    associatedEntityIds: ["ENT-P-06"],
+    severity: "critical",
+    confidenceScore: 91,
+    sourceReference: "Physical Surveillance Log #SURV-NCR-88",
+  },
+  {
+    id: "EVT-GEO-005",
+    timestamp: "2026-08-24T23:15:00Z",
+    eventType: "PHYSICAL_MEETING",
+    title: "Nocturnal Co-Location at Illicit Call Center",
+    description: "Simultaneous presence of 3 key operatives registered under Tower 9B sector.",
+    locationId: "LOC-NCR-01",
+    locationName: "Sector 62 Electronic City Tower 9B, Noida",
+    latitude: 28.628,
+    longitude: 77.3649,
+    primaryEntityId: "ENT-P-01",
+    primaryEntityName: "Vikramaditya Rawat",
+    associatedEntityIds: ["ENT-P-02", "ENT-P-03"],
+    severity: "high",
+    confidenceScore: 82,
+    sourceReference: "Tower Ping Analysis #ALT-2026-005",
+  },
+  {
+    id: "EVT-GEO-006",
+    timestamp: "2026-08-24T14:10:00Z",
+    eventType: "SIM_SWITCH",
+    title: "128 SIM Cards Bulk Activated on SIM Farm",
+    description: "Deepak Mohanty registered 128 new pre-activated Airtel SIM cards on GSM Gateway.",
+    locationId: "LOC-OD-01",
+    locationName: "Chandrasekharpur SIM Farm Facility, Bhubaneswar",
+    latitude: 20.3245,
+    longitude: 85.8189,
+    primaryEntityId: "ENT-011",
+    primaryEntityName: "Deepak Kumar Mohanty",
+    associatedEntityIds: ["ENT-012", "ENT-015"],
+    severity: "critical",
+    confidenceScore: 97,
+    sourceReference: "Odisha Cyber Cell Raid Memo #B12-09",
+  },
+  {
+    id: "EVT-GEO-007",
+    timestamp: "2026-08-23T11:45:00Z",
+    eventType: "FINANCIAL_TRANSFER",
+    title: "USDT OTC Hawala Liquidation: ₹1.42 Cr",
+    description: "Arjun Menon transferred cryptocurrency proceeds to offshore exchange wallet.",
+    locationId: "LOC-MH-01",
+    locationName: "Bandra-Kurla Complex Financial Vault, Mumbai",
+    latitude: 19.0657,
+    longitude: 72.868,
+    primaryEntityId: "ENT-P-06",
+    primaryEntityName: "Arjun Menon",
+    associatedEntityIds: ["ENT-P-01"],
+    severity: "critical",
+    confidenceScore: 95,
+    sourceReference: "Chainalysis On-Chain Cluster #USDT-098",
+    amountINR: 14200000,
+  },
+  {
+    id: "EVT-GEO-008",
+    timestamp: "2026-08-22T09:30:00Z",
+    eventType: "CASE_ACTION",
+    title: "FIR #402/2026 Registered at Cyber PS Noida",
+    description: "Formal investigation initiated following ₹85 Lakh extortion complaint.",
+    locationId: "LOC-NCR-01",
+    locationName: "Sector 62 Electronic City Tower 9B, Noida",
+    latitude: 28.628,
+    longitude: 77.3649,
+    primaryEntityId: "ENT-P-01",
+    primaryEntityName: "Vikramaditya Rawat",
+    associatedEntityIds: ["ENT-P-02"],
+    severity: "medium",
+    confidenceScore: 100,
+    sourceReference: "State Cyber Crime Police FIR #402/2026",
+  },
+];
