@@ -45,6 +45,8 @@ backend/
 
 ## 🚀 Quick Start
 
+The backend is intentionally Python/FastAPI, not a Node application. The local `package.json` provides the requested `npm run dev` alias, while dependencies are installed from `requirements.txt`.
+
 ### 1. Install Dependencies
 ```bash
 cd backend
@@ -54,6 +56,14 @@ pip install -r requirements.txt
 ### 2. Start the FastAPI Server
 ```bash
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+
+Equivalent package command:
+
+```bash
+cd backend
+npm install
+npm run dev
 ```
 
 ### 3. Access Interactive API Documentation

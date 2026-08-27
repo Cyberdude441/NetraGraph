@@ -1,0 +1,1 @@
+The backend is implemented in Python under `../app/` and compatibility modules under `../api/`, `../services/`, and `../database/`. These directories are the target organization for future extraction without duplicating runtime code.

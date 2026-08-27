@@ -23,6 +23,28 @@
 
 ## 🏗️ System Architecture
 
+The repository is split into independent application boundaries:
+
+```
+frontend/
+├── src/                  # React routes, UI components, hooks, services, and styles
+├── package.json          # Frontend-local scripts
+├── vite.config.ts
+└── tsconfig.json
+
+backend/
+├── api/                  # Compatibility API modules
+├── app/api/              # FastAPI routes and controllers
+├── app/models/           # Request/response schemas
+├── app/services/         # Business logic orchestration
+├── app/database/         # Persistence and seed data
+├── app/graph/            # Graph processing
+├── app/ai/               # Extraction and investigation reasoning
+└── Dockerfile
+```
+
+The React client owns presentation, client state, and API calls through `frontend/src/services/api.ts`. The Python service owns authentication integration points, API handling, data models, business services, graph processing, AI reasoning, and evidence workflows. Root `npm` scripts delegate to `frontend/` for backward-compatible local development.
+
 ```
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
 │                              NetraGraph AI Architecture                                │
@@ -60,6 +82,22 @@
 git clone https://github.com/your-org/netragraph-ai.git
 cd netragraph-ai
 npm install
+```
+
+For independent application setup:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+In a second terminal, install and run the FastAPI service:
+
+```bash
+cd backend
+pip install -r requirements.txt
+npm run dev
 ```
 
 ### 2. Run Live Development Server

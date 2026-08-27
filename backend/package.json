@@ -1,0 +1,9 @@
+{
+  "name": "netragraph-backend",
+  "private": true,
+  "description": "NetraGraph FastAPI backend service",
+  "scripts": {
+    "dev": "python -m uvicorn main:app --reload --host 0.0.0.0 --port 8000",
+    "start": "python -m uvicorn main:app --host 0.0.0.0 --port 8000"
+  }
+}
