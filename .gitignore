@@ -22,18 +22,27 @@ dist-ssr
 backend/.env
 !*.example
 
-# Python
+# Python & ML Artifacts
 __pycache__/
 *.py[cod]
 *$py.class
 *.pyc
 .venv/
 .venv*/
+.venv-ml/
 venv/
 ENV/
 env/
 *.egg-info/
 .pytest_cache/
+*.joblib
+backend/models/artifacts/
+build/
+
+# Processed datasets (preserve directory structure via .gitkeep)
+backend/datasets/processed/*
+!backend/datasets/processed/.gitkeep
+!backend/datasets/processed/*/.gitkeep
 
 # Editor directories and files
 .vscode/*
