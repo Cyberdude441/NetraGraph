@@ -77,11 +77,6 @@ function Dashboard() {
   const [selectedMotiveState, setSelectedMotiveState] = useState<string>("National");
   const [isSyncing, setIsSyncing] = useState(false);
 
-  const { data: cyberOverview } = useQuery({
-    queryKey: ["cyber-intelligence-overview"],
-    queryFn: () => api.getCyberOverview(),
-  });
-
   // 1. Live OGD Pipeline Status
   const { data: pipelineStatus, refetch: refetchPipeline } = useQuery({
     queryKey: ["ogd-pipeline-status"],
@@ -367,32 +362,6 @@ function Dashboard() {
           );
         })}
       </div>
-
-      {/* Unified Cyber Threat Intelligence Graph Overview */}
-      <section className="mt-5 rounded-md border border-[#E5E7EB] bg-white p-5 shadow-xs">
-        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E5E7EB] pb-3">
-          <div>
-            <h2 className="font-display text-sm font-bold text-[#111827]">Cyber Threat Intelligence Graph</h2>
-            <p className="mt-0.5 text-xs text-[#64748B]">Unified indicators, infrastructure, malware, and threat campaigns across ingested datasets.</p>
-          </div>
-          <Link to="/network" className="text-xs font-semibold text-[#065F46] hover:underline">Explore unified graph</Link>
-        </div>
-        <div className="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-6">
-          {[
-            ["IP Addresses", cyberOverview?.entity_counts?.IPAddress || 0],
-            ["Domains", cyberOverview?.entity_counts?.Domain || 0],
-            ["URLs", cyberOverview?.entity_counts?.URL || 0],
-            ["Email Addresses", cyberOverview?.entity_counts?.EmailAddress || 0],
-            ["Malware", cyberOverview?.entity_counts?.Malware || 0],
-            ["Threat Relationships", cyberOverview?.total_relationships || 0],
-          ].map(([label, value]) => (
-            <div key={String(label)} className="rounded-md bg-[#F8FAFC] p-3">
-              <p className="text-[11px] font-semibold text-[#64748B]">{label}</p>
-              <p className="mt-1 text-xl font-bold text-[#0F172A]">{value}</p>
-            </div>
-          ))}
-        </div>
-      </section>
 
       {/* 0.5 Quick Operational Actions & Current Case Docket Banner */}
       <div className="mt-5 rounded-md border border-[#E5E7EB] bg-white p-5 shadow-xs flex flex-wrap items-center justify-between gap-4">

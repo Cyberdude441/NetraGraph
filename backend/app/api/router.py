@@ -11,6 +11,7 @@ from .network import router as network_router
 from .profile import router as profile_router
 from .analysis import router as analysis_router
 from .ai_endpoints import router as ai_endpoints_router
+from .ml_router import router as ml_router
 
 api_router = APIRouter(prefix="/api")
 
@@ -26,3 +27,4 @@ api_router.include_router(network_router)
 api_router.include_router(profile_router)
 api_router.include_router(analysis_router)
 api_router.include_router(ai_endpoints_router)
+api_router.include_router(ml_router)

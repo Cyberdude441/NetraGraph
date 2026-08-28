@@ -25,6 +25,16 @@ export const ALL_ENTITY_TYPES = [
   "BankAccount",
   "Device",
   "Event",
+  "IPAddress",
+  "Domain",
+  "URL",
+  "EmailAddress",
+  "Malware",
+  "ThreatActor",
+  "AttackType",
+  "Vulnerability",
+  "Hash",
+  "NetworkDevice",
 ] as const;
 
 export const ALL_RELATIONSHIP_TYPES = [

@@ -1,0 +1,8 @@
+[project]
+name = "netragraph"
+version = "1.0.0"
+description = "NetraGraph intelligence platform and portable ML workflows"
+requires-python = ">=3.11,<3.13"
+
+[tool.netragraph]
+ml-python = ">=3.11,<3.13"

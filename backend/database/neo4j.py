@@ -35,6 +35,11 @@ class Neo4jDualGraphDatabase:
         self._evidence_relationships: Dict[str, Dict[str, Any]] = {}
         self.evidence_last_sync: Optional[str] = None
 
+        # Graph 3: Unified Cyber Threat Intelligence Graph
+        self._cyber_nodes: Dict[str, Dict[str, Any]] = {}
+        self._cyber_relationships: Dict[str, Dict[str, Any]] = {}
+        self.cyber_last_sync: Optional[str] = None
+
     def clear_ncrb_graph(self):
         with self._lock:
             self._ncrb_nodes.clear()
@@ -44,6 +49,44 @@ class Neo4jDualGraphDatabase:
         with self._lock:
             self._evidence_nodes.clear()
             self._evidence_relationships.clear()
+
+    # --- GRAPH 3: UNIFIED CYBER THREAT INTELLIGENCE GRAPH ---
+    def add_cyber_node(self, node: Dict[str, Any]) -> None:
+        with self._lock:
+            self._cyber_nodes[node["id"]] = node
+
+    def add_cyber_relationship(self, relationship: Dict[str, Any]) -> None:
+        with self._lock:
+            self._cyber_relationships[relationship["id"]] = relationship
+
+    def query_cyber_graph(
+        self,
+        search: Optional[str] = None,
+        node_type: Optional[str] = None,
+        relationship_type: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        with self._lock:
+            query = search.lower() if search else None
+            nodes = [
+                node for node in self._cyber_nodes.values()
+                if (not query or query in node["name"].lower() or query in node["id"].lower())
+                and (not node_type or node_type == "ALL" or node["type"] == node_type)
+            ]
+            node_ids = {node["id"] for node in nodes}
+            relationships = [
+                rel for rel in self._cyber_relationships.values()
+                if rel["source_id"] in node_ids
+                and rel["target_id"] in node_ids
+                and (not relationship_type or relationship_type == "ALL" or rel["type"] == relationship_type)
+            ]
+            return {
+                "graph_source": "UNIFIED_CYBER_THREAT_INTELLIGENCE",
+                "nodes": nodes,
+                "relationships": relationships,
+                "totalNodes": len(nodes),
+                "totalRelationships": len(relationships),
+                "lastSync": self.cyber_last_sync or datetime.utcnow().isoformat() + "Z",
+            }
 
     # --- GRAPH 1: NCRB PUBLIC GRAPH METHODS ---
     def add_ncrb_node(self, node_id: str, label: str, name: str, **attributes):

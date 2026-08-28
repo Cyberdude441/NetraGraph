@@ -48,6 +48,16 @@ const ENTITY_ICONS: Record<string, React.ElementType> = {
   BankAccount: CreditCard,
   Device: Cpu,
   Event: CalendarDays,
+  IPAddress: Activity,
+  Domain: Database,
+  URL: Share2,
+  EmailAddress: User,
+  Malware: Flame,
+  ThreatActor: ShieldAlert,
+  AttackType: Zap,
+  Vulnerability: ShieldAlert,
+  Hash: CheckSquare,
+  NetworkDevice: Cpu,
 };
 
 export function GraphFilters({

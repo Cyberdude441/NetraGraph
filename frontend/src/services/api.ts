@@ -128,6 +128,44 @@ export const api = {
     return request("/graph/network?graph_source=ncrb_public", { method: "GET" }, null);
   },
 
+  async getCyberOverview() {
+    return request("/cyber/overview", { method: "GET" }, {
+      total_nodes: 0,
+      total_relationships: 0,
+      entity_counts: {},
+      datasets: [],
+      last_sync: "",
+    });
+  },
+
+  async getCyberGraph(params?: { search?: string; nodeType?: string; relationshipType?: string }) {
+    const query = new URLSearchParams();
+    if (params?.search) query.set("search", params.search);
+    if (params?.nodeType) query.set("node_type", params.nodeType);
+    if (params?.relationshipType) query.set("relationship_type", params.relationshipType);
+    const suffix = query.toString() ? `?${query.toString()}` : "";
+    return request(`/cyber/graph${suffix}`, { method: "GET" }, null);
+  },
+
+  async getCyberRisk(entityId: string) {
+    return request(`/cyber/risk/${encodeURIComponent(entityId)}`, { method: "GET" });
+  },
+
+  async getCyberAnomalies() {
+    return request("/cyber/anomalies", { method: "GET" }, { anomalies: [] });
+  },
+
+  async getLinkPredictions() {
+    return request("/cyber/link-predictions", { method: "GET" }, { predictions: [] });
+  },
+
+  async reasonOverCyberGraph(question: string) {
+    return request("/cyber/reason", {
+      method: "POST",
+      body: JSON.stringify({ question }),
+    });
+  },
+
   // ==========================================
   // Cases & Investigation Registry
   // ==========================================

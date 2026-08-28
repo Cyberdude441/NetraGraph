@@ -22,6 +22,16 @@ from .ingestion import (
 )
 from .audit import AuditLog, AuditAction, UserRole
 from .cases import Case, CaseCreate
+from .cyber_intelligence import (
+    CyberEntity,
+    CyberEntityType,
+    CyberRelationship,
+    CyberRelationshipType,
+    DatasetIngestionResponse,
+    LinkPrediction,
+    RiskAssessment,
+    ThreatAnomaly,
+)
 
 __all__ = [
     "Entity",
@@ -58,4 +68,12 @@ __all__ = [
     "UserRole",
     "Case",
     "CaseCreate",
+    "CyberEntity",
+    "CyberEntityType",
+    "CyberRelationship",
+    "CyberRelationshipType",
+    "DatasetIngestionResponse",
+    "LinkPrediction",
+    "RiskAssessment",
+    "ThreatAnomaly",
 ]

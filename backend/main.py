@@ -15,6 +15,7 @@ from api.graph import router as graph_router
 from api.analytics import router as analytics_router
 from api.ncrb import router as ncrb_router
 from api.ai import router as ai_router
+from api.cyber_intelligence import router as cyber_router
 from app.api.router import api_router as legacy_api_router
 from services.graph_builder import graph_builder
 
@@ -53,6 +54,7 @@ app.include_router(ncrb_router, prefix="/api")
 app.include_router(crime_router, prefix="/api")
 app.include_router(graph_router, prefix="/api")
 app.include_router(analytics_router, prefix="/api")
+app.include_router(cyber_router, prefix="/api")
 
 # Mount Legacy /api Routers (Cases, Evidence, Audit) for complete backward compatibility
 app.include_router(legacy_api_router)
