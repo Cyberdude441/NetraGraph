@@ -22,6 +22,7 @@ import {
   TrendingUp,
   Users,
   X,
+  Cpu,
 } from "lucide-react";
 import { useState, useRef, useEffect, type ReactNode } from "react";
 
@@ -86,6 +87,7 @@ const NAV = [
   { label: "Entities & Profiles", to: "/profiles", icon: Users },
   { label: "Knowledge Graph", to: "/network", icon: Network },
   { label: "Network Analytics", to: "/analytics", icon: TrendingUp },
+  { label: "ML Intelligence", to: "/ml-intelligence", icon: Cpu },
   { label: "Alerts & Anomalies", to: "/anomalies", icon: Flame },
   { label: "Geographic Intelligence", to: "/geo-timeline", icon: MapPin },
   { label: "Evidence Vault", to: "/cases", icon: ShieldCheck },

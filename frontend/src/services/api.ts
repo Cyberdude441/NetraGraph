@@ -18,10 +18,15 @@ import type {
   NCRBStateCrime,
   NCRBCategoryCrime,
   NCRBITActSection,
+  MLModel,
+  MLPredictionResult,
+  MLImportResponse,
+  MLModelRegistryResponse,
 } from "@/types";
 
 const API_BASE_URL =
-  import.meta.env.VITE_API_URL || "http://localhost:8000/api";
+  import.meta.env.VITE_API_URL ||
+  (typeof window !== "undefined" ? "/api" : "http://localhost:8000/api");
 
 /**
  * Generic REST client wrapper for Cyber Cell API endpoints.
@@ -404,4 +409,77 @@ export const api = {
       body: JSON.stringify(payload),
     });
   },
+
+  // ==========================================
+  // Machine Learning Intelligence Subsystem
+  // ==========================================
+  async getMLModels(): Promise<MLModel[]> {
+    const res = await request<MLModelRegistryResponse>("/ml/models", { method: "GET" }, { models: [] });
+    return res.models || [];
+  },
+
+  async getMLModel(name: string): Promise<MLModel[]> {
+    const res = await request<{ models: MLModel[] }>(`/ml/models/${encodeURIComponent(name)}`, { method: "GET" });
+    return res.models || [];
+  },
+
+  async importMLModel(file: File): Promise<MLImportResponse> {
+    const formData = new FormData();
+    formData.append("file", file);
+    const url = `${API_BASE_URL}/ml/models/import`;
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "X-User-ID": "IN-BOSE-4417",
+      },
+      body: formData,
+    });
+
+    if (!response.ok) {
+      const errorBody = await response.text();
+      let detail = errorBody;
+      try {
+        const parsed = JSON.parse(errorBody);
+        if (parsed.detail) detail = parsed.detail;
+      } catch {}
+      throw new Error(`Model Import Failed: ${detail}`);
+    }
+
+    return (await response.json()) as MLImportResponse;
+  },
+
+  async activateMLModel(name: string, version: string): Promise<MLModel> {
+    return request<MLModel>(`/ml/models/${encodeURIComponent(name)}/${encodeURIComponent(version)}/activate`, {
+      method: "POST",
+    });
+  },
+
+  async deactivateMLModel(name: string, version: string): Promise<MLModel> {
+    return request<MLModel>(`/ml/models/${encodeURIComponent(name)}/${encodeURIComponent(version)}/deactivate`, {
+      method: "POST",
+    });
+  },
+
+  async predictIntrusion(payload: Record<string, any>): Promise<MLPredictionResult> {
+    return request<MLPredictionResult>("/ml/predict/intrusion", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+  },
+
+  async predictPhishingUrl(payload: Record<string, any>): Promise<MLPredictionResult> {
+    return request<MLPredictionResult>("/ml/predict/phishing-url", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+  },
+
+  async predictPhishingEmail(payload: Record<string, any>): Promise<MLPredictionResult> {
+    return request<MLPredictionResult>("/ml/predict/phishing-email", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+  },
 };
+

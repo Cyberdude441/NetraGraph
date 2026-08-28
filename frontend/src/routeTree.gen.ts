@@ -17,6 +17,7 @@ import { Route as CasesRouteImport } from './routes/cases'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as EvidenceRouteImport } from './routes/evidence'
 import { Route as GeoTimelineRouteImport } from './routes/geo-timeline'
+import { Route as MlIntelligenceRouteImport } from './routes/ml-intelligence'
 import { Route as NetworkRouteImport } from './routes/network'
 import { Route as ProfilesRouteImport } from './routes/profiles'
 import { Route as ReportsRouteImport } from './routes/reports'
@@ -61,6 +62,11 @@ const GeoTimelineRoute = GeoTimelineRouteImport.update({
   path: '/geo-timeline',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MlIntelligenceRoute = MlIntelligenceRouteImport.update({
+  id: '/ml-intelligence',
+  path: '/ml-intelligence',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NetworkRoute = NetworkRouteImport.update({
   id: '/network',
   path: '/network',
@@ -86,6 +92,7 @@ export interface FileRoutesByFullPath {
   '/dashboard': typeof DashboardRoute
   '/evidence': typeof EvidenceRoute
   '/geo-timeline': typeof GeoTimelineRoute
+  '/ml-intelligence': typeof MlIntelligenceRoute
   '/network': typeof NetworkRoute
   '/profiles': typeof ProfilesRoute
   '/reports': typeof ReportsRoute
@@ -99,6 +106,7 @@ export interface FileRoutesByTo {
   '/dashboard': typeof DashboardRoute
   '/evidence': typeof EvidenceRoute
   '/geo-timeline': typeof GeoTimelineRoute
+  '/ml-intelligence': typeof MlIntelligenceRoute
   '/network': typeof NetworkRoute
   '/profiles': typeof ProfilesRoute
   '/reports': typeof ReportsRoute
@@ -113,6 +121,7 @@ export interface FileRoutesById {
   '/dashboard': typeof DashboardRoute
   '/evidence': typeof EvidenceRoute
   '/geo-timeline': typeof GeoTimelineRoute
+  '/ml-intelligence': typeof MlIntelligenceRoute
   '/network': typeof NetworkRoute
   '/profiles': typeof ProfilesRoute
   '/reports': typeof ReportsRoute
@@ -128,6 +137,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/evidence'
     | '/geo-timeline'
+    | '/ml-intelligence'
     | '/network'
     | '/profiles'
     | '/reports'
@@ -141,6 +151,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/evidence'
     | '/geo-timeline'
+    | '/ml-intelligence'
     | '/network'
     | '/profiles'
     | '/reports'
@@ -154,6 +165,7 @@ export interface FileRouteTypes {
     | '/dashboard'
     | '/evidence'
     | '/geo-timeline'
+    | '/ml-intelligence'
     | '/network'
     | '/profiles'
     | '/reports'
@@ -168,6 +180,7 @@ export interface RootRouteChildren {
   DashboardRoute: typeof DashboardRoute
   EvidenceRoute: typeof EvidenceRoute
   GeoTimelineRoute: typeof GeoTimelineRoute
+  MlIntelligenceRoute: typeof MlIntelligenceRoute
   NetworkRoute: typeof NetworkRoute
   ProfilesRoute: typeof ProfilesRoute
   ReportsRoute: typeof ReportsRoute
@@ -231,6 +244,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GeoTimelineRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/ml-intelligence': {
+      id: '/ml-intelligence'
+      path: '/ml-intelligence'
+      fullPath: '/ml-intelligence'
+      preLoaderRoute: typeof MlIntelligenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/network': {
       id: '/network'
       path: '/network'
@@ -264,6 +284,7 @@ const rootRouteChildren: RootRouteChildren = {
   DashboardRoute: DashboardRoute,
   EvidenceRoute: EvidenceRoute,
   GeoTimelineRoute: GeoTimelineRoute,
+  MlIntelligenceRoute: MlIntelligenceRoute,
   NetworkRoute: NetworkRoute,
   ProfilesRoute: ProfilesRoute,
   ReportsRoute: ReportsRoute,

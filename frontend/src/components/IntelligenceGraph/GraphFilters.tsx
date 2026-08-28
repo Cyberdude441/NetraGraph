@@ -20,6 +20,9 @@ import {
   Cpu,
   CalendarDays,
   ArrowRightLeft,
+  Database,
+  Share2,
+  Zap,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { GraphFilterCriteria } from "@/utils/graphFilters";
