@@ -50,6 +50,20 @@ async def trigger_pipeline_sync():
         raise HTTPException(status_code=500, detail=f"Pipeline sync failed: {str(e)}")
 
 
+@router.post("/sync")
+async def sync_ncrb_datasets():
+    """
+    Executes full dynamic synchronization of all 6 NCRB datasets into Neo4j with full provenance.
+    Guarantees idempotency on repeated executions.
+    """
+    try:
+        from services.ncrb_sync import ncrb_sync_service
+    except ImportError:
+        from ..services.ncrb_sync import ncrb_sync_service
+
+    return await ncrb_sync_service.synchronize_ncrb_datasets()
+
+
 # ==========================================
 # 2. Neo4j Knowledge Graph API
 # ==========================================

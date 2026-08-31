@@ -1,0 +1,181 @@
+{
+  "scenarios": [
+    {
+      "scenario_id": "SCENARIO-01-PHISHING-INFRA",
+      "title": "Phishing Infrastructure Detection",
+      "case_id": "CASE-2024-DEL-0891",
+      "category": "Phishing & Credential Theft",
+      "evidence_input": {
+        "filename": "phishing_dns_telemetry.txt",
+        "content": "2024-03-16 14:31:00 [DNS-LOOKUP] Domain support-helpdesk-msft.com resolved to 103.145.22.18 via Cloudflare DNS."
+      },
+      "expected_entities": [
+        {"type": "Domain", "value": "support-helpdesk-msft.com", "resolution": "VERIFIED"},
+        {"type": "IPAddress", "value": "103.145.22.18", "resolution": "VERIFIED"}
+      ],
+      "expected_relationships": [
+        {"type": "REFERENCES", "source": "evidence", "target": "domain:support-helpdesk-msft.com"}
+      ],
+      "graphrag_question": "What infrastructure is associated with support-helpdesk-msft.com in CASE-2024-DEL-0891?",
+      "expected_classification": "CASE_EVIDENCE",
+      "expected_answer_keywords": ["103.145.22.18", "support-helpdesk-msft.com", "CASE-2024-DEL-0891"]
+    },
+    {
+      "scenario_id": "SCENARIO-02-CYBER-FRAUD-NETWORK",
+      "title": "VoIP PBX & Dialer Gateway Linkage",
+      "case_id": "CASE-2024-DEL-0891",
+      "category": "Financial Tele-Fraud",
+      "evidence_input": {
+        "filename": "voip_gateway_syslog.txt",
+        "content": "2024-03-16 14:30:00 [SIP-GATEWAY] Inbound spoofed call from +919811029182 routed through IP 103.145.22.18."
+      },
+      "expected_entities": [
+        {"type": "Phone", "value": "+919811029182", "resolution": "PROBABLE"},
+        {"type": "IPAddress", "value": "103.145.22.18", "resolution": "VERIFIED"}
+      ],
+      "expected_relationships": [
+        {"type": "REFERENCES", "source": "evidence", "target": "phone:919811029182"}
+      ],
+      "graphrag_question": "Which phone number routed calls through 103.145.22.18 in CASE-2024-DEL-0891?",
+      "expected_classification": "CASE_EVIDENCE",
+      "expected_answer_keywords": ["9811029182", "103.145.22.18"]
+    },
+    {
+      "scenario_id": "SCENARIO-03-SUSPICIOUS-DOMAIN",
+      "title": "Fast-Flux Malicious Domain",
+      "case_id": "CASE-2024-BLR-0412",
+      "category": "Malware C2",
+      "evidence_input": {
+        "filename": "c2_traffic_capture.txt",
+        "content": "2024-04-10 10:00:00 [C2-TRAFFIC] Beacon sent to secure-update-auth.site from internal host."
+      },
+      "expected_entities": [
+        {"type": "Domain", "value": "secure-update-auth.site", "resolution": "VERIFIED"}
+      ],
+      "expected_relationships": [
+        {"type": "REFERENCES", "source": "evidence", "target": "domain:secure-update-auth.site"}
+      ],
+      "graphrag_question": "What suspicious domain was contacted in CASE-2024-BLR-0412?",
+      "expected_classification": "CASE_EVIDENCE",
+      "expected_answer_keywords": ["secure-update-auth.site", "CASE-2024-BLR-0412"]
+    },
+    {
+      "scenario_id": "SCENARIO-04-PHONE-IP-LINKAGE",
+      "title": "Cellular MSISDN to Gateway Corroboration",
+      "case_id": "CASE-2024-DEL-0891",
+      "category": "Call Detail Record (CDR)",
+      "evidence_input": {
+        "filename": "cdr_tower_dump.txt",
+        "content": "MSISDN: +919876500001 active on Noida Sector 62 BTS connected to Gateway 103.145.22.18."
+      },
+      "expected_entities": [
+        {"type": "Phone", "value": "+919876500001", "resolution": "PROBABLE"},
+        {"type": "IPAddress", "value": "103.145.22.18", "resolution": "VERIFIED"}
+      ],
+      "expected_relationships": [],
+      "graphrag_question": "Show telemetry for phone +919876500001 in CASE-2024-DEL-0891.",
+      "expected_classification": "CASE_EVIDENCE",
+      "expected_answer_keywords": ["9876500001"]
+    },
+    {
+      "scenario_id": "SCENARIO-05-BANK-ACCOUNT-MULE",
+      "title": "Mule Escrow Account Identification",
+      "case_id": "CASE-2024-DEL-0891",
+      "category": "Money Laundering & Mule Accounts",
+      "evidence_input": {
+        "filename": "banking_statement_audit.txt",
+        "content": "Wire settlement transferred INR 4,50,000 to Account 918281920192 under Escrow reference."
+      },
+      "expected_entities": [
+        {"type": "BankAccount", "value": "918281920192", "resolution": "PROBABLE"}
+      ],
+      "expected_relationships": [
+        {"type": "REFERENCES", "source": "evidence", "target": "bank:918281920192"}
+      ],
+      "graphrag_question": "What bank account received wire transfers in CASE-2024-DEL-0891?",
+      "expected_classification": "CASE_EVIDENCE",
+      "expected_answer_keywords": ["918281920192"]
+    },
+    {
+      "scenario_id": "SCENARIO-06-CONFLICTING-EVIDENCE",
+      "title": "Conflicting Evidence Resolution Gate",
+      "case_id": "CASE-2024-DEL-0891",
+      "category": "ISP Discrepancy",
+      "evidence_input": {
+        "filename": "isp_log_b.txt",
+        "content": "ISP Log Report indicates secondary uplink at 103.145.22.99 contradictory to primary CFSL report."
+      },
+      "expected_entities": [
+        {"type": "IPAddress", "value": "103.145.22.99", "resolution": "VERIFIED"}
+      ],
+      "expected_relationships": [],
+      "graphrag_question": "What secondary IP is referenced in isp_log_b.txt?",
+      "expected_classification": "CASE_EVIDENCE",
+      "expected_answer_keywords": ["103.145.22.99"]
+    },
+    {
+      "scenario_id": "SCENARIO-07-UNRESOLVED-PERSON-IDENTITY",
+      "title": "Strict Unresolved Suspect Identity Handling",
+      "case_id": "CASE-2024-DEL-0891",
+      "category": "Named Entity Disambiguation",
+      "evidence_input": {
+        "filename": "interrogation_memo.txt",
+        "content": "The operator alleged that Suspect Suresh Kumar managed the SIM rotation."
+      },
+      "expected_entities": [
+        {"type": "Person", "value": "Suresh Kumar", "resolution": "UNRESOLVED"}
+      ],
+      "expected_relationships": [],
+      "graphrag_question": "Is Suresh Kumar a confirmed verified suspect in CASE-2024-DEL-0891?",
+      "expected_classification": "CASE_EVIDENCE",
+      "expected_answer_keywords": ["Suresh Kumar", "UNRESOLVED"]
+    },
+    {
+      "scenario_id": "SCENARIO-08-DISCONNECTED-ENTITIES",
+      "title": "Disconnected Indicator Isolation",
+      "case_id": "CASE-2024-DEL-0891",
+      "category": "Orphan Telemetry",
+      "evidence_input": {
+        "filename": "stray_indicator.txt",
+        "content": "Isolated test ping observed to 198.51.100.24 with zero upstream links."
+      },
+      "expected_entities": [
+        {"type": "IPAddress", "value": "198.51.100.24", "resolution": "VERIFIED"}
+      ],
+      "expected_relationships": [],
+      "graphrag_question": "What links exist for IP 198.51.100.24?",
+      "expected_classification": "CASE_EVIDENCE",
+      "expected_answer_keywords": ["198.51.100.24"]
+    },
+    {
+      "scenario_id": "SCENARIO-09-CROSS-CASE-ISOLATION",
+      "title": "Strict Cross-Case Boundary Protection",
+      "case_id": "CASE-2024-DEL-0891",
+      "category": "Docket Authorization Boundary",
+      "evidence_input": {
+        "filename": "internal_memo.txt",
+        "content": "Authorized Delhi Cyber Cell docket CASE-2024-DEL-0891."
+      },
+      "expected_entities": [],
+      "expected_relationships": [],
+      "graphrag_question": "Show evidence for CASE-2024-BLR-0412 while logged into CASE-2024-DEL-0891 workspace.",
+      "expected_classification": "INSUFFICIENT_VERIFIED_DATA",
+      "expected_answer_keywords": ["No verified evidence", "unavailable"]
+    },
+    {
+      "scenario_id": "SCENARIO-10-INSUFFICIENT-DATA",
+      "title": "Zero-Guessing Guardrail for Unmonitored Territory",
+      "case_id": "NCRB_PUBLIC",
+      "category": "Statistical Boundary",
+      "evidence_input": {
+        "filename": "ncrb_table_18a2.txt",
+        "content": "NCRB Metropolitan Cyber Crime catalog Table 18A.2 monitors 19 commissionerates."
+      },
+      "expected_entities": [],
+      "expected_relationships": [],
+      "graphrag_question": "What was the crypto fraud count for Rourkela city in 2025?",
+      "expected_classification": "INSUFFICIENT_VERIFIED_DATA",
+      "expected_answer_keywords": ["City-level verified data is unavailable", "Rourkela", "19 designated commissionerates"]
+    }
+  ]
+}

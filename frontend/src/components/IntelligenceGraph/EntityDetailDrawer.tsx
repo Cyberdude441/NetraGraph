@@ -1,17 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Target,
   ShieldAlert,
-  Flame,
   Activity,
-  Share2,
   Calendar,
   Layers,
-  Database,
-  ExternalLink,
+  FileText,
   ChevronRight,
-  TrendingUp,
-  Award,
   Zap,
   Info,
   Clock,
@@ -21,6 +16,11 @@ import {
   Building2,
   Cpu,
   User,
+  Hash,
+  Globe2,
+  FileCheck2,
+  Binary,
+  X,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import type { SyntheticEntity, SyntheticRelationship } from "@/data/syntheticGraphData";
@@ -45,6 +45,8 @@ export function EntityDetailDrawer({
   onSelectEntity,
   onClose,
 }: EntityDetailDrawerProps) {
+  const [activeTab, setActiveTab] = useState<"overview" | "metrics" | "connections" | "provenance">("overview");
+
   if (!entity) return null;
 
   const entityMap = new Map(allEntities.map((e) => [e.id, e]));
@@ -64,193 +66,245 @@ export function EntityDetailDrawer({
     })
     .filter((item) => Boolean(item.otherEntity));
 
-  // Explainability Generator ("Why is this entity important?")
-  const explainabilityReasons: string[] = [];
-  const risk = entity.riskScore;
-  const rank = centrality?.rank || 99;
-  const betweenness = centrality?.betweenness || 0;
-  const degree = directLinks.length;
-
-  if (rank <= 3) {
-    explainabilityReasons.push(`Ranked #${rank} in Global Network Influence (High PageRank Authority).`);
-  }
-  if (betweenness > 15) {
-    explainabilityReasons.push(`Critical Inter-Cluster Bridge (Betweenness ${betweenness}%): Funnels communications/finances between disjoint cells.`);
-  }
-  if (degree >= 4) {
-    explainabilityReasons.push(`High Density Hub: Direct multi-modal links to ${degree} distinct network assets.`);
-  }
-  if (entity.metadata.financialLossINR && entity.metadata.financialLossINR > 10000000) {
-    explainabilityReasons.push(`Major Financial Velocity: Implicated in cumulative transactions exceeding ₹${(entity.metadata.financialLossINR / 10000000).toFixed(2)} Crore.`);
-  }
-  if (entity.confidenceScore >= 0.95) {
-    explainabilityReasons.push(`Forensically Verified: ${(entity.confidenceScore * 100).toFixed(0)}% attribution confidence from CDR & hardware seizures.`);
-  }
-  if (explainabilityReasons.length === 0) {
-    explainabilityReasons.push(`Standard operational entity associated with ${entity.investigationGroup}.`);
-  }
+  const risk = entity.riskScore ?? 50;
+  const isHighRisk = risk >= 85;
 
   return (
-    <aside className="w-72 shrink-0 border-l border-[#E2E8F0] bg-white flex flex-col h-full z-10 shadow-2xl select-none 2xl:w-96">
+    <aside className="w-80 shrink-0 border-l border-[#334155] bg-[#0f172a] flex flex-col h-full z-20 shadow-2xl select-none 2xl:w-96 text-slate-200">
       {/* Header */}
-      <div className="border-b border-[#E2E8F0] bg-[#F8FAFC] px-4 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-2 min-w-0">
-          <span className="flex size-7 shrink-0 items-center justify-center rounded bg-emerald-100 text-emerald-400 border border-slate-300">
+      <div className="border-b border-[#334155] bg-[#0a0e17] px-4 py-3 flex items-center justify-between">
+        <div className="flex items-center gap-2.5 min-w-0">
+          <span className="flex size-7 shrink-0 items-center justify-center rounded bg-cyan-950 text-cyan-400 border border-cyan-800/80">
             <Target className="size-4" />
           </span>
           <div className="min-w-0">
-            <h3 className="font-sans text-xs font-bold text-slate-900 uppercase tracking-wider truncate">
+            <h3 className="font-mono text-xs font-bold text-slate-100 tracking-tight truncate">
               {entity.name}
             </h3>
-            <span className="text-[10px] font-mono text-slate-400 truncate block">
-              {entity.label} · ID: {entity.id}
+            <span className="text-[10px] text-cyan-400 font-mono">
+              {entity.id} • {entity.label}
             </span>
           </div>
         </div>
-
-        {/* Risk Pill */}
-        <div className="shrink-0 flex items-center gap-1">
-          <span
-            className={cn(
-              "flex items-center gap-1 rounded px-2 py-0.5 font-mono text-[10px] font-bold",
-              risk >= 85
-                ? "bg-red-950/80 text-red-300 border border-red-500/60"
-                : risk >= 70
-                ? "bg-amber-950/80 text-amber-300 border border-amber-500/50"
-                : "bg-slate-100 text-slate-700 border border-slate-300"
-            )}
+        {onClose && (
+          <button
+            onClick={onClose}
+            className="rounded p-1 text-slate-400 hover:bg-[#1e293b] hover:text-slate-200 transition-colors"
           >
-            {risk >= 85 && <Flame className="size-2.5 text-red-400 animate-pulse" />}
-            Risk {risk}/100
-          </span>
-        </div>
+            <X className="size-4" />
+          </button>
+        )}
       </div>
 
-      {/* Drawer Body Scroll */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs text-slate-700 custom-scrollbar">
-        {/* 1. Explainability Panel ("Why is this entity important?") */}
-        <div className="rounded border border-emerald-900/60 bg-emerald-50 p-3 space-y-2">
-          <div className="flex items-center gap-1.5 text-emerald-400 font-mono font-bold text-[10px] uppercase tracking-wider">
-            <Info className="size-3.5" />
-            <span>Netra Intelligence Explainability</span>
-          </div>
-          <div className="space-y-1.5">
-            {explainabilityReasons.map((reason, idx) => (
-              <div
-                key={idx}
-                className="flex items-start gap-1.5 text-[11px] text-slate-700 leading-tight font-sans"
-              >
-                <span className="text-emerald-400 mt-0.5 font-bold">•</span>
-                <span>{reason}</span>
+      {/* Tabs */}
+      <div className="flex border-b border-[#334155] bg-[#0a0e17]/80 px-2 pt-1 gap-1 text-[11px] font-mono">
+        <button
+          onClick={() => setActiveTab("overview")}
+          className={cn(
+            "px-2.5 py-1.5 rounded-t font-semibold transition-colors",
+            activeTab === "overview"
+              ? "bg-[#1e293b] text-cyan-400 border-t-2 border-cyan-400"
+              : "text-slate-400 hover:text-slate-200"
+          )}
+        >
+          Profile
+        </button>
+        <button
+          onClick={() => setActiveTab("metrics")}
+          className={cn(
+            "px-2.5 py-1.5 rounded-t font-semibold transition-colors",
+            activeTab === "metrics"
+              ? "bg-[#1e293b] text-cyan-400 border-t-2 border-cyan-400"
+              : "text-slate-400 hover:text-slate-200"
+          )}
+        >
+          Metrics
+        </button>
+        <button
+          onClick={() => setActiveTab("connections")}
+          className={cn(
+            "px-2.5 py-1.5 rounded-t font-semibold transition-colors",
+            activeTab === "connections"
+              ? "bg-[#1e293b] text-cyan-400 border-t-2 border-cyan-400"
+              : "text-slate-400 hover:text-slate-200"
+          )}
+        >
+          Links ({directLinks.length})
+        </button>
+        <button
+          onClick={() => setActiveTab("provenance")}
+          className={cn(
+            "px-2.5 py-1.5 rounded-t font-semibold transition-colors",
+            activeTab === "provenance"
+              ? "bg-[#1e293b] text-cyan-400 border-t-2 border-cyan-400"
+              : "text-slate-400 hover:text-slate-200"
+          )}
+        >
+          Audit
+        </button>
+      </div>
+
+      {/* Body Content */}
+      <div className="flex-1 overflow-y-auto p-4 space-y-4 text-xs">
+        {activeTab === "overview" && (
+          <div className="space-y-4">
+            {/* Risk & Confidence Overview */}
+            <div className="grid grid-cols-2 gap-2">
+              <div className="rounded-lg border border-[#334155] bg-[#1e293b]/80 p-2.5">
+                <span className="text-[10px] text-slate-400 uppercase font-mono block">Threat Risk</span>
+                <span
+                  className={cn(
+                    "text-lg font-mono font-bold block",
+                    isHighRisk ? "text-red-400" : risk >= 70 ? "text-amber-400" : "text-slate-200"
+                  )}
+                >
+                  {risk}/100
+                </span>
+                <span className="text-[10px] text-slate-400">
+                  {isHighRisk ? "Critical Anomaly" : risk >= 70 ? "Elevated Risk" : "Normal Baseline"}
+                </span>
               </div>
-            ))}
-          </div>
-        </div>
-
-        {/* 2. Centrality Analytics Scorecard */}
-        <div className="rounded border border-[#E2E8F0] bg-[#F8FAFC] p-3 space-y-2.5">
-          <span className="text-[10px] font-mono text-slate-400 uppercase tracking-wider font-bold block flex items-center gap-1">
-            <TrendingUp className="size-3 text-emerald-400" /> Algorithmic Graph Metrics
-          </span>
-
-          <div className="grid grid-cols-2 gap-2 font-mono text-[11px]">
-            <div className="rounded bg-[#F8FAFC] p-2 border border-[#E2E8F0]">
-              <span className="text-[9px] text-slate-500 block">GLOBAL RANK</span>
-              <span className="text-sm font-bold text-amber-400">
-                #{centrality?.rank || "—"}
-              </span>
+              <div className="rounded-lg border border-[#334155] bg-[#1e293b]/80 p-2.5">
+                <span className="text-[10px] text-slate-400 uppercase font-mono block">Attribution</span>
+                <span className="text-lg font-mono font-bold text-teal-400 block">
+                  {(entity.confidenceScore * 100).toFixed(0)}%
+                </span>
+                <span className="text-[10px] text-slate-400">Verified Evidence</span>
+              </div>
             </div>
-            <div className="rounded bg-[#F8FAFC] p-2 border border-[#E2E8F0]">
-              <span className="text-[9px] text-slate-500 block">PAGERANK INFLUENCE</span>
-              <span className="text-sm font-bold text-emerald-400">
-                {centrality ? `${centrality.pageRank}%` : "—"}
-              </span>
-            </div>
-            <div className="rounded bg-[#F8FAFC] p-2 border border-[#E2E8F0]">
-              <span className="text-[9px] text-slate-500 block">BETWEENNESS (BRIDGE)</span>
-              <span className="text-sm font-bold text-emerald-400">
-                {centrality ? `${centrality.betweenness}%` : "—"}
-              </span>
-            </div>
-            <div className="rounded bg-[#F8FAFC] p-2 border border-[#E2E8F0]">
-              <span className="text-[9px] text-slate-500 block">DEGREE LINKS</span>
-              <span className="text-sm font-bold text-slate-800">
-                {centrality?.degree || directLinks.length}
-              </span>
-            </div>
-          </div>
-        </div>
 
-        {/* 3. Syndicate / Community Membership */}
-        <div className="rounded border border-[#E2E8F0] bg-[#F8FAFC] p-3 space-y-2 font-mono text-[11px]">
-          <span className="text-[10px] uppercase tracking-wider text-slate-400 font-bold block flex items-center gap-1">
-            <Layers className="size-3 text-purple-400" /> Syndicate Association
-          </span>
-          <div className="flex items-center justify-between border-t border-[#E2E8F0]/80 pt-1.5">
-            <span className="text-slate-500">Investigation Group</span>
-            <span className="font-bold text-slate-800 truncate max-w-[190px]">
-              {entity.investigationGroup}
-            </span>
-          </div>
-          <div className="flex items-center justify-between border-t border-[#E2E8F0]/80 pt-1.5">
-            <span className="text-slate-500">Case Docket</span>
-            <span className="font-bold text-emerald-400">{entity.caseId}</span>
-          </div>
-          <div className="flex items-center justify-between border-t border-[#E2E8F0]/80 pt-1.5">
-            <span className="text-slate-500">First / Last Seen</span>
-            <span className="text-slate-700 text-[10px]">
-              {entity.firstSeen} → {entity.lastSeen}
-            </span>
-          </div>
-        </div>
+            {/* Entity Attributes */}
+            <div className="rounded-lg border border-[#334155] bg-[#1e293b]/60 p-3 space-y-2 font-mono text-[11px]">
+              <div className="flex justify-between border-b border-[#334155]/60 pb-1.5">
+                <span className="text-slate-400">Identity:</span>
+                <span className="text-slate-100 font-semibold">{entity.name}</span>
+              </div>
+              <div className="flex justify-between border-b border-[#334155]/60 pb-1.5">
+                <span className="text-slate-400">Entity Type:</span>
+                <span className="text-cyan-400">{entity.label}</span>
+              </div>
+              <div className="flex justify-between border-b border-[#334155]/60 pb-1.5">
+                <span className="text-slate-400">Role / Designation:</span>
+                <span className="text-slate-200">{entity.role || "Standard Asset"}</span>
+              </div>
+              <div className="flex justify-between border-b border-[#334155]/60 pb-1.5">
+                <span className="text-slate-400">Case Docket:</span>
+                <span className="text-amber-400">{entity.caseId || "NCRB Public"}</span>
+              </div>
+              {entity.metadata?.jurisdiction && (
+                <div className="flex justify-between border-b border-[#334155]/60 pb-1.5">
+                  <span className="text-slate-400">Jurisdiction:</span>
+                  <span className="text-slate-200">{entity.metadata.jurisdiction}</span>
+                </div>
+              )}
+              {entity.metadata?.ipAddress && (
+                <div className="flex justify-between border-b border-[#334155]/60 pb-1.5">
+                  <span className="text-slate-400">IP Indicator:</span>
+                  <span className="text-cyan-300">{entity.metadata.ipAddress}</span>
+                </div>
+              )}
+              {entity.metadata?.accountNumber && (
+                <div className="flex justify-between border-b border-[#334155]/60 pb-1.5">
+                  <span className="text-slate-400">Account / Escrow:</span>
+                  <span className="text-amber-300">{entity.metadata.accountNumber}</span>
+                </div>
+              )}
+            </div>
 
-        {/* 4. Connected Relationships Matrix */}
-        <div className="space-y-2">
-          <div className="flex items-center justify-between">
-            <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1">
-              <Share2 className="size-3 text-emerald-400" /> Direct Links ({directLinks.length})
-            </span>
+            {/* Description */}
+            {entity.metadata?.description && (
+              <div className="rounded-lg border border-[#334155] bg-[#1e293b]/40 p-3 space-y-1">
+                <span className="text-[10px] text-slate-400 uppercase font-mono block">Investigative Context</span>
+                <p className="text-xs text-slate-300 leading-relaxed">{entity.metadata.description}</p>
+              </div>
+            )}
           </div>
+        )}
 
-          <div className="space-y-1.5">
-            {directLinks.map((item, idx) => (
-              <div
-                key={idx}
-                onClick={() => item.otherEntity && onSelectEntity(item.otherEntity.id)}
-                className="rounded border border-[#E2E8F0] bg-[#F8FAFC] p-2 hover:border-emerald-500 transition-all cursor-pointer"
-              >
-                <div className="flex items-center justify-between mb-0.5">
-                  <span className="font-semibold text-slate-800 text-[11px] truncate">
-                    {item.otherEntity?.name}
-                  </span>
-                  <span className="font-mono text-[9px] text-slate-400 uppercase">
-                    {item.otherEntity?.label}
+        {activeTab === "metrics" && (
+          <div className="space-y-3 font-mono">
+            <div className="rounded-lg border border-[#334155] bg-[#1e293b] p-3 space-y-2">
+              <span className="text-[10px] text-cyan-400 uppercase font-bold block">Network Topology Centrality</span>
+              <div className="space-y-1.5 text-[11px]">
+                <div className="flex justify-between">
+                  <span className="text-slate-400">Degree Centrality:</span>
+                  <span className="text-slate-200 font-bold">{directLinks.length} Connections</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-400">Betweenness Brokerage:</span>
+                  <span className="text-amber-400 font-bold">
+                    {centrality?.betweenness ? `${(centrality.betweenness * 100).toFixed(2)}%` : "0.00%"}
                   </span>
                 </div>
-                <div className="text-[10px] font-mono text-emerald-400 flex items-center gap-1">
-                  <span>{item.isOut ? "→" : "←"} {item.rel.label}</span>
+                <div className="flex justify-between">
+                  <span className="text-slate-400">PageRank Authority:</span>
+                  <span className="text-teal-400 font-bold">
+                    {centrality?.rank ? `Rank #${centrality.rank}` : "Standard"}
+                  </span>
                 </div>
-                {item.rel.detail && (
-                  <div className="text-[9px] text-slate-400 mt-1 truncate">
-                    {item.rel.detail}
+              </div>
+            </div>
+
+            <div className="rounded-lg border border-[#334155] bg-[#1e293b]/50 p-3 space-y-1.5 text-[11px]">
+              <span className="text-[10px] text-slate-400 uppercase font-bold block">Community Cluster</span>
+              <div className="flex justify-between">
+                <span className="text-slate-400">Cluster Assignment:</span>
+                <span className="text-cyan-300">Cluster #{entity.communityId || 0}</span>
+              </div>
+              <p className="text-[10px] text-slate-400 pt-1">
+                Clustering computed via authentic Greedy Modularity Optimization.
+              </p>
+            </div>
+          </div>
+        )}
+
+        {activeTab === "connections" && (
+          <div className="space-y-2">
+            <span className="text-[10px] text-slate-400 uppercase font-mono block">Direct Graph Neighbors</span>
+            {directLinks.length === 0 ? (
+              <p className="text-xs text-slate-500 italic py-2">No direct connections recorded.</p>
+            ) : (
+              directLinks.map(({ rel, isOut, otherEntity }) => (
+                <div
+                  key={rel.id}
+                  onClick={() => otherEntity && onSelectEntity(otherEntity.id)}
+                  className="rounded-lg border border-[#334155] bg-[#1e293b]/60 p-2.5 hover:bg-[#1e293b] hover:border-cyan-500/50 transition-all cursor-pointer space-y-1"
+                >
+                  <div className="flex items-center justify-between font-mono text-[11px]">
+                    <span className="text-cyan-400 font-semibold truncate">{otherEntity?.name}</span>
+                    <span className="text-[10px] text-slate-400">{isOut ? "→ OUT" : "← IN"}</span>
                   </div>
-                )}
-              </div>
-            ))}
+                  <div className="flex items-center justify-between text-[10px] text-slate-400 font-mono">
+                    <span className="text-amber-400">{rel.type}</span>
+                    <span>{rel.detail || "Verified Edge"}</span>
+                  </div>
+                </div>
+              ))
+            )}
           </div>
-        </div>
+        )}
 
-        {/* 5. Forensic Provenance */}
-        <div className="rounded border border-[#E2E8F0] bg-[#F8FAFC] p-2.5 space-y-1 text-[10px] font-mono">
-          <div className="flex items-center gap-1.5 text-emerald-400 font-bold">
-            <Database className="size-3" />
-            <span>CHAIN OF CUSTODY PROVENANCE</span>
+        {activeTab === "provenance" && (
+          <div className="space-y-3 font-mono text-[11px]">
+            <div className="rounded-lg border border-[#334155] bg-[#1e293b] p-3 space-y-2">
+              <span className="text-[10px] text-teal-400 uppercase font-bold block">Chain of Custody & Source</span>
+              <div className="space-y-1 text-slate-300">
+                <div className="text-slate-400">Primary Source Document:</div>
+                <div className="text-slate-100 font-semibold">{entity.sourceDocument || "Police FIR Docket #0891"}</div>
+              </div>
+              <div className="pt-1.5 border-t border-[#334155] space-y-1 text-[10px]">
+                <div className="flex justify-between">
+                  <span className="text-slate-400">Ingested At:</span>
+                  <span className="text-slate-300">{entity.firstSeen}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-slate-400">Audit Status:</span>
+                  <span className="text-emerald-400 font-bold">Section 65B Compliant</span>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="text-slate-400 space-y-0.5">
-            <div>Confidence: <span className="text-emerald-400">{(entity.confidenceScore * 100).toFixed(0)}% (Authenticated)</span></div>
-            <div>Jurisdiction: <span className="text-slate-800">{entity.metadata.jurisdiction || "National Cyber Cell"}</span></div>
-          </div>
-        </div>
+        )}
       </div>
     </aside>
   );

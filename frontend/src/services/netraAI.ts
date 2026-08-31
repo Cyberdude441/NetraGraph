@@ -29,7 +29,11 @@ export interface NetraAIResponse {
   };
   analyticalInterpretation: string;
   confidence: "HIGH" | "MEDIUM" | "LOW";
-  confidenceScore: number;
+  classification?: "VERIFIED FACT" | "DERIVED ANALYTICS" | "INSUFFICIENT DATA";
+  graphPath?: string;
+  retrievedNodes?: any[];
+  retrievedRelationships?: any[];
+  provenance?: any;
   analystVerification: string;
   citations: EvidenceCitation[];
   pipelineSteps: GraphRAGStep[];

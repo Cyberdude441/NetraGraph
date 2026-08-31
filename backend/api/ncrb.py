@@ -3,13 +3,116 @@ from typing import Any, Dict, List, Optional
 try:
     from connectors.ncrb import ncrb_connector
     from services.analytics import analytics_service
+    from services.ncrb_temporal_service import ncrb_temporal_service
+    from services.ncrb_sync import ncrb_sync_service
 except ImportError:
     from ..connectors.ncrb import ncrb_connector
     from ..services.analytics import analytics_service
+    from ..services.ncrb_temporal_service import ncrb_temporal_service
+    from ..services.ncrb_sync import ncrb_sync_service
 
 router = APIRouter(prefix="/ncrb", tags=["NCRB Open Government Data APIs"])
 
 
+# =============================================================================
+# 1. Dataset Registry & Ingestion Management
+# =============================================================================
+@router.get("/datasets")
+async def get_registered_datasets():
+    """Returns list of registered NCRB datasets with versioning and content hashes."""
+    return ncrb_temporal_service.get_datasets()
+
+
+@router.get("/datasets/{dataset_id}")
+async def get_dataset_details(dataset_id: str):
+    """Returns metadata, schema, and version history for a specific registered dataset."""
+    ds = ncrb_temporal_service.get_dataset(dataset_id)
+    if not ds:
+        raise HTTPException(status_code=404, detail=f"Dataset '{dataset_id}' not found in registry.")
+    return ds
+
+
+@router.get("/sync/status")
+async def get_sync_status():
+    """Returns real-time synchronization freshness, active datasets count, and audit log."""
+    return ncrb_temporal_service.get_sync_status()
+
+
+@router.post("/sync/{dataset_id}")
+async def sync_single_dataset(dataset_id: str):
+    """
+    Executes staged transactional synchronization with validation and rollback for a single dataset.
+    """
+    try:
+        return await ncrb_temporal_service.sync_single_dataset(dataset_id)
+    except ValueError as e:
+        raise HTTPException(status_code=404, detail=str(e))
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Sync failed: {str(e)}")
+
+
+@router.post("/sync")
+async def sync_all_ncrb_datasets():
+    """
+    Executes full dynamic synchronization of all 6 NCRB datasets into Neo4j with full provenance.
+    Guarantees idempotency on repeated executions.
+    """
+    return await ncrb_sync_service.synchronize_ncrb_datasets()
+
+
+# =============================================================================
+# 2. Temporal Trends & Historical Trajectory APIs
+# =============================================================================
+@router.get("/trends")
+async def get_cyber_crime_trends(
+    state: Optional[str] = Query(None, description="Filter by State or UT name"),
+    city: Optional[str] = Query(None, description="Filter by metropolitan city name"),
+    crime_category: Optional[str] = Query(None, description="Filter by statutory crime category"),
+    year_from: Optional[int] = Query(None, description="Start year bound (e.g. 2023)"),
+    year_to: Optional[int] = Query(None, description="End year bound (e.g. 2025)"),
+):
+    """
+    Computes verified YoY absolute change, YoY percentage change, and CAGR across time horizons.
+    Returns 'INSUFFICIENT VERIFIED DATA' if observations < 2.
+    """
+    return ncrb_temporal_service.calculate_trends(
+        state=state,
+        city=city,
+        crime_category=crime_category,
+        year_from=year_from,
+        year_to=year_to,
+    )
+
+
+@router.get("/trends/{entity_id}")
+async def get_entity_trends(entity_id: str):
+    """Computes longitudinal trend metrics for a specific state or category node."""
+    if entity_id.startswith("STATE-") or not entity_id.startswith("CAT-"):
+        state_name = entity_id.replace("STATE-", "")
+        return ncrb_temporal_service.calculate_trends(state=state_name)
+    else:
+        return ncrb_temporal_service.calculate_trends(crime_category=entity_id)
+
+
+@router.get("/history/{entity_id}")
+async def get_entity_history(entity_id: str):
+    """Returns verified historical observations for an entity over all available survey years."""
+    trends = ncrb_temporal_service.calculate_trends(state=entity_id.replace("STATE-", ""))
+    target = next((t for t in trends.get("trends", []) if t.get("entity_id") == entity_id or t.get("entity") == entity_id), None)
+    if not target:
+        raise HTTPException(status_code=404, detail=f"Historical data for '{entity_id}' not found in knowledge graph.")
+    return {
+        "entity_id": entity_id,
+        "observations": target.get("years", []),
+        "source": target.get("source", "NCRB"),
+        "dataset_name": target.get("dataset_name"),
+        "retrieved_at": target.get("retrieved_at"),
+    }
+
+
+# =============================================================================
+# 3. Canonical Crime, Motive & Disposal Queries
+# =============================================================================
 @router.get("/cyber-crime")
 async def get_ncrb_cyber_crime(
     state: Optional[str] = Query(None, description="Filter by State or UT name"),
@@ -52,7 +155,6 @@ async def get_ncrb_motives(
 ):
     """
     Retrieve cyber crime motive distribution from official NCRB Data.gov.in datasets.
-    Matches schema: { "state": "Odisha", "year": 2020, "crime_motive": "Fraud", "cases": 1200 }
     """
     target_year = year or 2020
     dataset_key = "ogd-motives-2019" if target_year == 2019 else "ogd-motives-2020"
@@ -62,16 +164,11 @@ async def get_ncrb_motives(
 
     filtered = []
     for r in records:
-        # Check state filter
         r_state = r.get("state", "National")
         if state and state.lower() != "all" and r_state.lower() != state.lower():
             continue
-
-        # Check year filter
         if year and r.get("year") != year:
             continue
-
-        # Check motive filter
         r_motive = r.get("crime_motive", r.get("Motive", ""))
         if motive and motive.lower() not in r_motive.lower():
             continue

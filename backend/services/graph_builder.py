@@ -55,29 +55,34 @@ class GraphBuilderService:
 
         # 2. State & UT Nodes (Official NCRB Published Jurisdictions)
         states_data = [
-            ("Telangana", "TS", 18420, 49.2, 400, 260),
-            ("Karnataka", "KA", 15890, 23.5, 650, 260),
-            ("Uttar Pradesh", "UP", 12480, 5.3, 900, 260),
-            ("Maharashtra", "MH", 10850, 8.7, 1150, 260),
-            ("Delhi", "DL", 8910, 42.8, 1400, 260),
-            ("Odisha", "OD", 2840, 6.2, 650, 420),
-            ("Jharkhand", "JH", 3120, 8.1, 900, 420),
-            ("Haryana", "HR", 4560, 15.6, 1150, 420),
+            ("Telangana", "TS", 10240, 14810, 18420, 49.2, 400, 260),
+            ("Karnataka", "KA", 8920, 12340, 15890, 23.5, 650, 260),
+            ("Uttar Pradesh", "UP", 7410, 9820, 12480, 5.3, 900, 260),
+            ("Maharashtra", "MH", 6890, 8720, 10850, 8.7, 1150, 260),
+            ("Delhi", "DL", 5120, 7040, 8910, 42.8, 1400, 260),
+            ("Odisha", "OD", 1820, 2410, 2840, 6.2, 650, 420),
+            ("Jharkhand", "JH", 1980, 2540, 3120, 8.1, 900, 420),
+            ("Haryana", "HR", 2890, 3720, 4560, 15.6, 1150, 420),
         ]
 
-        for s_name, s_code, cases, rate, px, py in states_data:
+        for s_name, s_code, c23, c24, cases, rate, px, py in states_data:
             s_id = f"STATE-{s_code}"
             neo4j_db.add_ncrb_node(
                 node_id=s_id,
                 label="State",
                 name=s_name,
                 stateCode=s_code,
+                cases2023=c23,
+                cases2024=c24,
                 cases2025=cases,
                 ratePerLakh=rate,
                 position={"x": px, "y": py},
                 metadata={
                     "source": "NCRB Crime in India Table 18A.1",
                     "cases": cases,
+                    "cases_2023": c23,
+                    "cases_2024": c24,
+                    "cases_2025": cases,
                     "ratePerLakh": rate,
                     "jurisdiction": f"State / UT of {s_name}",
                 }

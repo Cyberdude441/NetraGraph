@@ -1,23 +1,69 @@
+version: '3.8'
+
 services:
+  # Neo4j Enterprise / Community Graph Database
+  neo4j:
+    image: neo4j:5.20.0-community
+    container_name: netragraph-neo4j
+    environment:
+      - NEO4J_AUTH=neo4j/NetraGraphSecure2026!
+      - NEO4J_PLUGINS=["apoc", "graph-data-science"]
+      - NEO4J_dbms_memory_heap_initial__size=512m
+      - NEO4J_dbms_memory_heap_max__size=2G
+    ports:
+      - "7474:7474" # HTTP Browser UI
+      - "7687:7687" # Bolt Protocol Gateway
+    volumes:
+      - neo4j_data:/data
+      - neo4j_logs:/logs
+      - neo4j_import:/var/lib/neo4j/import
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://localhost:7474 || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # FastAPI Cyber Intelligence & Ingestion Backend
   backend:
     build:
-      context: ./backend
-    working_dir: /app
-    command: python -m uvicorn main:app --host 0.0.0.0 --port 8000
+      context: .
+      dockerfile: Dockerfile.backend
+    container_name: netragraph-backend
+    environment:
+      - PORT=8000
+      - NEO4J_URI=bolt://neo4j:7687
+      - NEO4J_USERNAME=neo4j
+      - NEO4J_PASSWORD=NetraGraphSecure2026!
+      - NEO4J_DATABASE=neo4j
+      - DATAGOV_API_KEY=${DATAGOV_API_KEY:-placeholder}
+      - GEMINI_API_KEY=${GEMINI_API_KEY:-placeholder}
+      - NEMOTRON_API_KEY=${NEMOTRON_API_KEY:-placeholder}
     ports:
       - "8000:8000"
-    env_file:
-      - .env
+    depends_on:
+      neo4j:
+        condition: service_healthy
+    volumes:
+      - evidence_vault:/app/evidence_vault
+    restart: unless-stopped
 
+  # NetraGraph Analyst Workstation Frontend
   frontend:
     build:
       context: .
-      dockerfile: frontend/Dockerfile
-    working_dir: /app
-    command: npm run dev -- --host 0.0.0.0
+      dockerfile: Dockerfile.frontend
+    container_name: netragraph-frontend
+    environment:
+      - VITE_API_URL=http://backend:8000
     ports:
       - "3000:3000"
-    environment:
-      VITE_API_URL: http://localhost:8000/api
     depends_on:
       - backend
+    restart: unless-stopped
+
+volumes:
+  neo4j_data:
+  neo4j_logs:
+  neo4j_import:
+  evidence_vault:

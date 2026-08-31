@@ -445,6 +445,10 @@ class IntelligenceDatabase:
         with self._lock:
             return list(self._evidence.values())
 
+    def get_evidence_by_id(self, ev_id: str) -> Optional[dict]:
+        with self._lock:
+            return self._evidence.get(ev_id)
+
     def save_evidence(self, ev_id: str, ev_data: dict) -> dict:
         with self._lock:
             self._evidence[ev_id] = ev_data

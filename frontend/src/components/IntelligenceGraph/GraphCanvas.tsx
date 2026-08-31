@@ -77,7 +77,7 @@ export function GraphCanvas({
     });
   }, [entities, positions, focalNodeId, hopReachableIds]);
 
-  // Map Relationships to ReactFlow Edges
+  // Map Relationships to ReactFlow Edges with Dark SOC styling
   const edges: Edge[] = useMemo(() => {
     const validNodeIds = new Set(entities.map((e) => e.id));
 
@@ -95,12 +95,11 @@ export function GraphCanvas({
           rel.type.includes("MONEY") ||
           rel.type.includes("FINANCIAL");
 
-        let markerColor = "#94A3B8";
+        let markerColor = isHighlighted ? "#06B6D4" : "#475569";
         if (isMoney) markerColor = "#F59E0B";
-        else if (rel.type === "COMMUNICATION") markerColor = "#047857";
-        else if (rel.type === "OWNERSHIP") markerColor = "#198754";
-        else if (rel.type === "EVENT_PARTICIPATION") markerColor = "#DC3545";
-        else if (rel.type === "ASSOCIATION") markerColor = "#065F46";
+        else if (rel.type === "COMMUNICATION" || rel.type.includes("CALL")) markerColor = "#14B8A6";
+        else if (rel.type === "COMMAND_CONTROL" || rel.type.includes("EXPLOIT")) markerColor = "#EF4444";
+        else if (rel.type === "STATUTORY_OFFENSE" || rel.type === "BENEFICIAL_OWNER") markerColor = "#06B6D4";
 
         return {
           id: rel.id,
@@ -109,13 +108,13 @@ export function GraphCanvas({
           type: "relationshipEdge",
           data: {
             type: rel.type,
-            label: rel.label,
+            label: rel.label || rel.type,
             detail: rel.detail,
             isHighlighted,
             isDimmed,
-            isAnimated: isMoney,
+            isAnimated: isMoney || isHighlighted,
           } as RelationshipEdgeData,
-          animated: isMoney,
+          animated: isMoney || isHighlighted,
           markerEnd: {
             type: MarkerType.ArrowClosed,
             width: 14,
@@ -127,7 +126,7 @@ export function GraphCanvas({
   }, [relationships, entities, focalNodeId, hopEdgeIds]);
 
   return (
-    <div className="flex-1 h-full bg-white relative">
+    <div className="flex-1 h-full bg-[#0a0e17] relative overflow-hidden">
       <ReactFlow
         nodes={nodes}
         edges={edges}
@@ -141,20 +140,22 @@ export function GraphCanvas({
         defaultEdgeOptions={{ type: "relationshipEdge" }}
         proOptions={{ hideAttribution: true }}
       >
-        <Background color="#E2E8F0" gap={32} size={1} />
-        <Controls className="!bg-white !border-[#E2E8F0] !text-[#0F172A] !rounded-md !shadow-xs" />
+        <Background color="#1e293b" gap={28} size={1} />
+        <Controls className="!bg-[#0f172a] !border-[#334155] !text-[#94a3b8] !rounded-md !shadow-lg" />
         <MiniMap
           nodeColor={(n: any) => {
             const l = n.data?.entity?.label;
-            if (l === "Person") return "#16A34A";
-            if (l === "BankAccount" || l === "Financial") return "#CA8A04";
-            if (l === "Location") return "#EA580C";
-            if (l === "Vehicle") return "#9333EA";
-            if (l === "Organization") return "#047857";
+            const r = n.data?.entity?.riskScore || 50;
+            if (r >= 85) return "#EF4444";
+            if (r >= 70) return "#F59E0B";
+            if (l === "Person") return "#14B8A6";
+            if (l === "BankAccount" || l === "Financial") return "#F59E0B";
+            if (l === "State" || l === "CrimeCategory") return "#06B6D4";
+            if (l === "Device" || l === "IP") return "#818CF8";
             return "#64748B";
           }}
-          maskColor="rgba(248, 250, 252, 0.75)"
-          className="!bg-white !border !border-[#E2E8F0] !rounded-md !opacity-85 hover:!opacity-100 transition-opacity"
+          maskColor="rgba(10, 14, 23, 0.85)"
+          className="!bg-[#0f172a] !border !border-[#334155] !rounded-md !opacity-90 hover:!opacity-100 transition-opacity"
         />
       </ReactFlow>
     </div>

@@ -23,6 +23,7 @@ import {
   Users,
   X,
   Cpu,
+  FlaskConical,
 } from "lucide-react";
 import { useState, useRef, useEffect, type ReactNode } from "react";
 
@@ -93,6 +94,7 @@ const NAV = [
   { label: "Evidence Vault", to: "/evidence", icon: ShieldCheck },
   { label: "Reports & Dossiers", to: "/reports", icon: FileText },
   { label: "AI Assistant", to: "/assistant", icon: Bot },
+  { label: "Research & Evaluation", to: "/research", icon: FlaskConical },
   { label: "Audit Trail", to: "/audit", icon: History },
 ] as const;
 

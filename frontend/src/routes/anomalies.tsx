@@ -1,5 +1,6 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import React, { useState, useMemo } from "react";
+import { useQuery } from "@tanstack/react-query";
 import {
   ShieldAlert,
   Flame,
@@ -29,6 +30,7 @@ import {
 } from "@/utils/anomalyDetection";
 import type { AnomalyCategory, AnomalyStatus } from "@/utils/anomalyRules";
 import { cn } from "@/lib/utils";
+import { api } from "@/services/api";
 
 export const Route = createFileRoute("/anomalies")({
   head: () => ({
@@ -47,8 +49,39 @@ export const Route = createFileRoute("/anomalies")({
 function AnomalyDetectionPage() {
   const navigate = useNavigate();
 
+  // Fetch live backend cyber anomalies
+  const { data: liveAnomalyData } = useQuery({
+    queryKey: ["cyber-anomalies"],
+    queryFn: () => api.getCyberAnomalies(),
+  });
+
   // Active Alerts Store
-  const [alerts, setAlerts] = useState<AnomalyAlert[]>(SYNTHETIC_ANOMALY_ALERTS);
+  const [localAlerts, setLocalAlerts] = useState<AnomalyAlert[]>(SYNTHETIC_ANOMALY_ALERTS);
+
+  const alerts: AnomalyAlert[] = useMemo(() => {
+    if (liveAnomalyData?.anomalies && liveAnomalyData.anomalies.length > 0) {
+      return liveAnomalyData.anomalies.map((a: any) => ({
+        id: a.id || `ALT-${a.entity_id || "ANOMALY"}`,
+        title: a.title || a.anomaly_type || "Behavioral Threat Signal",
+        description: a.description || `Anomaly flagged on ${a.entity_id || "target asset"}`,
+        category: a.category || "FINANCIAL_VELOCITY",
+        severity: a.severity || "HIGH",
+        status: a.status || "NEW",
+        timestamp: a.timestamp || new Date().toISOString(),
+        confidenceScore: a.confidence || 0.95,
+        primaryEntityId: a.entity_id || "ENT-UNKNOWN",
+        primaryEntityName: a.entity_name || a.entity_id || "Flagged Entity",
+        associatedEntityIds: a.connected_entities || [],
+        evidenceIds: a.evidence_ids || [],
+        financialAmountINR: a.amount || 0,
+        riskImpactScore: a.risk_score || 88,
+        notes: [],
+        auditLog: [],
+      }));
+    }
+    return localAlerts;
+  }, [liveAnomalyData, localAlerts]);
+
   const [filters, setFilters] = useState<AnomalyFilterState>(DEFAULT_ANOMALY_FILTERS);
   const [selectedAlertId, setSelectedAlertId] = useState<string>("ALT-2026-001");
 
@@ -69,19 +102,19 @@ function AnomalyDetectionPage() {
 
   // Workflow Action Handlers
   const handleUpdateStatus = (alertId: string, nextStatus: AnomalyStatus) => {
-    setAlerts((prev) =>
+    setLocalAlerts((prev) =>
       prev.map((a) => (a.id === alertId ? { ...a, status: nextStatus } : a))
     );
   };
 
   const handleAddNote = (alertId: string, note: InvestigationNote) => {
-    setAlerts((prev) =>
+    setLocalAlerts((prev) =>
       prev.map((a) => (a.id === alertId ? { ...a, notes: [note, ...a.notes] } : a))
     );
   };
 
   const handleAssignAnalyst = (alertId: string, analystName: string) => {
-    setAlerts((prev) =>
+    setLocalAlerts((prev) =>
       prev.map((a) => (a.id === alertId ? { ...a, assignedAnalyst: analystName } : a))
     );
   };

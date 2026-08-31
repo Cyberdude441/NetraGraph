@@ -42,50 +42,39 @@ export const CustomRelationshipEdge = memo(
     const edgeData = (data || {}) as RelationshipEdgeData;
     const relType = (edgeData.type || "ASSOCIATION").toUpperCase();
 
-    // 1. Determine edge stroke and dash pattern based on investigation specs.
-    // COMMUNICATION: Solid green
-    // FINANCIAL_TRANSFER: Animated Amber / Gold
-    // LOCATION_OVERLAP: Dotted Slate Grey
-    // OWNERSHIP: Emerald Solid
-    // EVENT_PARTICIPATION: Rose
-    // ASSOCIATION: Subtle Lavender / Grey
-    // Light grey lines with clean white badges for readability
-    let strokeColor = "#94A3B8";
+    // Restrained dark SOC intelligence palette
+    let strokeColor = "#475569";
     let strokeWidth = 1.5;
     let strokeDasharray: string | undefined = undefined;
-    let isAnimated = false;
-    let labelBadge = "border-[#CBD5E1] bg-white text-[#CBD5E1] shadow-xs";
+    let labelBadge = "border-[#334155] bg-[#0f172a]/95 text-slate-300 shadow-sm";
 
     if (relType.includes("COMMUNICATION") || relType === "CALL" || relType === "CALLS") {
-      strokeColor = "#047857"; // Government green
+      strokeColor = "#14B8A6"; // Teal
       strokeWidth = 1.6;
-      strokeDasharray = undefined;
-      labelBadge = "border-emerald-200 bg-emerald-50 text-[#065F46]";
+      labelBadge = "border-teal-800/80 bg-[#0f172a]/95 text-teal-300";
     } else if (
       relType.includes("FINANCIAL") ||
       relType.includes("MONEY") ||
       relType.includes("TRANSFER")
     ) {
-      strokeColor = "#F59E0B"; // Amber / Gold
+      strokeColor = "#F59E0B"; // Amber
       strokeWidth = 1.8;
       strokeDasharray = "5 3";
-      labelBadge = "border-amber-200 bg-amber-50 text-[#92400E]";
-    } else if (relType.includes("LOCATION") || relType === "LOCATED_AT") {
-      strokeColor = "#94A3B8"; // Dotted Grey
-      strokeWidth = 1.4;
-      strokeDasharray = "2 3";
-      labelBadge = "border-[#CBD5E1] bg-[#F8FAFC] text-[#475569]";
-    } else if (relType.includes("OWNERSHIP")) {
-      strokeColor = "#198754"; // Emerald
+      labelBadge = "border-amber-800/80 bg-[#0f172a]/95 text-amber-300";
+    } else if (relType.includes("COMMAND") || relType.includes("C2") || relType.includes("MALWARE")) {
+      strokeColor = "#EF4444"; // Red
+      strokeWidth = 1.8;
+      labelBadge = "border-red-800/80 bg-[#0f172a]/95 text-red-300";
+    } else if (relType.includes("OWNERSHIP") || relType.includes("BENEFICIAL")) {
+      strokeColor = "#06B6D4"; // Cyan
       strokeWidth = 1.6;
-      strokeDasharray = undefined;
-      labelBadge = "border-emerald-200 bg-emerald-50 text-[#198754]";
+      labelBadge = "border-cyan-800/80 bg-[#0f172a]/95 text-cyan-300";
     }
 
     if (edgeData.isHighlighted) {
       strokeWidth += 1.5;
-      strokeColor = "#065F46";
-      labelBadge = "border-[#065F46] bg-emerald-50 text-[#065F46] font-bold";
+      strokeColor = "#06B6D4";
+      labelBadge = "border-cyan-400 bg-cyan-950 text-cyan-200 font-bold shadow-[0_0_10px_rgba(6,182,212,0.35)]";
     }
 
     return (
@@ -98,25 +87,25 @@ export const CustomRelationshipEdge = memo(
             stroke: strokeColor,
             strokeWidth,
             strokeDasharray,
-            opacity: edgeData.isDimmed ? 0.2 : 0.85,
+            opacity: edgeData.isDimmed ? 0.15 : 0.85,
             transition: "all 0.2s ease",
           }}
         />
 
-        {edgeData.label && (
+        {edgeData.label && !edgeData.isDimmed && (
           <EdgeLabelRenderer>
             <div
               style={{
                 position: "absolute",
                 transform: `translate(-50%, -50%) translate(${labelX}px,${labelY}px)`,
                 pointerEvents: "all",
-                opacity: edgeData.isDimmed ? 0.15 : 1,
+                opacity: edgeData.isDimmed ? 0.1 : 1,
               }}
               className="nodrag nopan"
             >
               <div
                 className={cn(
-                  "flex items-center gap-1 rounded-md border px-2 py-0.5 text-xs font-semibold shadow-xs transition-opacity cursor-pointer",
+                  "flex items-center gap-1 rounded border px-1.5 py-0.5 text-[10px] font-mono tracking-tight transition-opacity cursor-pointer backdrop-blur-md select-none",
                   labelBadge
                 )}
                 title={edgeData.detail || edgeData.label}

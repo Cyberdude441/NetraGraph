@@ -165,15 +165,110 @@ export const api = {
     return request("/cyber/anomalies", { method: "GET" }, { anomalies: [] });
   },
 
-  async getLinkPredictions() {
-    return request("/cyber/link-predictions", { method: "GET" }, { predictions: [] });
+  async getGraphHealth() {
+    return request("/graph/health", { method: "GET" });
   },
 
-  async reasonOverCyberGraph(question: string) {
-    return request("/cyber/reason", {
+  async getGraphStats(graphSource: string = "investigation_evidence") {
+    return request(`/graph/stats?graph_source=${encodeURIComponent(graphSource)}`, { method: "GET" });
+  },
+
+  async getGraphNodes(params?: { graph_source?: string; search?: string; label?: string; case_id?: string; risk_level?: string }) {
+    const query = new URLSearchParams();
+    if (params?.graph_source) query.set("graph_source", params.graph_source);
+    if (params?.search) query.set("search", params.search);
+    if (params?.label) query.set("label", params.label);
+    if (params?.case_id) query.set("case_id", params.case_id);
+    if (params?.risk_level) query.set("risk_level", params.risk_level);
+    const qs = query.toString() ? `?${query.toString()}` : "";
+    return request(`/graph/nodes${qs}`, { method: "GET" }, { nodes: [] });
+  },
+
+  async getGraphRelationships(params?: { graph_source?: string; rel_type?: string }) {
+    const query = new URLSearchParams();
+    if (params?.graph_source) query.set("graph_source", params.graph_source);
+    if (params?.rel_type) query.set("rel_type", params.rel_type);
+    const qs = query.toString() ? `?${query.toString()}` : "";
+    return request(`/graph/relationships${qs}`, { method: "GET" }, { relationships: [] });
+  },
+
+  async calculateGraphPath(sourceId: string, targetId: string, graphSource: string = "investigation_evidence") {
+    return request("/graph/path", {
       method: "POST",
-      body: JSON.stringify({ question }),
+      body: JSON.stringify({ source_id: sourceId, target_id: targetId, graph_source: graphSource }),
     });
+  },
+
+  async calculateGraphCommunities(graphSource: string = "investigation_evidence") {
+    return request("/graph/communities", {
+      method: "POST",
+      body: JSON.stringify({ graph_source: graphSource }),
+    });
+  },
+
+  async calculateGraphCentrality(graphSource: string = "investigation_evidence", limit: number = 10) {
+    return request("/graph/centrality", {
+      method: "POST",
+      body: JSON.stringify({ graph_source: graphSource, limit }),
+    });
+  },
+
+  async getGraphNeighborhood(entityId: string, hops: number = 2, graphSource: string = "investigation_evidence") {
+    return request(`/graph/entities/${encodeURIComponent(entityId)}/neighbors?hops=${hops}&graph_source=${encodeURIComponent(graphSource)}`, { method: "GET" });
+  },
+
+  async getCaseGraph(caseId: string) {
+    return request(`/graph/cases/${encodeURIComponent(caseId)}`, { method: "GET" });
+  },
+
+  async getEntityDetails(entityId: string) {
+    return request(`/graph/entities/${encodeURIComponent(entityId)}`, { method: "GET" });
+  },
+
+  async getEntityNeighbors(entityId: string, hops: number = 2) {
+    return request(`/graph/entities/${encodeURIComponent(entityId)}/neighbors?hops=${hops}`, { method: "GET" });
+  },
+
+  async getEntitySubgraph(entityId: string) {
+    return request(`/graph/entities/${encodeURIComponent(entityId)}/subgraph`, { method: "GET" });
+  },
+
+  async searchGraph(params: { q?: string; entity_type?: string; case_id?: string; min_confidence?: number; verification_status?: string }) {
+    const query = new URLSearchParams();
+    if (params.q) query.set("q", params.q);
+    if (params.entity_type) query.set("entity_type", params.entity_type);
+    if (params.case_id) query.set("case_id", params.case_id);
+    if (params.min_confidence !== undefined) query.set("min_confidence", params.min_confidence.toString());
+    if (params.verification_status) query.set("verification_status", params.verification_status);
+    const qs = query.toString() ? `?${query.toString()}` : "";
+    return request(`/graph/search${qs}`, { method: "GET" });
+  },
+
+  async getGraphStatistics() {
+    return request("/graph/statistics", { method: "GET" });
+  },
+
+  async explainRelationship(relationshipId: string) {
+    return request(`/graph/relationships/${encodeURIComponent(relationshipId)}/explain`, { method: "GET" });
+  },
+
+  async generateCaseReport(caseId: string, officerId?: string, officerDesignation?: string) {
+    return request(`/cases/${encodeURIComponent(caseId)}/report`, {
+      method: "POST",
+      body: JSON.stringify({ officer_id: officerId, officer_designation: officerDesignation }),
+    });
+  },
+
+  async getSystemDataIntegrity() {
+    return request("/system/data-integrity", { method: "GET" });
+  },
+
+  async getSystemHealth() {
+    return request("/system/health", { method: "GET" });
+  },
+
+  async syncNCRB() {
+    return request("/ncrb/sync", { method: "POST" });
   },
 
   // ==========================================
@@ -194,6 +289,18 @@ export const api = {
     });
   },
 
+  async getCaseWorkspace(caseId: string) {
+    return request(`/cases/${encodeURIComponent(caseId)}/workspace`, { method: "GET" });
+  },
+
+  async getCaseTimeline(caseId: string) {
+    return request(`/cases/${encodeURIComponent(caseId)}/timeline`, { method: "GET" });
+  },
+
+  async exportCaseGraph(caseId: string, format: string = "json") {
+    return request(`/cases/${encodeURIComponent(caseId)}/export?format=${format}`, { method: "GET" });
+  },
+
   // ==========================================
   // Digital Evidence Vault
   // ==========================================
@@ -205,6 +312,29 @@ export const api = {
     return request<Evidence>("/evidence", {
       method: "POST",
       body: JSON.stringify(evidenceItem),
+    });
+  },
+
+  async getEvidenceMetadata(evidenceId: string) {
+    return request(`/evidence/${encodeURIComponent(evidenceId)}/metadata`, { method: "GET" });
+  },
+
+  async getEvidenceHash(evidenceId: string) {
+    return request(`/evidence/${encodeURIComponent(evidenceId)}/hash`, { method: "GET" });
+  },
+
+  async getEvidenceProvenance(evidenceId: string) {
+    return request(`/evidence/${encodeURIComponent(evidenceId)}/provenance`, { method: "GET" });
+  },
+
+  async getStagedExtractions(evidenceId: string) {
+    return request(`/evidence/${encodeURIComponent(evidenceId)}/staged-extractions`, { method: "GET" });
+  },
+
+  async reviewStagedExtraction(extractionId: string, action: string, actor?: string, editedAttributes?: Record<string, any>) {
+    return request(`/evidence/extractions/${encodeURIComponent(extractionId)}/review`, {
+      method: "POST",
+      body: JSON.stringify({ action, actor: actor || "IN-BOSE-4417", edited_attributes: editedAttributes }),
     });
   },
 

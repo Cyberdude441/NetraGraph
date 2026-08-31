@@ -16,8 +16,10 @@ from api.analytics import router as analytics_router
 from api.ncrb import router as ncrb_router
 from api.ai import router as ai_router
 from api.cyber_intelligence import router as cyber_router
+from api.system import router as system_router
 from app.api.router import api_router as legacy_api_router
 from services.graph_builder import graph_builder
+from services.investigation_graph import investigation_graph_service
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger("NetraGraphAI")
@@ -27,6 +29,7 @@ logger = logging.getLogger("NetraGraphAI")
 async def lifespan(app: FastAPI):
     logger.info("Initializing NetraGraph AI Backend Layer & Neo4j Graph Engine...")
     graph_builder.rebuild_all_graphs()
+    investigation_graph_service.initialize_formal_investigation_graph()
     logger.info("Neo4j Knowledge Graph initialized successfully.")
     yield
     logger.info("Shutting down NetraGraph AI Backend Layer.")
@@ -48,13 +51,14 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Mount Phase 2, Phase 3, & Phase 6 Dedicated API Routers under /api
+# Mount Dedicated API Routers under /api
 app.include_router(ai_router, prefix="/api")
 app.include_router(ncrb_router, prefix="/api")
 app.include_router(crime_router, prefix="/api")
 app.include_router(graph_router, prefix="/api")
 app.include_router(analytics_router, prefix="/api")
 app.include_router(cyber_router, prefix="/api")
+app.include_router(system_router, prefix="/api")
 
 # Mount Legacy /api Routers (Cases, Evidence, Audit) for complete backward compatibility
 app.include_router(legacy_api_router)
