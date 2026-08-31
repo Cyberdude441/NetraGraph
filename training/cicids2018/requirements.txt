@@ -1,0 +1,14 @@
+# CSE-CIC-IDS2018 GPU Training & Research Stack
+# Compatible with Python 3.11 / 3.12 and Google Colab / Kaggle NVIDIA GPUs
+
+catboost>=1.2.7
+scikit-learn==1.6.1
+pandas==2.2.3
+numpy==2.2.2
+joblib==1.4.2
+scipy==1.15.1
+pyarrow>=17.0.0
+matplotlib>=3.9.0
+seaborn>=0.13.0
+tqdm>=4.66.0
+psutil>=6.0.0
