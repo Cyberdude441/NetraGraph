@@ -1,0 +1,89 @@
+{
+  "model_name": "phishing-url",
+  "model_type": "Phishing URL Detection",
+  "model_version": "v1",
+  "training_timestamp": "2026-08-31T05:51:04.051903+00:00",
+  "framework_versions": {
+    "python": "3.12.13",
+    "scikit-learn": "1.6.1",
+    "joblib": "1.4.2",
+    "pandas": "2.2.3",
+    "numpy": "2.2.2"
+  },
+  "python_version": "3.12.13",
+  "dataset_name": "PhiUSIIL Phishing URL Websites Dataset",
+  "target_column": "label",
+  "feature_names": [
+    "URLLength",
+    "DomainLength",
+    "IsDomainIP",
+    "TLD",
+    "URLSimilarityIndex",
+    "CharContinuationRate",
+    "TLDLegitimateProb",
+    "URLCharProb",
+    "TLDLength",
+    "NoOfSubDomain",
+    "HasObfuscation",
+    "NoOfObfuscatedChar",
+    "ObfuscationRatio",
+    "NoOfLettersInURL",
+    "LetterRatioInURL",
+    "NoOfDegitsInURL",
+    "DegitRatioInURL",
+    "NoOfEqualsInURL",
+    "NoOfQMarkInURL",
+    "NoOfAmpersandInURL",
+    "NoOfOtherSpecialCharsInURL",
+    "SpacialCharRatioInURL",
+    "IsHTTPS",
+    "LineOfCode",
+    "LargestLineLength",
+    "HasTitle",
+    "DomainTitleMatchScore",
+    "URLTitleMatchScore",
+    "HasFavicon",
+    "Robots",
+    "IsResponsive",
+    "NoOfURLRedirect",
+    "NoOfSelfRedirect",
+    "HasDescription",
+    "NoOfPopup",
+    "NoOfiFrame",
+    "HasExternalFormSubmit",
+    "HasSocialNet",
+    "HasSubmitButton",
+    "HasHiddenFields",
+    "HasPasswordField",
+    "Bank",
+    "Pay",
+    "Crypto",
+    "HasCopyrightInfo",
+    "NoOfImage",
+    "NoOfCSS",
+    "NoOfJS",
+    "NoOfSelfRef",
+    "NoOfEmptyRef",
+    "NoOfExternalRef"
+  ],
+  "class_labels": [
+    "0",
+    "1"
+  ],
+  "training_metrics": {
+    "accuracy": 0.999978795139846,
+    "precision": 0.9999787959260558,
+    "recall": 0.999978795139846,
+    "f1": 0.9999787950738163,
+    "confusion_matrix": [
+      [
+        20188,
+        1
+      ],
+      [
+        0,
+        26970
+      ]
+    ]
+  }
+}

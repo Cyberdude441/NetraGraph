@@ -1,0 +1,25 @@
+{
+  "feature_names": [
+    "network_packet_size",
+    "protocol_type",
+    "login_attempts",
+    "session_duration",
+    "encryption_used",
+    "ip_reputation_score",
+    "failed_logins",
+    "browser_type",
+    "unusual_time_access"
+  ],
+  "dtypes": {
+    "network_packet_size": "int64",
+    "protocol_type": "object",
+    "login_attempts": "int64",
+    "session_duration": "float64",
+    "encryption_used": "object",
+    "ip_reputation_score": "float64",
+    "failed_logins": "int64",
+    "browser_type": "object",
+    "unusual_time_access": "int64"
+  },
+  "target_column": "attack_detected"
+}

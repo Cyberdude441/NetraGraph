@@ -41,6 +41,19 @@ class LoadedModel:
             raise ValueError("Missing required features: " + ", ".join(missing))
         frame = pd.DataFrame([{feature: payload[feature] for feature in features}])
         transformed = self.preprocessor.transform(frame)
-        prediction = self.model.predict(transformed)[0]
-        probability = max(self.model.predict_proba(transformed)[0]) if hasattr(self.model, "predict_proba") else None
-        return {"prediction": self.labels.get(str(int(prediction)), str(prediction)), "probability": probability, "features_validated": True}
+        raw_prediction = self.model.predict(transformed)[0]
+        try:
+            pred_key = str(int(raw_prediction))
+        except (ValueError, TypeError):
+            pred_key = str(raw_prediction)
+        label = self.labels.get(pred_key, self.labels.get(str(raw_prediction), str(raw_prediction)))
+
+        probability = None
+        if hasattr(self.model, "predict_proba"):
+            try:
+                probabilities = self.model.predict_proba(transformed)[0]
+                probability = float(max(probabilities))
+            except Exception:
+                probability = None
+
+        return {"prediction": label, "probability": probability, "features_validated": True}

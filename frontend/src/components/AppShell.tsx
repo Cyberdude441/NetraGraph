@@ -90,10 +90,10 @@ const NAV = [
   { label: "ML Intelligence", to: "/ml-intelligence", icon: Cpu },
   { label: "Alerts & Anomalies", to: "/anomalies", icon: Flame },
   { label: "Geographic Intelligence", to: "/geo-timeline", icon: MapPin },
-  { label: "Evidence Vault", to: "/cases", icon: ShieldCheck },
-  { label: "Reports & Dossiers", to: "/cases", icon: FileText },
+  { label: "Evidence Vault", to: "/evidence", icon: ShieldCheck },
+  { label: "Reports & Dossiers", to: "/reports", icon: FileText },
   { label: "AI Assistant", to: "/assistant", icon: Bot },
-  { label: "Audit Trail", to: "/cases", icon: History },
+  { label: "Audit Trail", to: "/audit", icon: History },
 ] as const;
 
 function SidebarContent({

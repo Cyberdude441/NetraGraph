@@ -103,7 +103,7 @@ const DEMO_STEPS: DemoStep[] = [
   {
     stepNumber: 8,
     title: "8. Validate Cryptographic Evidence",
-    moduleRoute: "/cases",
+    moduleRoute: "/evidence",
     badge: "Evidence Vault",
     icon: ShieldCheck,
     description: "Inspect the tamper-evident SHA-256 blockchain-inspired audit chain securing court-admissible electronic records.",

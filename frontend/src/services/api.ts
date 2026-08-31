@@ -50,9 +50,14 @@ async function request<T>(
 
     if (!response.ok) {
       const errorBody = await response.text();
-      throw new Error(
-        `API Request Failed [${response.status} ${response.statusText}]: ${errorBody}`,
-      );
+      let errorMsg = `API Request Failed [${response.status} ${response.statusText}]: ${errorBody}`;
+      try {
+        const parsed = JSON.parse(errorBody);
+        if (parsed.detail) {
+          errorMsg = typeof parsed.detail === "string" ? parsed.detail : JSON.stringify(parsed.detail);
+        }
+      } catch {}
+      throw new Error(errorMsg);
     }
 
     return (await response.json()) as T;
@@ -461,22 +466,40 @@ export const api = {
     });
   },
 
-  async predictIntrusion(payload: Record<string, any>): Promise<MLPredictionResult> {
-    return request<MLPredictionResult>("/ml/predict/intrusion", {
+  async predictIntrusion(payload: Record<string, any>, modelName?: string): Promise<MLPredictionResult> {
+    const qs = modelName ? `?model=${encodeURIComponent(modelName)}` : "";
+    return request<MLPredictionResult>(`/ml/predict/intrusion${qs}`, {
       method: "POST",
       body: JSON.stringify(payload),
     });
   },
 
-  async predictPhishingUrl(payload: Record<string, any>): Promise<MLPredictionResult> {
-    return request<MLPredictionResult>("/ml/predict/phishing-url", {
+  async predictPhishingUrl(payload: Record<string, any>, modelName?: string): Promise<MLPredictionResult> {
+    const qs = modelName ? `?model=${encodeURIComponent(modelName)}` : "";
+    return request<MLPredictionResult>(`/ml/predict/phishing-url${qs}`, {
       method: "POST",
       body: JSON.stringify(payload),
     });
   },
 
-  async predictPhishingEmail(payload: Record<string, any>): Promise<MLPredictionResult> {
-    return request<MLPredictionResult>("/ml/predict/phishing-email", {
+  async predictWebpagePhishing(payload: Record<string, any>, modelName?: string): Promise<MLPredictionResult> {
+    const qs = modelName ? `?model=${encodeURIComponent(modelName)}` : "";
+    return request<MLPredictionResult>(`/ml/predict/webpage-phishing${qs}`, {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+  },
+
+  async predictPhishingEmail(payload: Record<string, any>, modelName?: string): Promise<MLPredictionResult> {
+    const qs = modelName ? `?model=${encodeURIComponent(modelName)}` : "";
+    return request<MLPredictionResult>(`/ml/predict/phishing-email${qs}`, {
+      method: "POST",
+      body: JSON.stringify(payload),
+    });
+  },
+
+  async predictModel(modelName: string, payload: Record<string, any>): Promise<MLPredictionResult> {
+    return request<MLPredictionResult>(`/ml/predict/${encodeURIComponent(modelName)}`, {
       method: "POST",
       body: JSON.stringify(payload),
     });

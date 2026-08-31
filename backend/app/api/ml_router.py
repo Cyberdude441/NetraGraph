@@ -10,7 +10,7 @@ from pathlib import Path
 
 from fastapi import APIRouter, File, HTTPException, UploadFile
 
-from ml.config.environment import registry_root
+from ml.config.environment import output_root, registry_root
 from ml.config.version import SUPPORTED_MESSAGE
 from ml.inference.model_loader import LoadedModel, validate_bundle
 from ml.registry.model_registry import ModelRegistry
@@ -34,6 +34,55 @@ def _find_bundle(root: Path) -> Path:
     if len(candidates) != 1:
         raise ValueError("ZIP must contain exactly one model bundle")
     return candidates[0].parent
+
+
+def _auto_register_local_artifacts() -> list[dict]:
+    payload = registry._read()
+    known = {(item["model_name"], item["version"]) for item in payload.get("models", []) if isinstance(item, dict)}
+    registered: list[dict] = []
+
+    search_roots = [output_root(), registry_root()]
+    for root_dir in search_roots:
+        if not root_dir.exists():
+            continue
+        for bundle in sorted(root_dir.rglob("metadata.json")):
+            if not (bundle.parent / "model.joblib").exists():
+                continue
+            try:
+                details = validate_bundle(bundle.parent)
+            except (ValueError, json.JSONDecodeError, OSError):
+                continue
+
+            metadata = details["metadata"]
+            model_name = metadata.get("model_name")
+            version = metadata.get("model_version")
+            if not model_name or not version:
+                continue
+
+            key = (model_name, version)
+            if key in known:
+                continue
+
+            artifact_hash = hashlib.sha256((bundle.parent / "model.joblib").read_bytes()).hexdigest()
+            item = {
+                "model_name": model_name,
+                "version": version,
+                "artifact_location": str(bundle.parent),
+                "artifact_sha256": artifact_hash,
+                "task_type": metadata.get("model_type"),
+                "framework": metadata.get("framework_versions", {}),
+                "input_schema": details["schema"],
+                "training_dataset": metadata.get("dataset_name"),
+                "metrics": metadata.get("training_metrics", {}),
+                "import_timestamp": metadata.get("training_timestamp") or datetime.now(timezone.utc).isoformat(),
+            }
+            try:
+                registered.append(registry.register(item))
+                known.add(key)
+            except ValueError:
+                continue
+
+    return registered
 
 
 @router.post("/models/import")
@@ -76,11 +125,13 @@ async def import_model(file: UploadFile = File(...)):
 
 @router.get("/models")
 def list_models():
+    _auto_register_local_artifacts()
     return {"models": registry.list()}
 
 
 @router.get("/models/{name}")
 def get_model(name: str):
+    _auto_register_local_artifacts()
     models = registry.get(name)
     if not models:
         raise HTTPException(status_code=404, detail="Model not found")
@@ -103,29 +154,57 @@ def deactivate_model(name: str, version: str):
         raise HTTPException(status_code=404, detail=str(exc)) from exc
 
 
-def _predict(task: str, payload: dict):
-    item = registry.active(task)
+def _predict(task: str, payload: dict, model_name: str | None = None):
+    _auto_register_local_artifacts()
+    target_name = model_name or payload.get("model_name") or task
+    item = registry.active(target_name)
+    if not item and target_name != task:
+        item = registry.active(task)
     if not item:
-        raise HTTPException(status_code=404, detail=f"No active model for task: {task}")
+        raise HTTPException(
+            status_code=404,
+            detail=f"No active model found for '{target_name}'. Activate a compatible model version in the Model Registry."
+        )
     try:
-        result = LoadedModel(item["artifact_location"]).predict(payload)
+        clean_payload = {k: v for k, v in payload.items() if k != "model_name"}
+        result = LoadedModel(item["artifact_location"]).predict(clean_payload)
     except RuntimeError as exc:
         raise HTTPException(status_code=503, detail=SUPPORTED_MESSAGE) from exc
     except ValueError as exc:
-        raise HTTPException(status_code=422, detail=str(exc)) from exc
-    return {**result, "model": item["model_name"], "model_version": item["version"], "artifact_hash": item["artifact_sha256"], "analyst_verification_required": True, "prediction_timestamp": datetime.now(timezone.utc).isoformat()}
+        raise HTTPException(status_code=422, detail=f"Feature validation error: {str(exc)}") from exc
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail=f"Inference execution failed: {str(exc)}") from exc
+
+    return {
+        **result,
+        "model": item["model_name"],
+        "model_version": item["version"],
+        "artifact_hash": item["artifact_sha256"],
+        "analyst_verification_required": True,
+        "prediction_timestamp": datetime.now(timezone.utc).isoformat(),
+    }
 
 
 @router.post("/predict/intrusion")
-def predict_intrusion(payload: dict):
-    return _predict("intrusion", payload)
+def predict_intrusion(payload: dict, model: str | None = None):
+    return _predict("intrusion", payload, model_name=model)
 
 
 @router.post("/predict/phishing-url")
-def predict_phishing_url(payload: dict):
-    return _predict("phishing-url", payload)
+def predict_phishing_url(payload: dict, model: str | None = None):
+    return _predict("phishing-url", payload, model_name=model)
+
+
+@router.post("/predict/webpage-phishing")
+def predict_webpage_phishing(payload: dict, model: str | None = None):
+    return _predict("webpage-phishing", payload, model_name=model)
 
 
 @router.post("/predict/phishing-email")
-def predict_phishing_email(payload: dict):
-    return _predict("phishing-email", payload)
+def predict_phishing_email(payload: dict, model: str | None = None):
+    return _predict("phishing-email", payload, model_name=model)
+
+
+@router.post("/predict/{model_name}")
+def predict_custom_model(model_name: str, payload: dict):
+    return _predict(model_name, payload, model_name=model_name)

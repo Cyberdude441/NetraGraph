@@ -1,0 +1,44 @@
+{
+  "model_name": "phishing-email",
+  "model_type": "Phishing Email Detection",
+  "model_version": "v1",
+  "training_timestamp": "2026-08-31T05:51:08.187334+00:00",
+  "framework_versions": {
+    "python": "3.12.13",
+    "scikit-learn": "1.6.1",
+    "joblib": "1.4.2",
+    "pandas": "2.2.3",
+    "numpy": "2.2.2"
+  },
+  "python_version": "3.12.13",
+  "dataset_name": "CEAS 2008 Phishing Email Corpus",
+  "target_column": "label",
+  "feature_names": [
+    "sender",
+    "receiver",
+    "date",
+    "subject",
+    "body",
+    "urls"
+  ],
+  "class_labels": [
+    "0",
+    "1"
+  ],
+  "training_metrics": {
+    "accuracy": 0.9635,
+    "precision": 0.9653598598463081,
+    "recall": 0.9635,
+    "f1": 0.9635894406302901,
+    "confusion_matrix": [
+      [
+        881,
+        7
+      ],
+      [
+        66,
+        1046
+      ]
+    ]
+  }
+}

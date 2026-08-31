@@ -1,0 +1,19 @@
+{
+  "feature_names": [
+    "sender",
+    "receiver",
+    "date",
+    "subject",
+    "body",
+    "urls"
+  ],
+  "dtypes": {
+    "sender": "object",
+    "receiver": "object",
+    "date": "object",
+    "subject": "object",
+    "body": "object",
+    "urls": "int64"
+  },
+  "target_column": "label"
+}

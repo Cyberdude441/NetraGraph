@@ -17,7 +17,18 @@ class ModelRegistry:
     def _read(self):
         if not self.file.exists():
             return {"models": []}
-        return json.loads(self.file.read_text(encoding="utf-8"))
+        try:
+            payload = json.loads(self.file.read_text(encoding="utf-8"))
+        except (TypeError, ValueError, json.JSONDecodeError):
+            return {"models": []}
+
+        if not isinstance(payload, dict):
+            return {"models": []}
+
+        models = payload.get("models", [])
+        if not isinstance(models, list):
+            return {"models": []}
+        return {"models": models}
 
     def _write(self, payload):
         self.file.write_text(json.dumps(payload, indent=2), encoding="utf-8")
@@ -50,4 +61,18 @@ class ModelRegistry:
         return matches[0]
 
     def active(self, name: str):
-        return next((item for item in self.list() if item["model_name"] == name and item["active"]), None)
+        models = self.list()
+        # 1. Exact active model name match
+        exact = next((item for item in models if item["model_name"] == name and item.get("active")), None)
+        if exact:
+            return exact
+        # 2. Match by task_type (case-insensitive)
+        task_match = next((item for item in models if (item.get("task_type") or "").lower() == name.lower() and item.get("active")), None)
+        if task_match:
+            return task_match
+        # 3. Match by domain substring (e.g. "intrusion" matches "session-intrusion")
+        domain_match = next((item for item in models if name.lower() in item["model_name"].lower() and item.get("active")), None)
+        if domain_match:
+            return domain_match
+        # 4. Fallback to any model with matching name
+        return next((item for item in models if item["model_name"] == name), None)

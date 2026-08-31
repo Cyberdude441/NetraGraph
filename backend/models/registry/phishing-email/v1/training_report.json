@@ -1,0 +1,32 @@
+{
+  "dataset_name": "CEAS 2008 Phishing Email Corpus",
+  "rows_processed": 10000,
+  "columns_used": [
+    "sender",
+    "receiver",
+    "date",
+    "subject",
+    "body",
+    "urls"
+  ],
+  "target_column": "label",
+  "class_distribution": {
+    "0": 4438,
+    "1": 5562
+  },
+  "model_version": "v1",
+  "accuracy": 0.9635,
+  "precision": 0.9653598598463081,
+  "recall": 0.9635,
+  "f1": 0.9635894406302901,
+  "confusion_matrix": [
+    [
+      881,
+      7
+    ],
+    [
+      66,
+      1046
+    ]
+  ]
+}

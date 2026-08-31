@@ -4,7 +4,7 @@ from __future__ import annotations
 from collections import Counter
 from typing import Any
 
-TARGET_NAMES = ("target", "label", "class", "y", "is_malicious", "malicious", "category")
+TARGET_NAMES = ("target", "label", "class", "y", "is_malicious", "malicious", "category", "attack_detected", "status")
 
 
 def detect_target(columns: list[str], explicit: str | None = None) -> str:

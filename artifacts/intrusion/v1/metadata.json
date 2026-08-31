@@ -1,0 +1,47 @@
+{
+  "model_name": "intrusion",
+  "model_type": "Session Intrusion Detection",
+  "model_version": "v1",
+  "training_timestamp": "2026-08-31T05:50:42.538274+00:00",
+  "framework_versions": {
+    "python": "3.12.13",
+    "scikit-learn": "1.6.1",
+    "joblib": "1.4.2",
+    "pandas": "2.2.3",
+    "numpy": "2.2.2"
+  },
+  "python_version": "3.12.13",
+  "dataset_name": "Cybersecurity Intrusion Detection Dataset (Session)",
+  "target_column": "attack_detected",
+  "feature_names": [
+    "network_packet_size",
+    "protocol_type",
+    "login_attempts",
+    "session_duration",
+    "encryption_used",
+    "ip_reputation_score",
+    "failed_logins",
+    "browser_type",
+    "unusual_time_access"
+  ],
+  "class_labels": [
+    "0",
+    "1"
+  ],
+  "training_metrics": {
+    "accuracy": 0.8825995807127882,
+    "precision": 0.9006773151349775,
+    "recall": 0.8825995807127882,
+    "f1": 0.8796293304899617,
+    "confusion_matrix": [
+      [
+        1049,
+        6
+      ],
+      [
+        218,
+        635
+      ]
+    ]
+  }
+}

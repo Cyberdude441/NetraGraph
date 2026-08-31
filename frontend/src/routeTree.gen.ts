@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AnalyticsRouteImport } from './routes/analytics'
 import { Route as AnomaliesRouteImport } from './routes/anomalies'
 import { Route as AssistantRouteImport } from './routes/assistant'
+import { Route as AuditRouteImport } from './routes/audit'
 import { Route as CasesRouteImport } from './routes/cases'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as EvidenceRouteImport } from './routes/evidence'
@@ -40,6 +41,11 @@ const AnomaliesRoute = AnomaliesRouteImport.update({
 const AssistantRoute = AssistantRouteImport.update({
   id: '/assistant',
   path: '/assistant',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuditRoute = AuditRouteImport.update({
+  id: '/audit',
+  path: '/audit',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CasesRoute = CasesRouteImport.update({
@@ -88,6 +94,7 @@ export interface FileRoutesByFullPath {
   '/analytics': typeof AnalyticsRoute
   '/anomalies': typeof AnomaliesRoute
   '/assistant': typeof AssistantRoute
+  '/audit': typeof AuditRoute
   '/cases': typeof CasesRoute
   '/dashboard': typeof DashboardRoute
   '/evidence': typeof EvidenceRoute
@@ -102,6 +109,7 @@ export interface FileRoutesByTo {
   '/analytics': typeof AnalyticsRoute
   '/anomalies': typeof AnomaliesRoute
   '/assistant': typeof AssistantRoute
+  '/audit': typeof AuditRoute
   '/cases': typeof CasesRoute
   '/dashboard': typeof DashboardRoute
   '/evidence': typeof EvidenceRoute
@@ -117,6 +125,7 @@ export interface FileRoutesById {
   '/analytics': typeof AnalyticsRoute
   '/anomalies': typeof AnomaliesRoute
   '/assistant': typeof AssistantRoute
+  '/audit': typeof AuditRoute
   '/cases': typeof CasesRoute
   '/dashboard': typeof DashboardRoute
   '/evidence': typeof EvidenceRoute
@@ -133,6 +142,7 @@ export interface FileRouteTypes {
     | '/analytics'
     | '/anomalies'
     | '/assistant'
+    | '/audit'
     | '/cases'
     | '/dashboard'
     | '/evidence'
@@ -147,6 +157,7 @@ export interface FileRouteTypes {
     | '/analytics'
     | '/anomalies'
     | '/assistant'
+    | '/audit'
     | '/cases'
     | '/dashboard'
     | '/evidence'
@@ -161,6 +172,7 @@ export interface FileRouteTypes {
     | '/analytics'
     | '/anomalies'
     | '/assistant'
+    | '/audit'
     | '/cases'
     | '/dashboard'
     | '/evidence'
@@ -176,6 +188,7 @@ export interface RootRouteChildren {
   AnalyticsRoute: typeof AnalyticsRoute
   AnomaliesRoute: typeof AnomaliesRoute
   AssistantRoute: typeof AssistantRoute
+  AuditRoute: typeof AuditRoute
   CasesRoute: typeof CasesRoute
   DashboardRoute: typeof DashboardRoute
   EvidenceRoute: typeof EvidenceRoute
@@ -214,6 +227,13 @@ declare module '@tanstack/react-router' {
       path: '/assistant'
       fullPath: '/assistant'
       preLoaderRoute: typeof AssistantRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/audit': {
+      id: '/audit'
+      path: '/audit'
+      fullPath: '/audit'
+      preLoaderRoute: typeof AuditRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/cases': {
@@ -280,6 +300,7 @@ const rootRouteChildren: RootRouteChildren = {
   AnalyticsRoute: AnalyticsRoute,
   AnomaliesRoute: AnomaliesRoute,
   AssistantRoute: AssistantRoute,
+  AuditRoute: AuditRoute,
   CasesRoute: CasesRoute,
   DashboardRoute: DashboardRoute,
   EvidenceRoute: EvidenceRoute,
