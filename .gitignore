@@ -57,3 +57,9 @@ backend/datasets/processed/*
 *.njsproj
 *.sln
 *.sw?
+
+# Generated ML artifacts
+artifacts/
+catboost_info/
+training/**/artifacts/
+*.cbm
