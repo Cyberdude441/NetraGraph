@@ -1,0 +1,69 @@
+{
+  "four_way_classification": {
+    "both_correct": {
+      "count": 266,
+      "pct": 53.2
+    },
+    "both_incorrect": {
+      "count": 0,
+      "pct": 0.0
+    },
+    "production_wins": {
+      "count": 50,
+      "pct": 10.0
+    },
+    "adaptive_wins": {
+      "count": 184,
+      "pct": 36.8
+    },
+    "ties": {
+      "count": 266,
+      "pct": 53.2
+    }
+  },
+  "disagreement_breakdown": {
+    "total_disagreements": 234,
+    "disagreement_rate": 0.468,
+    "by_dataset": {
+      "cicddos2019": 84,
+      "cicids2018": 50,
+      "unsw": 50,
+      "malwarebazaar": 50
+    },
+    "by_attack_class": {
+      "NormalTraffic": 50,
+      "ReflectionDDoS/DNS": 50,
+      "SpearPhishURL": 50,
+      "Trojan/DriftingSignature": 50,
+      "BenignQuery": 34
+    },
+    "by_production_model": {
+      "webpage-phishing": 84,
+      "intrusion": 50,
+      "phishing-url": 50,
+      "phishing-email": 50
+    },
+    "by_adaptive_model": {
+      "XGBoost": 100,
+      "CatBoost": 84,
+      "Random Forest": 50
+    }
+  },
+  "statistical_analysis": {
+    "sample_size": 500,
+    "mean_paired_difference": 0.268,
+    "median_paired_difference": 0.0,
+    "std_difference": 0.630056,
+    "bootstrap_95_ci": [
+      0.212,
+      0.32205
+    ],
+    "bootstrap_95_ci_str": "[+0.212000, +0.322050]",
+    "paired_t_statistic": 9.5113,
+    "paired_t_pvalue": 0.0,
+    "wilcoxon_statistic": 5875.0,
+    "wilcoxon_pvalue": 0.0,
+    "statistically_significant_at_05": true,
+    "interpretation": "Statistically significant improvement demonstrated."
+  }
+}

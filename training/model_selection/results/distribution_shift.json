@@ -1,0 +1,162 @@
+{
+  "cicids2018": {
+    "shift_label": "Temporal multi-day shift (week-over-week enterprise attacks)",
+    "shift_severity": "MODERATE",
+    "adaptive_selected_model": "Random Forest",
+    "adaptive_f1": 1.0,
+    "fixed_xgboost_f1": 1.0,
+    "delta_f1_adaptive_vs_fixed_xgb": 0.0,
+    "algorithm_f1_ranking": [
+      [
+        "Random Forest",
+        1.0
+      ],
+      [
+        "XGBoost",
+        1.0
+      ],
+      [
+        "LightGBM",
+        1.0
+      ],
+      [
+        "CatBoost",
+        1.0
+      ]
+    ],
+    "algorithm_fpr": {
+      "Random Forest": 0.0,
+      "XGBoost": 0.0,
+      "LightGBM": 0.0,
+      "CatBoost": 0.0
+    }
+  },
+  "cicids2017": {
+    "shift_label": "Temporal day-based shift (Mon\u2013Fri attack-family variation)",
+    "shift_severity": "MODERATE",
+    "adaptive_selected_model": "Random Forest",
+    "adaptive_f1": 1.0,
+    "fixed_xgboost_f1": 1.0,
+    "delta_f1_adaptive_vs_fixed_xgb": 0.0,
+    "algorithm_f1_ranking": [
+      [
+        "Random Forest",
+        1.0
+      ],
+      [
+        "XGBoost",
+        1.0
+      ],
+      [
+        "LightGBM",
+        1.0
+      ],
+      [
+        "CatBoost",
+        1.0
+      ]
+    ],
+    "algorithm_fpr": {
+      "Random Forest": 0.0,
+      "XGBoost": 0.0,
+      "LightGBM": 0.0,
+      "CatBoost": 0.0
+    }
+  },
+  "cicddos2019": {
+    "shift_label": "Protocol-disjoint shift (trained reflection vs volumetric)",
+    "shift_severity": "HIGH (Protocol-Disjoint)",
+    "adaptive_selected_model": "CatBoost",
+    "adaptive_f1": 1.0,
+    "fixed_xgboost_f1": 0.99968,
+    "delta_f1_adaptive_vs_fixed_xgb": 0.00032,
+    "algorithm_f1_ranking": [
+      [
+        "CatBoost",
+        1.0
+      ],
+      [
+        "XGBoost",
+        0.99968
+      ],
+      [
+        "Random Forest",
+        0.99753
+      ],
+      [
+        "LightGBM",
+        0.98741
+      ]
+    ],
+    "algorithm_fpr": {
+      "Random Forest": 0.00483,
+      "XGBoost": 0.00062,
+      "LightGBM": 0.02494,
+      "CatBoost": 0.0
+    }
+  },
+  "unsw": {
+    "shift_label": "Official partition (moderate distribution change)",
+    "shift_severity": "LOW",
+    "adaptive_selected_model": "Random Forest",
+    "adaptive_f1": 1.0,
+    "fixed_xgboost_f1": 1.0,
+    "delta_f1_adaptive_vs_fixed_xgb": 0.0,
+    "algorithm_f1_ranking": [
+      [
+        "Random Forest",
+        1.0
+      ],
+      [
+        "XGBoost",
+        1.0
+      ],
+      [
+        "LightGBM",
+        1.0
+      ],
+      [
+        "CatBoost",
+        1.0
+      ]
+    ],
+    "algorithm_fpr": {
+      "Random Forest": 0.0,
+      "XGBoost": 0.0,
+      "LightGBM": 0.0,
+      "CatBoost": 0.0
+    }
+  },
+  "malwarebazaar": {
+    "shift_label": "Temporal polymorphic concept drift (Sep\u2013Oct signature mutation)",
+    "shift_severity": "VERY HIGH (Concept Drift)",
+    "adaptive_selected_model": "Random Forest",
+    "adaptive_f1": 0.18817,
+    "fixed_xgboost_f1": 0.16893,
+    "delta_f1_adaptive_vs_fixed_xgb": 0.01924,
+    "algorithm_f1_ranking": [
+      [
+        "Random Forest",
+        0.18817
+      ],
+      [
+        "LightGBM",
+        0.17461
+      ],
+      [
+        "XGBoost",
+        0.16893
+      ],
+      [
+        "CatBoost",
+        0.13584
+      ]
+    ],
+    "algorithm_fpr": {
+      "Random Forest": 0.1999,
+      "XGBoost": 0.19963,
+      "LightGBM": 0.2003,
+      "CatBoost": 0.19985
+    }
+  }
+}

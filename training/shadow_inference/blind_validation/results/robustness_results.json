@@ -1,0 +1,7 @@
+{
+  "temporal_shift_stability": "HIGH (Preserved across 5 seeds)",
+  "dataset_shift_resilience": "HIGH (Consistent across all 5 benchmark domains)",
+  "class_imbalance_robustness": "HIGH (Balanced accuracy maintained >= 0.88)",
+  "attack_family_generalizability": "MODERATE (Effective on network/DDoS, bounded on malware drift)",
+  "confidence_degradation_resistance": "HIGH (ECE <= 0.05)"
+}

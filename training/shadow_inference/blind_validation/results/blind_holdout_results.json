@@ -1,0 +1,98 @@
+{
+  "immutable_hashes": {
+    "production_intrusion_v1_sha256": "984c9a4754529458c91dc6df910127c6db1bd1d8851f9de050e2fe8eaf7cc59b",
+    "production_network-intrusion_v1_sha256": "d1e53d5684ad4d804b0fdc3c58f7ab08df4874820e2ffe5b98d96778563e7e33",
+    "production_phishing-url_v1_sha256": "a053407060e1b541e0b2ba4defa7502db62d388d04bc82edaa05be1d0bb6aac2",
+    "production_webpage-phishing_v1_sha256": "834915949c7394b2be1bcf08bed9f29922d8715fcdb6864b9a13fca9daa5612a",
+    "production_phishing-email_v1_sha256": "66ab67c45188c0271d0da39b1651f2bbc0a635e6f7adacc45899b3bc25fd17ab",
+    "adaptive_scoring_engine_sha256": "55901e6333faf0b1a7277fb6876abe050371b2161d16bdd2913d720b978004fe",
+    "adaptive_selector_engine_sha256": "911d743ad0f807b4817b2513426cd01bee2f55c8e2cde0121935d18b71486f81"
+  },
+  "overall_summary": {
+    "total_holdout_samples": 1250,
+    "seeds_evaluated": [
+      42,
+      101,
+      2024,
+      777,
+      9999
+    ],
+    "production_metrics": {
+      "accuracy": 0.6136,
+      "precision": 0.61716,
+      "recall": 0.5984,
+      "f1": 0.60764,
+      "fpr": 0.3712,
+      "fnr": 0.4016,
+      "tp": 374,
+      "tn": 393,
+      "fp": 232,
+      "fn": 251,
+      "roc_auc": 0.49113,
+      "pr_auc": 0.46452
+    },
+    "adaptive_metrics": {
+      "accuracy": 0.9,
+      "precision": 1.0,
+      "recall": 0.8,
+      "f1": 0.88889,
+      "fpr": 0.0,
+      "fnr": 0.2,
+      "tp": 500,
+      "tn": 625,
+      "fp": 0,
+      "fn": 125,
+      "roc_auc": 0.9,
+      "pr_auc": 0.9
+    },
+    "metric_deltas": {
+      "f1_delta": 0.28125,
+      "accuracy_delta": 0.2864,
+      "precision_delta": 0.38284,
+      "recall_delta": 0.2016,
+      "fpr_delta": -0.3712,
+      "fnr_delta": -0.2016,
+      "roc_auc_delta": 0.40887,
+      "pr_auc_delta": 0.43548
+    },
+    "wins": {
+      "adaptive_wins": 483,
+      "production_wins": 125,
+      "ties": 642
+    }
+  },
+  "adversarial_stress_evaluation": {
+    "total_stress_samples": 100,
+    "production_stress_accuracy": 0.0,
+    "adaptive_stress_accuracy": 0.0,
+    "production_stress_f1": 0.0,
+    "adaptive_stress_f1": 0.0,
+    "stress_f1_delta": 0.0,
+    "adaptive_stress_wins": 0,
+    "production_stress_wins": 0,
+    "stress_ties": 100,
+    "category_breakdown": {
+      "near_boundary_attack": {
+        "count": 25,
+        "production_accuracy": 0.0,
+        "adaptive_accuracy": 0.0
+      },
+      "benign_outlier_power_user": {
+        "count": 25,
+        "production_accuracy": 0.0,
+        "adaptive_accuracy": 0.0
+      },
+      "https_obfuscated_phishing": {
+        "count": 25,
+        "production_accuracy": 0.0,
+        "adaptive_accuracy": 0.0
+      },
+      "concept_drift_benign_framing": {
+        "count": 25,
+        "production_accuracy": 0.0,
+        "adaptive_accuracy": 0.0
+      }
+    }
+  },
+  "final_classification": "B \u2014 WEAK / INCONCLUSIVE EVIDENCE"
+}

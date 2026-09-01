@@ -1,0 +1,58 @@
+{
+  "Random Forest": {
+    "ranks_per_dataset": {
+      "cicids2018": 1,
+      "cicids2017": 1,
+      "cicddos2019": 3,
+      "unsw": 1,
+      "malwarebazaar": 1
+    },
+    "average_rank": 1.4,
+    "rank_variance": 0.64,
+    "number_of_wins": 4,
+    "number_of_runner_up": 0,
+    "robustness_score": 0.4355
+  },
+  "XGBoost": {
+    "ranks_per_dataset": {
+      "cicids2018": 2,
+      "cicids2017": 2,
+      "cicddos2019": 2,
+      "unsw": 2,
+      "malwarebazaar": 3
+    },
+    "average_rank": 2.2,
+    "rank_variance": 0.16,
+    "number_of_wins": 0,
+    "number_of_runner_up": 4,
+    "robustness_score": 0.3918
+  },
+  "LightGBM": {
+    "ranks_per_dataset": {
+      "cicids2018": 3,
+      "cicids2017": 3,
+      "cicddos2019": 4,
+      "unsw": 3,
+      "malwarebazaar": 2
+    },
+    "average_rank": 3.0,
+    "rank_variance": 0.4,
+    "number_of_wins": 0,
+    "number_of_runner_up": 1,
+    "robustness_score": 0.2381
+  },
+  "CatBoost": {
+    "ranks_per_dataset": {
+      "cicids2018": 4,
+      "cicids2017": 4,
+      "cicddos2019": 1,
+      "unsw": 4,
+      "malwarebazaar": 4
+    },
+    "average_rank": 3.4,
+    "rank_variance": 1.44,
+    "number_of_wins": 1,
+    "number_of_runner_up": 0,
+    "robustness_score": 0.1205
+  }
+}

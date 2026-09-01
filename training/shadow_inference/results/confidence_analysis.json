@@ -1,0 +1,92 @@
+[
+  {
+    "bucket": "0.00\u20130.10",
+    "sample_count": 0,
+    "production_accuracy": 0.0,
+    "adaptive_accuracy": 0.0,
+    "agreement_rate": 0.0,
+    "adaptive_wins": 0,
+    "production_wins": 0
+  },
+  {
+    "bucket": "0.10\u20130.20",
+    "sample_count": 0,
+    "production_accuracy": 0.0,
+    "adaptive_accuracy": 0.0,
+    "agreement_rate": 0.0,
+    "adaptive_wins": 0,
+    "production_wins": 0
+  },
+  {
+    "bucket": "0.20\u20130.30",
+    "sample_count": 0,
+    "production_accuracy": 0.0,
+    "adaptive_accuracy": 0.0,
+    "agreement_rate": 0.0,
+    "adaptive_wins": 0,
+    "production_wins": 0
+  },
+  {
+    "bucket": "0.30\u20130.40",
+    "sample_count": 0,
+    "production_accuracy": 0.0,
+    "adaptive_accuracy": 0.0,
+    "agreement_rate": 0.0,
+    "adaptive_wins": 0,
+    "production_wins": 0
+  },
+  {
+    "bucket": "0.40\u20130.50",
+    "sample_count": 0,
+    "production_accuracy": 0.0,
+    "adaptive_accuracy": 0.0,
+    "agreement_rate": 0.0,
+    "adaptive_wins": 0,
+    "production_wins": 0
+  },
+  {
+    "bucket": "0.50\u20130.60",
+    "sample_count": 200,
+    "production_accuracy": 0.58,
+    "adaptive_accuracy": 0.75,
+    "agreement_rate": 0.33,
+    "adaptive_wins": 84,
+    "production_wins": 50
+  },
+  {
+    "bucket": "0.60\u20130.70",
+    "sample_count": 200,
+    "production_accuracy": 0.75,
+    "adaptive_accuracy": 1.0,
+    "agreement_rate": 0.75,
+    "adaptive_wins": 50,
+    "production_wins": 0
+  },
+  {
+    "bucket": "0.70\u20130.80",
+    "sample_count": 100,
+    "production_accuracy": 0.5,
+    "adaptive_accuracy": 1.0,
+    "agreement_rate": 0.5,
+    "adaptive_wins": 50,
+    "production_wins": 0
+  },
+  {
+    "bucket": "0.80\u20130.90",
+    "sample_count": 0,
+    "production_accuracy": 0.0,
+    "adaptive_accuracy": 0.0,
+    "agreement_rate": 0.0,
+    "adaptive_wins": 0,
+    "production_wins": 0
+  },
+  {
+    "bucket": "0.90\u20131.00",
+    "sample_count": 0,
+    "production_accuracy": 0.0,
+    "adaptive_accuracy": 0.0,
+    "agreement_rate": 0.0,
+    "adaptive_wins": 0,
+    "production_wins": 0
+  }
+]

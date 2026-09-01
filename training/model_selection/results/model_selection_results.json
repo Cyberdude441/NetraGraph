@@ -1,0 +1,307 @@
+{
+  "cicids2017": {
+    "selected_model": "XGBoost",
+    "operational_score": 0.58067,
+    "selection_confidence": 0.6067,
+    "alternatives": [
+      {
+        "algorithm": "CatBoost",
+        "operational_score": 0.575
+      },
+      {
+        "algorithm": "LightGBM",
+        "operational_score": 0.53958
+      },
+      {
+        "algorithm": "Random Forest",
+        "operational_score": 0.45
+      }
+    ],
+    "explanation": {
+      "selected_model": "XGBoost",
+      "dataset": "cicids2017",
+      "task_type": "binary_network_intrusion",
+      "dataset_family": "network_flow_telemetry",
+      "rationale": "XGBoost achieved the highest operational score for binary network intrusion detection (Mean F1 1.0000, Inference 0.77 \u00b5s/sample) across multiple temporal day-based validation folds.",
+      "alternative_models": [
+        {
+          "algorithm": "CatBoost",
+          "operational_score": 0.575,
+          "why_not_selected": "CatBoost scored 0.57500 vs XGBoost 0.58067 (delta = 0.00567) on the composite operational metric."
+        },
+        {
+          "algorithm": "LightGBM",
+          "operational_score": 0.53958,
+          "why_not_selected": "LightGBM scored 0.53958 vs XGBoost 0.58067 (delta = 0.04108) on the composite operational metric."
+        }
+      ],
+      "expected_strengths": [
+        "Fastest overall training throughput",
+        "Sub-microsecond inference latency (~0.5 \u00b5s/sample)",
+        "Strong generalization across multiple benchmark families"
+      ],
+      "known_limitations": [
+        "Slight FPR elevation (~0.15%) under extreme protocol distribution shift",
+        "Gradient compression less effective than CatBoost on oblivious trees"
+      ],
+      "evidence": {
+        "mean_f1": 1.0,
+        "ci95_f1": "[1.0000, 1.0000]",
+        "mean_fpr": 0.0,
+        "mean_fnr": 0.0,
+        "mean_recall": 1.0,
+        "mean_latency_us": 0.77333,
+        "validation_methodology": "Temporal multi-day split"
+      },
+      "selection_confidence": 0.6067,
+      "confidence_note": "Selection confidence represents the strength of evidence favouring this model for the given task/dataset profile. It is NOT a prediction probability or a guarantee of production accuracy."
+    },
+    "dataset": "cicids2017",
+    "task": "binary_network_intrusion",
+    "family": "network_flow_telemetry"
+  },
+  "cicids2018": {
+    "selected_model": "XGBoost",
+    "operational_score": 0.57992,
+    "selection_confidence": 0.5717,
+    "alternatives": [
+      {
+        "algorithm": "CatBoost",
+        "operational_score": 0.57775
+      },
+      {
+        "algorithm": "LightGBM",
+        "operational_score": 0.54408
+      },
+      {
+        "algorithm": "Random Forest",
+        "operational_score": 0.45
+      }
+    ],
+    "explanation": {
+      "selected_model": "XGBoost",
+      "dataset": "cicids2018",
+      "task_type": "binary_network_intrusion",
+      "dataset_family": "network_flow_telemetry",
+      "rationale": "XGBoost achieved the highest operational score for binary network intrusion detection (Mean F1 1.0000, Inference 0.80 \u00b5s/sample) across multiple temporal day-based validation folds.",
+      "alternative_models": [
+        {
+          "algorithm": "CatBoost",
+          "operational_score": 0.57775,
+          "why_not_selected": "CatBoost scored 0.57775 vs XGBoost 0.57992 (delta = 0.00217) on the composite operational metric."
+        },
+        {
+          "algorithm": "LightGBM",
+          "operational_score": 0.54408,
+          "why_not_selected": "LightGBM scored 0.54408 vs XGBoost 0.57992 (delta = 0.03583) on the composite operational metric."
+        }
+      ],
+      "expected_strengths": [
+        "Fastest overall training throughput",
+        "Sub-microsecond inference latency (~0.5 \u00b5s/sample)",
+        "Strong generalization across multiple benchmark families"
+      ],
+      "known_limitations": [
+        "Slight FPR elevation (~0.15%) under extreme protocol distribution shift",
+        "Gradient compression less effective than CatBoost on oblivious trees"
+      ],
+      "evidence": {
+        "mean_f1": 1.0,
+        "ci95_f1": "[1.0000, 1.0000]",
+        "mean_fpr": 0.0,
+        "mean_fnr": 0.0,
+        "mean_recall": 1.0,
+        "mean_latency_us": 0.80333,
+        "validation_methodology": "Temporal multi-day split"
+      },
+      "selection_confidence": 0.5717,
+      "confidence_note": "Selection confidence represents the strength of evidence favouring this model for the given task/dataset profile. It is NOT a prediction probability or a guarantee of production accuracy."
+    },
+    "dataset": "cicids2018",
+    "task": "binary_network_intrusion",
+    "family": "network_flow_telemetry"
+  },
+  "cicddos2019": {
+    "selected_model": "CatBoost",
+    "operational_score": 0.59203,
+    "selection_confidence": 0.558,
+    "alternatives": [
+      {
+        "algorithm": "XGBoost",
+        "operational_score": 0.59123
+      },
+      {
+        "algorithm": "Random Forest",
+        "operational_score": 0.5152
+      },
+      {
+        "algorithm": "LightGBM",
+        "operational_score": 0.40383
+      }
+    ],
+    "explanation": {
+      "selected_model": "CatBoost",
+      "dataset": "cicddos2019",
+      "task_type": "binary_ddos_detection",
+      "dataset_family": "ddos_volumetric_reflection",
+      "rationale": "CatBoost achieved the highest operational score for protocol-disjoint DDoS detection (empirical Mean F1 1.0000, Mean FPR 0.0000) under unseen reflection attack protocols.",
+      "alternative_models": [
+        {
+          "algorithm": "XGBoost",
+          "operational_score": 0.59123,
+          "why_not_selected": "XGBoost is statistically indistinguishable from CatBoost under N=3 fold Wilcoxon testing (p >= 0.25). Selection between them should consider operational latency: prefer CatBoost for the current task profile."
+        },
+        {
+          "algorithm": "Random Forest",
+          "operational_score": 0.5152,
+          "why_not_selected": "Random Forest scored 0.51520 vs CatBoost 0.59203 (delta = 0.07683) on the composite operational metric."
+        }
+      ],
+      "expected_strengths": [
+        "Perfect boundary preservation on protocol-disjoint DDoS (FPR 0.0000)",
+        "Oblivious tree structure prevents boundary over-compression on novel protocols"
+      ],
+      "known_limitations": [
+        "Slightly higher training overhead than XGBoost/LightGBM",
+        "Weakest single-model malware attribution (lowest Macro F1: 0.1358)"
+      ],
+      "evidence": {
+        "mean_f1": 1.0,
+        "ci95_f1": "[1.0000, 1.0000]",
+        "mean_fpr": 0.0,
+        "mean_fnr": 0.0,
+        "mean_recall": 1.0,
+        "mean_latency_us": 0.95667,
+        "validation_methodology": "Protocol-disjoint split"
+      },
+      "selection_confidence": 0.558,
+      "confidence_note": "Selection confidence represents the strength of evidence favouring this model for the given task/dataset profile. It is NOT a prediction probability or a guarantee of production accuracy."
+    },
+    "dataset": "cicddos2019",
+    "task": "binary_ddos_detection",
+    "family": "ddos_volumetric_reflection"
+  },
+  "unsw": {
+    "selected_model": "XGBoost",
+    "operational_score": 0.58583,
+    "selection_confidence": 0.6333,
+    "alternatives": [
+      {
+        "algorithm": "CatBoost",
+        "operational_score": 0.5775
+      },
+      {
+        "algorithm": "LightGBM",
+        "operational_score": 0.5435
+      },
+      {
+        "algorithm": "Random Forest",
+        "operational_score": 0.45
+      }
+    ],
+    "explanation": {
+      "selected_model": "XGBoost",
+      "dataset": "unsw",
+      "task_type": "binary_network_intrusion",
+      "dataset_family": "network_flow_telemetry",
+      "rationale": "XGBoost achieved the highest operational score for binary network intrusion detection (Mean F1 1.0000, Inference 0.57 \u00b5s/sample) across multiple temporal day-based validation folds.",
+      "alternative_models": [
+        {
+          "algorithm": "CatBoost",
+          "operational_score": 0.5775,
+          "why_not_selected": "CatBoost scored 0.57750 vs XGBoost 0.58583 (delta = 0.00833) on the composite operational metric."
+        },
+        {
+          "algorithm": "LightGBM",
+          "operational_score": 0.5435,
+          "why_not_selected": "LightGBM scored 0.54350 vs XGBoost 0.58583 (delta = 0.04233) on the composite operational metric."
+        }
+      ],
+      "expected_strengths": [
+        "Fastest overall training throughput",
+        "Sub-microsecond inference latency (~0.5 \u00b5s/sample)",
+        "Strong generalization across multiple benchmark families"
+      ],
+      "known_limitations": [
+        "Slight FPR elevation (~0.15%) under extreme protocol distribution shift",
+        "Gradient compression less effective than CatBoost on oblivious trees"
+      ],
+      "evidence": {
+        "mean_f1": 1.0,
+        "ci95_f1": "[1.0000, 1.0000]",
+        "mean_fpr": 0.0,
+        "mean_fnr": 0.0,
+        "mean_recall": 1.0,
+        "mean_latency_us": 0.56667,
+        "validation_methodology": "Official partition split"
+      },
+      "selection_confidence": 0.6333,
+      "confidence_note": "Selection confidence represents the strength of evidence favouring this model for the given task/dataset profile. It is NOT a prediction probability or a guarantee of production accuracy."
+    },
+    "dataset": "unsw",
+    "task": "binary_network_intrusion",
+    "family": "network_flow_telemetry"
+  },
+  "malwarebazaar": {
+    "selected_model": "Random Forest",
+    "operational_score": 0.17641,
+    "selection_confidence": 0.7494,
+    "alternatives": [
+      {
+        "algorithm": "XGBoost",
+        "operational_score": 0.16404
+      },
+      {
+        "algorithm": "LightGBM",
+        "operational_score": 0.1631
+      },
+      {
+        "algorithm": "CatBoost",
+        "operational_score": 0.13356
+      }
+    ],
+    "explanation": {
+      "selected_model": "Random Forest",
+      "dataset": "malwarebazaar",
+      "task_type": "multiclass_malware_attribution",
+      "dataset_family": "malware_static_metadata",
+      "rationale": "Random Forest achieved the highest Macro F1 (0.1882) under temporal malware signature drift across multiple submission window folds, demonstrating superior bagging variance reduction.",
+      "alternative_models": [
+        {
+          "algorithm": "XGBoost",
+          "operational_score": 0.16404,
+          "why_not_selected": "XGBoost scored 0.16404 vs Random Forest 0.17641 (delta = 0.01236) on the composite operational metric."
+        },
+        {
+          "algorithm": "LightGBM",
+          "operational_score": 0.1631,
+          "why_not_selected": "LightGBM scored 0.16310 vs Random Forest 0.17641 (delta = 0.01331) on the composite operational metric."
+        }
+      ],
+      "expected_strengths": [
+        "High variance reduction under concept drift",
+        "Robust under imbalanced feature spaces",
+        "Best single-model malware temporal attribution"
+      ],
+      "known_limitations": [
+        "Highest inference latency (~5 \u00b5s/sample)",
+        "Highest training time (~3x vs LightGBM)",
+        "Tree ensembles can overfit to stale attack signatures with deep depth"
+      ],
+      "evidence": {
+        "mean_f1": 0.18817,
+        "ci95_f1": "[0.1819, 0.1944]",
+        "mean_fpr": 0.1999,
+        "mean_fnr": 0.79992,
+        "mean_recall": 0.20008,
+        "mean_latency_us": 10.04,
+        "validation_methodology": "Temporal multi-day split"
+      },
+      "selection_confidence": 0.7494,
+      "confidence_note": "Selection confidence represents the strength of evidence favouring this model for the given task/dataset profile. It is NOT a prediction probability or a guarantee of production accuracy."
+    },
+    "dataset": "malwarebazaar",
+    "task": "multiclass_malware_attribution",
+    "family": "malware_static_metadata"
+  }
+}

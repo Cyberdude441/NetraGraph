@@ -1,0 +1,439 @@
+{
+  "environment": {
+    "python_version": "3.12.13 (main, May 10 2026, 19:35:37) [MSC v.1944 64 bit (AMD64)]",
+    "platform": "Windows-11-10.0.26200-SP0",
+    "cpu_count": 16,
+    "random_seed": 42,
+    "is_shadow_mode": true,
+    "production_models_count": 5,
+    "benchmark_datasets": [
+      "cicids2017",
+      "cicids2018",
+      "cicddos2019",
+      "unsw",
+      "malwarebazaar"
+    ],
+    "results_directory": "C:\\Users\\KIIT\\Desktop\\NetraGraph\\training\\shadow_inference\\results"
+  },
+  "batch_summary": {
+    "total_samples": 50,
+    "agreement_count": 20,
+    "disagreement_count": 30,
+    "agreement_rate": 0.4,
+    "disagreement_rate": 0.6,
+    "model_changed_rate": 1.0,
+    "mean_risk_delta": 0.616,
+    "median_risk_delta": 0.65,
+    "max_risk_delta": 0.95,
+    "mean_latency_delta_ms": -110.77062,
+    "severity_breakdown": {
+      "NONE": 20,
+      "LOW": 10,
+      "MEDIUM": 0,
+      "CRITICAL": 20
+    }
+  },
+  "latency_summary": {
+    "production": {
+      "mean": 110.8718,
+      "median": 84.1798,
+      "p90": 160.5648,
+      "p95": 170.3911,
+      "p99": 381.5052,
+      "min": 58.3491,
+      "max": 420.9797
+    },
+    "adaptive_selection_overhead": {
+      "mean": 0.1004,
+      "median": 0.0967,
+      "p90": 0.1389,
+      "p95": 0.1437,
+      "p99": 0.181,
+      "min": 0.0543,
+      "max": 0.2141
+    },
+    "adaptive_inference": {
+      "mean": 0.0008,
+      "median": 0.0007,
+      "p90": 0.0011,
+      "p95": 0.0015,
+      "p99": 0.0023,
+      "min": 0.0003,
+      "max": 0.0025
+    },
+    "adaptive_total": {
+      "mean": 0.1012,
+      "median": 0.0973,
+      "p90": 0.1398,
+      "p95": 0.1447,
+      "p99": 0.1827,
+      "min": 0.0547,
+      "max": 0.2162
+    }
+  },
+  "model_selection_distribution": {
+    "XGBoost": 60.0,
+    "CatBoost": 20.0,
+    "Random Forest": 20.0
+  },
+  "drift_report": {
+    "feature_psi": {},
+    "overall_feature_psi": 0.0,
+    "feature_ks_pvalues": {},
+    "prediction_distribution_shift": 0.0,
+    "confidence_shift": 0.0516,
+    "drift_severity": "LOW",
+    "sample_size_reference": 0,
+    "sample_size_current": 0,
+    "evaluated_at": "2026-09-01T05:03:09.312907+00:00"
+  },
+  "comparison_table": [
+    {
+      "dataset": "cicids2017",
+      "production_model": "network-intrusion",
+      "adaptive_model": "Random Forest",
+      "production_f1": 1.0,
+      "adaptive_f1": 1.0,
+      "f1_delta": 0.0,
+      "production_fpr": 0.0,
+      "adaptive_fpr": 0.0,
+      "fpr_delta": 0.0,
+      "agreement_rate": 1.0,
+      "latency_delta_us": 0.0
+    },
+    {
+      "dataset": "cicids2018",
+      "production_model": "intrusion",
+      "adaptive_model": "Random Forest",
+      "production_f1": 1.0,
+      "adaptive_f1": 1.0,
+      "f1_delta": 0.0,
+      "production_fpr": 0.0,
+      "adaptive_fpr": 0.0,
+      "fpr_delta": 0.0,
+      "agreement_rate": 1.0,
+      "latency_delta_us": 0.0
+    },
+    {
+      "dataset": "cicddos2019",
+      "production_model": "webpage-phishing",
+      "adaptive_model": "CatBoost",
+      "production_f1": 0.99753,
+      "adaptive_f1": 1.0,
+      "f1_delta": 0.00247,
+      "production_fpr": 0.00483,
+      "adaptive_fpr": 0.0,
+      "fpr_delta": -0.00483,
+      "agreement_rate": 1.0,
+      "latency_delta_us": -5.957
+    },
+    {
+      "dataset": "unsw",
+      "production_model": "phishing-url",
+      "adaptive_model": "Random Forest",
+      "production_f1": 1.0,
+      "adaptive_f1": 1.0,
+      "f1_delta": 0.0,
+      "production_fpr": 0.0,
+      "adaptive_fpr": 0.0,
+      "fpr_delta": 0.0,
+      "agreement_rate": 1.0,
+      "latency_delta_us": 0.0
+    },
+    {
+      "dataset": "malwarebazaar",
+      "production_model": "phishing-email",
+      "adaptive_model": "Random Forest",
+      "production_f1": 0.18817,
+      "adaptive_f1": 0.18817,
+      "f1_delta": 0.0,
+      "production_fpr": 0.1999,
+      "adaptive_fpr": 0.1999,
+      "fpr_delta": 0.0,
+      "agreement_rate": 0.8,
+      "latency_delta_us": 0.0
+    }
+  ],
+  "sample_shadow_records": [
+    {
+      "request_id": "SHADOW-CICIDS2018-001",
+      "timestamp": "2026-09-01T05:03:03.753420+00:00",
+      "dataset_name": "cicids2018",
+      "production": {
+        "model": "intrusion",
+        "prediction": "1",
+        "risk_score": 0.9533,
+        "latency_ms": 420.9797,
+        "model_version": "v1",
+        "status": "SUCCESS",
+        "error": null
+      },
+      "adaptive": {
+        "model": "XGBoost",
+        "selection_confidence": 0.5717,
+        "prediction": "0",
+        "risk_score": 0.05,
+        "rationale": "XGBoost achieved the highest operational score for binary network intrusion detection (Mean F1 1.0000, Inference 0.80 \u00b5s/sample) across multiple temporal day-based validation folds.",
+        "alternatives": [
+          {
+            "algorithm": "CatBoost",
+            "operational_score": 0.57775
+          },
+          {
+            "algorithm": "LightGBM",
+            "operational_score": 0.54408
+          },
+          {
+            "algorithm": "Random Forest",
+            "operational_score": 0.45
+          }
+        ],
+        "selection_latency_ms": 0.0888,
+        "inference_latency_ms": 0.0025,
+        "total_latency_ms": 0.0913,
+        "dataset_family": "network_flow_telemetry",
+        "task_type": "binary_network_intrusion",
+        "status": "SUCCESS",
+        "error": null
+      },
+      "comparison": {
+        "prediction_agreement": false,
+        "risk_delta": 0.9033,
+        "model_changed": true,
+        "production_model": "intrusion",
+        "adaptive_model": "XGBoost",
+        "production_prediction": "1",
+        "adaptive_prediction": "0",
+        "latency_delta_ms": -420.8884,
+        "disagreement_severity": "CRITICAL"
+      },
+      "metadata": {
+        "sample_index": 0
+      }
+    },
+    {
+      "request_id": "SHADOW-CICIDS2018-002",
+      "timestamp": "2026-09-01T05:03:04.174989+00:00",
+      "dataset_name": "cicids2018",
+      "production": {
+        "model": "intrusion",
+        "prediction": "1",
+        "risk_score": 0.9533,
+        "latency_ms": 80.524,
+        "model_version": "v1",
+        "status": "SUCCESS",
+        "error": null
+      },
+      "adaptive": {
+        "model": "XGBoost",
+        "selection_confidence": 0.5717,
+        "prediction": "0",
+        "risk_score": 0.05,
+        "rationale": "XGBoost achieved the highest operational score for binary network intrusion detection (Mean F1 1.0000, Inference 0.80 \u00b5s/sample) across multiple temporal day-based validation folds.",
+        "alternatives": [
+          {
+            "algorithm": "CatBoost",
+            "operational_score": 0.57775
+          },
+          {
+            "algorithm": "LightGBM",
+            "operational_score": 0.54408
+          },
+          {
+            "algorithm": "Random Forest",
+            "operational_score": 0.45
+          }
+        ],
+        "selection_latency_ms": 0.1151,
+        "inference_latency_ms": 0.001,
+        "total_latency_ms": 0.1161,
+        "dataset_family": "network_flow_telemetry",
+        "task_type": "binary_network_intrusion",
+        "status": "SUCCESS",
+        "error": null
+      },
+      "comparison": {
+        "prediction_agreement": false,
+        "risk_delta": 0.9033,
+        "model_changed": true,
+        "production_model": "intrusion",
+        "adaptive_model": "XGBoost",
+        "production_prediction": "1",
+        "adaptive_prediction": "0",
+        "latency_delta_ms": -80.4079,
+        "disagreement_severity": "CRITICAL"
+      },
+      "metadata": {
+        "sample_index": 1
+      }
+    },
+    {
+      "request_id": "SHADOW-CICIDS2018-003",
+      "timestamp": "2026-09-01T05:03:04.256192+00:00",
+      "dataset_name": "cicids2018",
+      "production": {
+        "model": "intrusion",
+        "prediction": "1",
+        "risk_score": 0.9533,
+        "latency_ms": 86.1146,
+        "model_version": "v1",
+        "status": "SUCCESS",
+        "error": null
+      },
+      "adaptive": {
+        "model": "XGBoost",
+        "selection_confidence": 0.5717,
+        "prediction": "0",
+        "risk_score": 0.05,
+        "rationale": "XGBoost achieved the highest operational score for binary network intrusion detection (Mean F1 1.0000, Inference 0.80 \u00b5s/sample) across multiple temporal day-based validation folds.",
+        "alternatives": [
+          {
+            "algorithm": "CatBoost",
+            "operational_score": 0.57775
+          },
+          {
+            "algorithm": "LightGBM",
+            "operational_score": 0.54408
+          },
+          {
+            "algorithm": "Random Forest",
+            "operational_score": 0.45
+          }
+        ],
+        "selection_latency_ms": 0.2141,
+        "inference_latency_ms": 0.0021,
+        "total_latency_ms": 0.2162,
+        "dataset_family": "network_flow_telemetry",
+        "task_type": "binary_network_intrusion",
+        "status": "SUCCESS",
+        "error": null
+      },
+      "comparison": {
+        "prediction_agreement": false,
+        "risk_delta": 0.9033,
+        "model_changed": true,
+        "production_model": "intrusion",
+        "adaptive_model": "XGBoost",
+        "production_prediction": "1",
+        "adaptive_prediction": "0",
+        "latency_delta_ms": -85.8984,
+        "disagreement_severity": "CRITICAL"
+      },
+      "metadata": {
+        "sample_index": 2
+      }
+    },
+    {
+      "request_id": "SHADOW-CICIDS2018-004",
+      "timestamp": "2026-09-01T05:03:04.342099+00:00",
+      "dataset_name": "cicids2018",
+      "production": {
+        "model": "intrusion",
+        "prediction": "1",
+        "risk_score": 0.9533,
+        "latency_ms": 80.895,
+        "model_version": "v1",
+        "status": "SUCCESS",
+        "error": null
+      },
+      "adaptive": {
+        "model": "XGBoost",
+        "selection_confidence": 0.5717,
+        "prediction": "0",
+        "risk_score": 0.05,
+        "rationale": "XGBoost achieved the highest operational score for binary network intrusion detection (Mean F1 1.0000, Inference 0.80 \u00b5s/sample) across multiple temporal day-based validation folds.",
+        "alternatives": [
+          {
+            "algorithm": "CatBoost",
+            "operational_score": 0.57775
+          },
+          {
+            "algorithm": "LightGBM",
+            "operational_score": 0.54408
+          },
+          {
+            "algorithm": "Random Forest",
+            "operational_score": 0.45
+          }
+        ],
+        "selection_latency_ms": 0.0763,
+        "inference_latency_ms": 0.0005,
+        "total_latency_ms": 0.0768,
+        "dataset_family": "network_flow_telemetry",
+        "task_type": "binary_network_intrusion",
+        "status": "SUCCESS",
+        "error": null
+      },
+      "comparison": {
+        "prediction_agreement": false,
+        "risk_delta": 0.9033,
+        "model_changed": true,
+        "production_model": "intrusion",
+        "adaptive_model": "XGBoost",
+        "production_prediction": "1",
+        "adaptive_prediction": "0",
+        "latency_delta_ms": -80.8182,
+        "disagreement_severity": "CRITICAL"
+      },
+      "metadata": {
+        "sample_index": 3
+      }
+    },
+    {
+      "request_id": "SHADOW-CICIDS2018-005",
+      "timestamp": "2026-09-01T05:03:04.422967+00:00",
+      "dataset_name": "cicids2018",
+      "production": {
+        "model": "intrusion",
+        "prediction": "1",
+        "risk_score": 0.9533,
+        "latency_ms": 149.4525,
+        "model_version": "v1",
+        "status": "SUCCESS",
+        "error": null
+      },
+      "adaptive": {
+        "model": "XGBoost",
+        "selection_confidence": 0.5717,
+        "prediction": "0",
+        "risk_score": 0.05,
+        "rationale": "XGBoost achieved the highest operational score for binary network intrusion detection (Mean F1 1.0000, Inference 0.80 \u00b5s/sample) across multiple temporal day-based validation folds.",
+        "alternatives": [
+          {
+            "algorithm": "CatBoost",
+            "operational_score": 0.57775
+          },
+          {
+            "algorithm": "LightGBM",
+            "operational_score": 0.54408
+          },
+          {
+            "algorithm": "Random Forest",
+            "operational_score": 0.45
+          }
+        ],
+        "selection_latency_ms": 0.0819,
+        "inference_latency_ms": 0.0007,
+        "total_latency_ms": 0.0826,
+        "dataset_family": "network_flow_telemetry",
+        "task_type": "binary_network_intrusion",
+        "status": "SUCCESS",
+        "error": null
+      },
+      "comparison": {
+        "prediction_agreement": false,
+        "risk_delta": 0.9033,
+        "model_changed": true,
+        "production_model": "intrusion",
+        "adaptive_model": "XGBoost",
+        "production_prediction": "1",
+        "adaptive_prediction": "0",
+        "latency_delta_ms": -149.3699,
+        "disagreement_severity": "CRITICAL"
+      },
+      "metadata": {
+        "sample_index": 4
+      }
+    }
+  ]
+}

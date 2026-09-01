@@ -1,0 +1,43 @@
+{
+  "Adaptive Model Selection": {
+    "mean_f1": 0.83763,
+    "mean_fpr": 0.03998,
+    "mean_recall": 0.84024,
+    "mean_latency_us": 6.276,
+    "per_dataset_winner": {
+      "cicids2018": "Random Forest",
+      "cicids2017": "Random Forest",
+      "cicddos2019": "CatBoost",
+      "unsw": "Random Forest",
+      "malwarebazaar": "Random Forest"
+    }
+  },
+  "Fixed_Random Forest": {
+    "mean_f1": 0.83714,
+    "mean_fpr": 0.04095,
+    "mean_recall": 0.84002,
+    "mean_latency_us": 7.467,
+    "delta_f1_vs_adaptive": -0.00049
+  },
+  "Fixed_XGBoost": {
+    "mean_f1": 0.83372,
+    "mean_fpr": 0.04005,
+    "mean_recall": 0.84009,
+    "mean_latency_us": 0.953,
+    "delta_f1_vs_adaptive": -0.00391
+  },
+  "Fixed_LightGBM": {
+    "mean_f1": 0.8324,
+    "mean_fpr": 0.04505,
+    "mean_recall": 0.8396,
+    "mean_latency_us": 4.246,
+    "delta_f1_vs_adaptive": -0.00523
+  },
+  "Fixed_CatBoost": {
+    "mean_f1": 0.82717,
+    "mean_fpr": 0.03997,
+    "mean_recall": 0.84024,
+    "mean_latency_us": 0.939,
+    "delta_f1_vs_adaptive": -0.01046
+  }
+}

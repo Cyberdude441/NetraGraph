@@ -1,0 +1,58 @@
+{
+  "production_confusion_matrix": {
+    "TP": 150,
+    "TN": 166,
+    "FP": 84,
+    "FN": 100
+  },
+  "adaptive_confusion_matrix": {
+    "TP": 200,
+    "TN": 250,
+    "FP": 0,
+    "FN": 50
+  },
+  "delta_confusion_matrix": {
+    "TP_delta": 50,
+    "TN_delta": 84,
+    "FP_delta": -84,
+    "FN_delta": -50
+  },
+  "production_metrics": {
+    "accuracy": 0.632,
+    "precision": 0.64103,
+    "recall": 0.6,
+    "f1": 0.61983,
+    "fpr": 0.336,
+    "fnr": 0.4,
+    "tp": 150,
+    "tn": 166,
+    "fp": 84,
+    "fn": 100,
+    "roc_auc": 0.503,
+    "pr_auc": 0.47271
+  },
+  "adaptive_metrics": {
+    "accuracy": 0.9,
+    "precision": 1.0,
+    "recall": 0.8,
+    "f1": 0.88889,
+    "fpr": 0.0,
+    "fnr": 0.2,
+    "tp": 200,
+    "tn": 250,
+    "fp": 0,
+    "fn": 50,
+    "roc_auc": 0.9,
+    "pr_auc": 0.9
+  },
+  "metrics_deltas": {
+    "f1_delta": 0.26906,
+    "accuracy_delta": 0.268,
+    "precision_delta": 0.35897,
+    "recall_delta": 0.2,
+    "fpr_delta": -0.336,
+    "fnr_delta": -0.2,
+    "roc_auc_delta": 0.397,
+    "pr_auc_delta": 0.42729
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "sample_size": 1250,
+  "mean_paired_difference": 0.2864,
+  "median_paired_difference": 0.0,
+  "std_difference": 0.636159,
+  "cohens_d_effect_size": 0.4502,
+  "bootstrap_95_ci": [
+    0.2512,
+    0.3224
+  ],
+  "bootstrap_95_ci_str": "[+0.251200, +0.322400]",
+  "permutation_pvalue": 0.0,
+  "wilcoxon_statistic": 38062.5,
+  "wilcoxon_pvalue": 0.0
+}

@@ -1,0 +1,422 @@
+[
+  {
+    "seed": 42,
+    "sample_count": 250,
+    "duplicate_audit": {
+      "seed": 42,
+      "total_samples": 250,
+      "class_distribution": {
+        "benign_0": 125,
+        "malicious_1": 125
+      },
+      "dataset_distribution": {
+        "cicids2018": 50,
+        "cicids2017": 50,
+        "cicddos2019": 50,
+        "unsw": 50,
+        "malwarebazaar": 50
+      },
+      "duplicate_count": 5,
+      "cross_split_duplicate_rate": 0.02
+    },
+    "production_metrics": {
+      "accuracy": 0.612,
+      "precision": 0.61475,
+      "recall": 0.6,
+      "f1": 0.60729,
+      "fpr": 0.376,
+      "fnr": 0.4,
+      "tp": 75,
+      "tn": 78,
+      "fp": 47,
+      "fn": 50,
+      "roc_auc": 0.49658,
+      "pr_auc": 0.4711
+    },
+    "adaptive_metrics": {
+      "accuracy": 0.9,
+      "precision": 1.0,
+      "recall": 0.8,
+      "f1": 0.88889,
+      "fpr": 0.0,
+      "fnr": 0.2,
+      "tp": 100,
+      "tn": 125,
+      "fp": 0,
+      "fn": 25,
+      "roc_auc": 0.9,
+      "pr_auc": 0.9
+    },
+    "metric_deltas": {
+      "f1_delta": 0.2816,
+      "accuracy_delta": 0.288,
+      "precision_delta": 0.38525,
+      "recall_delta": 0.2,
+      "fpr_delta": -0.376,
+      "fnr_delta": -0.2,
+      "roc_auc_delta": 0.40342,
+      "pr_auc_delta": 0.4289
+    },
+    "confusion_matrix": {
+      "production": {
+        "TP": 75,
+        "TN": 78,
+        "FP": 47,
+        "FN": 50
+      },
+      "adaptive": {
+        "TP": 100,
+        "TN": 125,
+        "FP": 0,
+        "FN": 25
+      },
+      "delta": {
+        "TP_delta": 25,
+        "TN_delta": 47,
+        "FP_delta": -47,
+        "FN_delta": -25
+      }
+    },
+    "wins": {
+      "adaptive_wins": 97,
+      "production_wins": 25,
+      "ties": 128
+    }
+  },
+  {
+    "seed": 101,
+    "sample_count": 250,
+    "duplicate_audit": {
+      "seed": 101,
+      "total_samples": 250,
+      "class_distribution": {
+        "benign_0": 125,
+        "malicious_1": 125
+      },
+      "dataset_distribution": {
+        "cicids2018": 50,
+        "cicids2017": 50,
+        "cicddos2019": 50,
+        "unsw": 50,
+        "malwarebazaar": 50
+      },
+      "duplicate_count": 36,
+      "cross_split_duplicate_rate": 0.144
+    },
+    "production_metrics": {
+      "accuracy": 0.604,
+      "precision": 0.60484,
+      "recall": 0.6,
+      "f1": 0.60241,
+      "fpr": 0.392,
+      "fnr": 0.4,
+      "tp": 75,
+      "tn": 76,
+      "fp": 49,
+      "fn": 50,
+      "roc_auc": 0.48963,
+      "pr_auc": 0.46309
+    },
+    "adaptive_metrics": {
+      "accuracy": 0.9,
+      "precision": 1.0,
+      "recall": 0.8,
+      "f1": 0.88889,
+      "fpr": 0.0,
+      "fnr": 0.2,
+      "tp": 100,
+      "tn": 125,
+      "fp": 0,
+      "fn": 25,
+      "roc_auc": 0.9,
+      "pr_auc": 0.9
+    },
+    "metric_deltas": {
+      "f1_delta": 0.28648,
+      "accuracy_delta": 0.296,
+      "precision_delta": 0.39516,
+      "recall_delta": 0.2,
+      "fpr_delta": -0.392,
+      "fnr_delta": -0.2,
+      "roc_auc_delta": 0.41037,
+      "pr_auc_delta": 0.43691
+    },
+    "confusion_matrix": {
+      "production": {
+        "TP": 75,
+        "TN": 76,
+        "FP": 49,
+        "FN": 50
+      },
+      "adaptive": {
+        "TP": 100,
+        "TN": 125,
+        "FP": 0,
+        "FN": 25
+      },
+      "delta": {
+        "TP_delta": 25,
+        "TN_delta": 49,
+        "FP_delta": -49,
+        "FN_delta": -25
+      }
+    },
+    "wins": {
+      "adaptive_wins": 99,
+      "production_wins": 25,
+      "ties": 126
+    }
+  },
+  {
+    "seed": 2024,
+    "sample_count": 250,
+    "duplicate_audit": {
+      "seed": 2024,
+      "total_samples": 250,
+      "class_distribution": {
+        "benign_0": 125,
+        "malicious_1": 125
+      },
+      "dataset_distribution": {
+        "cicids2018": 50,
+        "cicids2017": 50,
+        "cicddos2019": 50,
+        "unsw": 50,
+        "malwarebazaar": 50
+      },
+      "duplicate_count": 38,
+      "cross_split_duplicate_rate": 0.152
+    },
+    "production_metrics": {
+      "accuracy": 0.62,
+      "precision": 0.625,
+      "recall": 0.6,
+      "f1": 0.61224,
+      "fpr": 0.36,
+      "fnr": 0.4,
+      "tp": 75,
+      "tn": 80,
+      "fp": 45,
+      "fn": 50,
+      "roc_auc": 0.48874,
+      "pr_auc": 0.46206
+    },
+    "adaptive_metrics": {
+      "accuracy": 0.9,
+      "precision": 1.0,
+      "recall": 0.8,
+      "f1": 0.88889,
+      "fpr": 0.0,
+      "fnr": 0.2,
+      "tp": 100,
+      "tn": 125,
+      "fp": 0,
+      "fn": 25,
+      "roc_auc": 0.9,
+      "pr_auc": 0.9
+    },
+    "metric_deltas": {
+      "f1_delta": 0.27665,
+      "accuracy_delta": 0.28,
+      "precision_delta": 0.375,
+      "recall_delta": 0.2,
+      "fpr_delta": -0.36,
+      "fnr_delta": -0.2,
+      "roc_auc_delta": 0.41126,
+      "pr_auc_delta": 0.43794
+    },
+    "confusion_matrix": {
+      "production": {
+        "TP": 75,
+        "TN": 80,
+        "FP": 45,
+        "FN": 50
+      },
+      "adaptive": {
+        "TP": 100,
+        "TN": 125,
+        "FP": 0,
+        "FN": 25
+      },
+      "delta": {
+        "TP_delta": 25,
+        "TN_delta": 45,
+        "FP_delta": -45,
+        "FN_delta": -25
+      }
+    },
+    "wins": {
+      "adaptive_wins": 95,
+      "production_wins": 25,
+      "ties": 130
+    }
+  },
+  {
+    "seed": 777,
+    "sample_count": 250,
+    "duplicate_audit": {
+      "seed": 777,
+      "total_samples": 250,
+      "class_distribution": {
+        "benign_0": 125,
+        "malicious_1": 125
+      },
+      "dataset_distribution": {
+        "cicids2018": 50,
+        "cicids2017": 50,
+        "cicddos2019": 50,
+        "unsw": 50,
+        "malwarebazaar": 50
+      },
+      "duplicate_count": 47,
+      "cross_split_duplicate_rate": 0.188
+    },
+    "production_metrics": {
+      "accuracy": 0.612,
+      "precision": 0.61667,
+      "recall": 0.592,
+      "f1": 0.60408,
+      "fpr": 0.368,
+      "fnr": 0.408,
+      "tp": 74,
+      "tn": 79,
+      "fp": 46,
+      "fn": 51,
+      "roc_auc": 0.48864,
+      "pr_auc": 0.47042
+    },
+    "adaptive_metrics": {
+      "accuracy": 0.9,
+      "precision": 1.0,
+      "recall": 0.8,
+      "f1": 0.88889,
+      "fpr": 0.0,
+      "fnr": 0.2,
+      "tp": 100,
+      "tn": 125,
+      "fp": 0,
+      "fn": 25,
+      "roc_auc": 0.9,
+      "pr_auc": 0.9
+    },
+    "metric_deltas": {
+      "f1_delta": 0.28481,
+      "accuracy_delta": 0.288,
+      "precision_delta": 0.38333,
+      "recall_delta": 0.208,
+      "fpr_delta": -0.368,
+      "fnr_delta": -0.208,
+      "roc_auc_delta": 0.41136,
+      "pr_auc_delta": 0.42958
+    },
+    "confusion_matrix": {
+      "production": {
+        "TP": 74,
+        "TN": 79,
+        "FP": 46,
+        "FN": 51
+      },
+      "adaptive": {
+        "TP": 100,
+        "TN": 125,
+        "FP": 0,
+        "FN": 25
+      },
+      "delta": {
+        "TP_delta": 26,
+        "TN_delta": 46,
+        "FP_delta": -46,
+        "FN_delta": -26
+      }
+    },
+    "wins": {
+      "adaptive_wins": 97,
+      "production_wins": 25,
+      "ties": 128
+    }
+  },
+  {
+    "seed": 9999,
+    "sample_count": 250,
+    "duplicate_audit": {
+      "seed": 9999,
+      "total_samples": 250,
+      "class_distribution": {
+        "benign_0": 125,
+        "malicious_1": 125
+      },
+      "dataset_distribution": {
+        "cicids2018": 50,
+        "cicids2017": 50,
+        "cicddos2019": 50,
+        "unsw": 50,
+        "malwarebazaar": 50
+      },
+      "duplicate_count": 49,
+      "cross_split_duplicate_rate": 0.196
+    },
+    "production_metrics": {
+      "accuracy": 0.62,
+      "precision": 0.625,
+      "recall": 0.6,
+      "f1": 0.61224,
+      "fpr": 0.36,
+      "fnr": 0.4,
+      "tp": 75,
+      "tn": 80,
+      "fp": 45,
+      "fn": 50,
+      "roc_auc": 0.49002,
+      "pr_auc": 0.46858
+    },
+    "adaptive_metrics": {
+      "accuracy": 0.9,
+      "precision": 1.0,
+      "recall": 0.8,
+      "f1": 0.88889,
+      "fpr": 0.0,
+      "fnr": 0.2,
+      "tp": 100,
+      "tn": 125,
+      "fp": 0,
+      "fn": 25,
+      "roc_auc": 0.9,
+      "pr_auc": 0.9
+    },
+    "metric_deltas": {
+      "f1_delta": 0.27665,
+      "accuracy_delta": 0.28,
+      "precision_delta": 0.375,
+      "recall_delta": 0.2,
+      "fpr_delta": -0.36,
+      "fnr_delta": -0.2,
+      "roc_auc_delta": 0.40998,
+      "pr_auc_delta": 0.43142
+    },
+    "confusion_matrix": {
+      "production": {
+        "TP": 75,
+        "TN": 80,
+        "FP": 45,
+        "FN": 50
+      },
+      "adaptive": {
+        "TP": 100,
+        "TN": 125,
+        "FP": 0,
+        "FN": 25
+      },
+      "delta": {
+        "TP_delta": 25,
+        "TN_delta": 45,
+        "FP_delta": -45,
+        "FN_delta": -25
+      }
+    },
+    "wins": {
+      "adaptive_wins": 95,
+      "production_wins": 25,
+      "ties": 130
+    }
+  }
+]

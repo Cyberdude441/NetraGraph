@@ -1,0 +1,92 @@
+[
+  {
+    "threshold": 0.1,
+    "production_f1": 0.66667,
+    "adaptive_f1": 0.88889,
+    "f1_delta": 0.22222,
+    "production_fpr": 1.0,
+    "adaptive_fpr": 0.0,
+    "production_fnr": 0.0,
+    "adaptive_fnr": 0.2
+  },
+  {
+    "threshold": 0.2,
+    "production_f1": 0.66667,
+    "adaptive_f1": 0.88889,
+    "f1_delta": 0.22222,
+    "production_fpr": 1.0,
+    "adaptive_fpr": 0.0,
+    "production_fnr": 0.0,
+    "adaptive_fnr": 0.2
+  },
+  {
+    "threshold": 0.3,
+    "production_f1": 0.66667,
+    "adaptive_f1": 0.88889,
+    "f1_delta": 0.22222,
+    "production_fpr": 1.0,
+    "adaptive_fpr": 0.0,
+    "production_fnr": 0.0,
+    "adaptive_fnr": 0.2
+  },
+  {
+    "threshold": 0.4,
+    "production_f1": 0.66667,
+    "adaptive_f1": 0.88889,
+    "f1_delta": 0.22222,
+    "production_fpr": 1.0,
+    "adaptive_fpr": 0.0,
+    "production_fnr": 0.0,
+    "adaptive_fnr": 0.2
+  },
+  {
+    "threshold": 0.5,
+    "production_f1": 0.66667,
+    "adaptive_f1": 0.88889,
+    "f1_delta": 0.22222,
+    "production_fpr": 1.0,
+    "adaptive_fpr": 0.0,
+    "production_fnr": 0.0,
+    "adaptive_fnr": 0.2
+  },
+  {
+    "threshold": 0.6,
+    "production_f1": 0.68029,
+    "adaptive_f1": 0.88889,
+    "f1_delta": 0.2086,
+    "production_fpr": 0.6016,
+    "adaptive_fpr": 0.0,
+    "production_fnr": 0.1744,
+    "adaptive_fnr": 0.2
+  },
+  {
+    "threshold": 0.7,
+    "production_f1": 0.66578,
+    "adaptive_f1": 0.88889,
+    "f1_delta": 0.22311,
+    "production_fpr": 0.6,
+    "adaptive_fpr": 0.0,
+    "production_fnr": 0.2016,
+    "adaptive_fnr": 0.2
+  },
+  {
+    "threshold": 0.8,
+    "production_f1": 0.58357,
+    "adaptive_f1": 0.88889,
+    "f1_delta": 0.30532,
+    "production_fpr": 0.6,
+    "adaptive_fpr": 0.0,
+    "production_fnr": 0.3408,
+    "adaptive_fnr": 0.2
+  },
+  {
+    "threshold": 0.9,
+    "production_f1": 0.24649,
+    "adaptive_f1": 0.88889,
+    "f1_delta": 0.6424,
+    "production_fpr": 0.4,
+    "adaptive_fpr": 0.0,
+    "production_fnr": 0.8032,
+    "adaptive_fnr": 0.2
+  }
+]

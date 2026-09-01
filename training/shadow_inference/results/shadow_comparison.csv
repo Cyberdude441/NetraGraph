@@ -1,0 +1,6 @@
+dataset,production_model,adaptive_model,production_f1,adaptive_f1,f1_delta,production_fpr,adaptive_fpr,fpr_delta,agreement_rate,latency_delta_us
+cicids2017,network-intrusion,Random Forest,1.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0
+cicids2018,intrusion,Random Forest,1.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0
+cicddos2019,webpage-phishing,CatBoost,0.99753,1.0,0.00247,0.00483,0.0,-0.00483,1.0,-5.957
+unsw,phishing-url,Random Forest,1.0,1.0,0.0,0.0,0.0,0.0,1.0,0.0
+malwarebazaar,phishing-email,Random Forest,0.18817,0.18817,0.0,0.1999,0.1999,0.0,0.8,0.0

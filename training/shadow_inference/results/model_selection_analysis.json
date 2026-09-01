@@ -1,0 +1,118 @@
+{
+  "model_performance": [
+    {
+      "algorithm": "XGBoost",
+      "selection_count": 300,
+      "selection_pct": 60.0,
+      "mean_confidence": 0.6039,
+      "median_confidence": 0.6067,
+      "f1": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "mean_inference_latency_ms": 0.0007,
+      "adaptive_wins": 100,
+      "production_wins": 0,
+      "win_rate_vs_production_pct": 100.0
+    },
+    {
+      "algorithm": "CatBoost",
+      "selection_count": 100,
+      "selection_pct": 20.0,
+      "mean_confidence": 0.558,
+      "median_confidence": 0.558,
+      "f1": 0.0,
+      "fpr": 0.0,
+      "fnr": 1.0,
+      "mean_inference_latency_ms": 0.0007,
+      "adaptive_wins": 34,
+      "production_wins": 50,
+      "win_rate_vs_production_pct": 40.48
+    },
+    {
+      "algorithm": "Random Forest",
+      "selection_count": 100,
+      "selection_pct": 20.0,
+      "mean_confidence": 0.7494,
+      "median_confidence": 0.7494,
+      "f1": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "mean_inference_latency_ms": 0.0007,
+      "adaptive_wins": 50,
+      "production_wins": 0,
+      "win_rate_vs_production_pct": 100.0
+    },
+    {
+      "algorithm": "LightGBM",
+      "selection_count": 0,
+      "selection_pct": 0,
+      "mean_confidence": 0,
+      "median_confidence": 0,
+      "f1": 0,
+      "fpr": 0,
+      "fnr": 0,
+      "mean_inference_latency_ms": 0,
+      "adaptive_wins": 0,
+      "production_wins": 0,
+      "win_rate_vs_production_pct": 0
+    }
+  ],
+  "latency_5stage_audit": {
+    "execution_hardware": "CPU (Multi-Core x86_64, Windows Subsystem)",
+    "iterations": 1000,
+    "stage_1_model_loading_ms": {
+      "mean": 82.5318,
+      "median": 80.0453,
+      "p90": 104.5659,
+      "p95": 106.7262,
+      "p99": 116.1632,
+      "min": 62.9476,
+      "max": 117.0649
+    },
+    "stage_2_feature_preprocessing_ms": {
+      "mean": 4.6877,
+      "median": 4.1786,
+      "p90": 6.3272,
+      "p95": 7.0507,
+      "p99": 8.3214,
+      "min": 3.3631,
+      "max": 10.8059
+    },
+    "stage_3_adaptive_model_selection_ms": {
+      "mean": 0.0222,
+      "median": 0.0171,
+      "p90": 0.029,
+      "p95": 0.0347,
+      "p99": 0.0515,
+      "min": 0.0154,
+      "max": 0.1079
+    },
+    "stage_4_pure_model_inference_ms": {
+      "mean": 37.9178,
+      "median": 37.7478,
+      "p90": 39.7372,
+      "p95": 41.3272,
+      "p99": 51.8441,
+      "min": 25.0625,
+      "max": 114.7167
+    },
+    "stage_5_total_end_to_end_production_ms": {
+      "mean": 42.6055,
+      "median": 42.3328,
+      "p90": 45.156,
+      "p95": 47.0618,
+      "p99": 57.7605,
+      "min": 29.2035,
+      "max": 120.5227
+    },
+    "stage_5_total_end_to_end_adaptive_ms": {
+      "mean": 37.94,
+      "median": 37.7717,
+      "p90": 39.7614,
+      "p95": 41.3426,
+      "p99": 51.8693,
+      "min": 25.0784,
+      "max": 114.7732
+    }
+  }
+}

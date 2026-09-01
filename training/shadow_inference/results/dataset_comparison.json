@@ -1,0 +1,67 @@
+[
+  {
+    "dataset": "cicids2017",
+    "sample_count": 100,
+    "production_f1": 1.0,
+    "adaptive_f1": 1.0,
+    "f1_delta": 0.0,
+    "production_fpr": 0.0,
+    "adaptive_fpr": 0.0,
+    "fpr_delta": 0.0,
+    "agreement_rate": 1.0,
+    "adaptive_wins": 0,
+    "production_wins": 0
+  },
+  {
+    "dataset": "cicids2018",
+    "sample_count": 100,
+    "production_f1": 0.66667,
+    "adaptive_f1": 1.0,
+    "f1_delta": 0.33333,
+    "production_fpr": 1.0,
+    "adaptive_fpr": 0.0,
+    "fpr_delta": -1.0,
+    "agreement_rate": 0.5,
+    "adaptive_wins": 50,
+    "production_wins": 0
+  },
+  {
+    "dataset": "cicddos2019",
+    "sample_count": 100,
+    "production_f1": 0.74627,
+    "adaptive_f1": 0.0,
+    "f1_delta": -0.74627,
+    "production_fpr": 0.68,
+    "adaptive_fpr": 0.0,
+    "fpr_delta": -0.68,
+    "agreement_rate": 0.16,
+    "adaptive_wins": 34,
+    "production_wins": 50
+  },
+  {
+    "dataset": "unsw",
+    "sample_count": 100,
+    "production_f1": 0.0,
+    "adaptive_f1": 1.0,
+    "f1_delta": 1.0,
+    "production_fpr": 0.0,
+    "adaptive_fpr": 0.0,
+    "fpr_delta": 0.0,
+    "agreement_rate": 0.5,
+    "adaptive_wins": 50,
+    "production_wins": 0
+  },
+  {
+    "dataset": "malwarebazaar",
+    "sample_count": 100,
+    "production_f1": 0.0,
+    "adaptive_f1": 1.0,
+    "f1_delta": 1.0,
+    "production_fpr": 0.0,
+    "adaptive_fpr": 0.0,
+    "fpr_delta": 0.0,
+    "agreement_rate": 0.5,
+    "adaptive_wins": 50,
+    "production_wins": 0
+  }
+]

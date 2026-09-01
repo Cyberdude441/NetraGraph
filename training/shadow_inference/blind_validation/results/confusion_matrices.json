@@ -1,0 +1,20 @@
+{
+  "production": {
+    "TP": 374,
+    "TN": 393,
+    "FP": 232,
+    "FN": 251
+  },
+  "adaptive": {
+    "TP": 500,
+    "TN": 625,
+    "FP": 0,
+    "FN": 125
+  },
+  "delta": {
+    "TP_delta": 126,
+    "TN_delta": 232,
+    "FP_delta": -232,
+    "FN_delta": -126
+  }
+}

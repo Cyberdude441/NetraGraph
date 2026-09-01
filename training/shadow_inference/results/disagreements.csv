@@ -1,0 +1,235 @@
+request_id,dataset_name,attack_class,production_model,adaptive_model,ground_truth,production_prediction,adaptive_prediction,production_binary,adaptive_binary,production_risk,adaptive_risk,risk_delta,adaptive_confidence,agreement,production_correct,adaptive_correct,correctness_category,paired_correctness_diff,latency_prod_ms,latency_adapt_sel_ms,latency_adapt_inf_ms,latency_adapt_tot_ms
+EVAL-IDS2018-0001,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9533,0.05,0.9033,0.5717,False,False,True,adaptive_correct_production_incorrect,1,447.6003,0.1308,0.0007,0.1315
+EVAL-IDS2018-0003,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.98,0.05,0.93,0.5717,False,False,True,adaptive_correct_production_incorrect,1,148.1355,0.1005,0.0006,0.1011
+EVAL-IDS2018-0005,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9533,0.05,0.9033,0.5717,False,False,True,adaptive_correct_production_incorrect,1,76.9807,0.1018,0.0006,0.1024
+EVAL-IDS2018-0007,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.96,0.05,0.91,0.5717,False,False,True,adaptive_correct_production_incorrect,1,79.9303,0.107,0.0007,0.1077
+EVAL-IDS2018-0009,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.98,0.05,0.93,0.5717,False,False,True,adaptive_correct_production_incorrect,1,80.5632,0.1068,0.0006,0.1074
+EVAL-IDS2018-0011,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.94,0.05,0.89,0.5717,False,False,True,adaptive_correct_production_incorrect,1,82.5502,0.4356,0.0021,0.4377
+EVAL-IDS2018-0013,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9667,0.05,0.9167,0.5717,False,False,True,adaptive_correct_production_incorrect,1,80.5655,0.099,0.0006,0.0996
+EVAL-IDS2018-0015,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9667,0.05,0.9167,0.5717,False,False,True,adaptive_correct_production_incorrect,1,99.5086,0.135,0.0008,0.1358
+EVAL-IDS2018-0017,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9667,0.05,0.9167,0.5717,False,False,True,adaptive_correct_production_incorrect,1,69.8404,0.1146,0.0008,0.1154
+EVAL-IDS2018-0019,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.96,0.05,0.91,0.5717,False,False,True,adaptive_correct_production_incorrect,1,82.4039,0.1103,0.0006,0.1109
+EVAL-IDS2018-0021,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9533,0.05,0.9033,0.5717,False,False,True,adaptive_correct_production_incorrect,1,83.7131,0.1043,0.0007,0.105
+EVAL-IDS2018-0023,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9667,0.05,0.9167,0.5717,False,False,True,adaptive_correct_production_incorrect,1,81.7507,0.1096,0.0006,0.1102
+EVAL-IDS2018-0025,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9533,0.05,0.9033,0.5717,False,False,True,adaptive_correct_production_incorrect,1,81.6974,0.0943,0.0006,0.0949
+EVAL-IDS2018-0027,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9533,0.05,0.9033,0.5717,False,False,True,adaptive_correct_production_incorrect,1,80.6979,0.0721,0.0006,0.0727
+EVAL-IDS2018-0029,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.98,0.05,0.93,0.5717,False,False,True,adaptive_correct_production_incorrect,1,79.57,0.0854,0.0007,0.0861
+EVAL-IDS2018-0031,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9467,0.05,0.8967,0.5717,False,False,True,adaptive_correct_production_incorrect,1,80.3415,0.0863,0.0007,0.087
+EVAL-IDS2018-0033,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9467,0.05,0.8967,0.5717,False,False,True,adaptive_correct_production_incorrect,1,82.4697,0.0808,0.0006,0.0814
+EVAL-IDS2018-0035,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9733,0.05,0.9233,0.5717,False,False,True,adaptive_correct_production_incorrect,1,82.3153,0.0898,0.0006,0.0904
+EVAL-IDS2018-0037,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.96,0.05,0.91,0.5717,False,False,True,adaptive_correct_production_incorrect,1,81.2056,0.0724,0.0005,0.0729
+EVAL-IDS2018-0039,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9733,0.05,0.9233,0.5717,False,False,True,adaptive_correct_production_incorrect,1,79.9215,0.1507,0.0006,0.1513
+EVAL-IDS2018-0041,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9533,0.05,0.9033,0.5717,False,False,True,adaptive_correct_production_incorrect,1,81.72,0.0787,0.0005,0.0792
+EVAL-IDS2018-0043,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9667,0.05,0.9167,0.5717,False,False,True,adaptive_correct_production_incorrect,1,82.3366,0.0788,0.0007,0.0795
+EVAL-IDS2018-0045,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9733,0.05,0.9233,0.5717,False,False,True,adaptive_correct_production_incorrect,1,82.2261,0.0975,0.0007,0.0982
+EVAL-IDS2018-0047,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.96,0.05,0.91,0.5717,False,False,True,adaptive_correct_production_incorrect,1,82.7393,0.1309,0.0009,0.1318
+EVAL-IDS2018-0049,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9467,0.05,0.8967,0.5717,False,False,True,adaptive_correct_production_incorrect,1,80.6912,0.1198,0.0006,0.1204
+EVAL-IDS2018-0051,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9667,0.05,0.9167,0.5717,False,False,True,adaptive_correct_production_incorrect,1,84.1915,0.0805,0.0005,0.081
+EVAL-IDS2018-0053,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.96,0.05,0.91,0.5717,False,False,True,adaptive_correct_production_incorrect,1,85.5605,0.1333,0.0009,0.1342
+EVAL-IDS2018-0055,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9267,0.05,0.8767,0.5717,False,False,True,adaptive_correct_production_incorrect,1,83.192,0.1381,0.0008,0.1389
+EVAL-IDS2018-0057,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9267,0.05,0.8767,0.5717,False,False,True,adaptive_correct_production_incorrect,1,82.4686,0.1225,0.0007,0.1232
+EVAL-IDS2018-0059,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.96,0.05,0.91,0.5717,False,False,True,adaptive_correct_production_incorrect,1,83.415,0.1226,0.0006,0.1232
+EVAL-IDS2018-0061,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9667,0.05,0.9167,0.5717,False,False,True,adaptive_correct_production_incorrect,1,81.1853,0.1573,0.0007,0.158
+EVAL-IDS2018-0063,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.98,0.05,0.93,0.5717,False,False,True,adaptive_correct_production_incorrect,1,81.6133,0.1034,0.0007,0.1041
+EVAL-IDS2018-0065,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.96,0.05,0.91,0.5717,False,False,True,adaptive_correct_production_incorrect,1,70.0006,0.0963,0.0007,0.097
+EVAL-IDS2018-0067,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.96,0.05,0.91,0.5717,False,False,True,adaptive_correct_production_incorrect,1,94.8377,0.129,0.0008,0.1298
+EVAL-IDS2018-0069,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.96,0.05,0.91,0.5717,False,False,True,adaptive_correct_production_incorrect,1,86.9572,0.076,0.0006,0.0766
+EVAL-IDS2018-0071,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9533,0.05,0.9033,0.5717,False,False,True,adaptive_correct_production_incorrect,1,80.4883,0.0806,0.0007,0.0813
+EVAL-IDS2018-0073,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9733,0.05,0.9233,0.5717,False,False,True,adaptive_correct_production_incorrect,1,83.8375,0.0928,0.0005,0.0933
+EVAL-IDS2018-0075,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9733,0.05,0.9233,0.5717,False,False,True,adaptive_correct_production_incorrect,1,82.719,0.1114,0.0008,0.1122
+EVAL-IDS2018-0077,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9733,0.05,0.9233,0.5717,False,False,True,adaptive_correct_production_incorrect,1,82.5061,0.109,0.0051,0.1141
+EVAL-IDS2018-0079,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9533,0.05,0.9033,0.5717,False,False,True,adaptive_correct_production_incorrect,1,85.5377,0.0653,0.0004,0.0657
+EVAL-IDS2018-0081,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9733,0.05,0.9233,0.5717,False,False,True,adaptive_correct_production_incorrect,1,82.2424,0.1102,0.0007,0.1109
+EVAL-IDS2018-0083,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.96,0.05,0.91,0.5717,False,False,True,adaptive_correct_production_incorrect,1,80.896,0.0746,0.0005,0.0751
+EVAL-IDS2018-0085,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9533,0.05,0.9033,0.5717,False,False,True,adaptive_correct_production_incorrect,1,81.0871,0.0612,0.0003,0.0615
+EVAL-IDS2018-0087,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.96,0.05,0.91,0.5717,False,False,True,adaptive_correct_production_incorrect,1,78.4719,0.1494,0.0008,0.1502
+EVAL-IDS2018-0089,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9667,0.05,0.9167,0.5717,False,False,True,adaptive_correct_production_incorrect,1,80.6429,0.1086,0.0004,0.109
+EVAL-IDS2018-0091,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9533,0.05,0.9033,0.5717,False,False,True,adaptive_correct_production_incorrect,1,81.7387,0.2569,0.0007,0.2576
+EVAL-IDS2018-0093,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.96,0.05,0.91,0.5717,False,False,True,adaptive_correct_production_incorrect,1,71.4512,0.0945,0.0006,0.0951
+EVAL-IDS2018-0095,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9733,0.05,0.9233,0.5717,False,False,True,adaptive_correct_production_incorrect,1,69.3119,0.1051,0.0006,0.1057
+EVAL-IDS2018-0097,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9533,0.05,0.9033,0.5717,False,False,True,adaptive_correct_production_incorrect,1,83.3111,0.1599,0.0008,0.1607
+EVAL-IDS2018-0099,cicids2018,NormalTraffic,intrusion,XGBoost,0,1,0,1,0,0.9667,0.05,0.9167,0.5717,False,False,True,adaptive_correct_production_incorrect,1,81.3077,0.1158,0.0006,0.1164
+EVAL-DDOS2019-0001,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.5267,0.05,0.4767,0.558,False,False,True,adaptive_correct_production_incorrect,1,161.7488,0.0995,0.0007,0.1002
+EVAL-DDOS2019-0002,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.56,0.05,0.51,0.558,False,True,False,production_correct_adaptive_incorrect,-1,79.0971,0.0826,0.0005,0.0831
+EVAL-DDOS2019-0003,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.5333,0.05,0.4833,0.558,False,False,True,adaptive_correct_production_incorrect,1,82.7827,0.0846,0.0004,0.085
+EVAL-DDOS2019-0004,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,68.4068,0.0864,0.0007,0.0871
+EVAL-DDOS2019-0005,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.54,0.05,0.49,0.558,False,False,True,adaptive_correct_production_incorrect,1,78.5564,0.1074,0.0007,0.1081
+EVAL-DDOS2019-0006,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.58,0.05,0.53,0.558,False,True,False,production_correct_adaptive_incorrect,-1,77.8388,0.0917,0.0007,0.0924
+EVAL-DDOS2019-0007,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.54,0.05,0.49,0.558,False,False,True,adaptive_correct_production_incorrect,1,85.758,0.1258,0.0007,0.1265
+EVAL-DDOS2019-0008,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,85.7272,0.0693,0.0005,0.0698
+EVAL-DDOS2019-0010,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.56,0.05,0.51,0.558,False,True,False,production_correct_adaptive_incorrect,-1,80.6037,0.1115,0.0006,0.1121
+EVAL-DDOS2019-0011,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.5267,0.05,0.4767,0.558,False,False,True,adaptive_correct_production_incorrect,1,58.6402,0.0832,0.0005,0.0837
+EVAL-DDOS2019-0012,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,59.3371,0.0847,0.0007,0.0854
+EVAL-DDOS2019-0013,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.54,0.05,0.49,0.558,False,False,True,adaptive_correct_production_incorrect,1,82.6198,0.1003,0.0006,0.1009
+EVAL-DDOS2019-0014,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6,0.05,0.55,0.558,False,True,False,production_correct_adaptive_incorrect,-1,61.4054,0.0963,0.0006,0.0969
+EVAL-DDOS2019-0015,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.54,0.05,0.49,0.558,False,False,True,adaptive_correct_production_incorrect,1,59.9789,0.1127,0.0006,0.1133
+EVAL-DDOS2019-0016,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.56,0.05,0.51,0.558,False,True,False,production_correct_adaptive_incorrect,-1,82.341,0.0925,0.0006,0.0931
+EVAL-DDOS2019-0017,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.5333,0.05,0.4833,0.558,False,False,True,adaptive_correct_production_incorrect,1,92.7347,0.0854,0.0008,0.0862
+EVAL-DDOS2019-0018,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,92.8106,0.1012,0.0014,0.1026
+EVAL-DDOS2019-0020,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,83.1246,0.0961,0.0008,0.0969
+EVAL-DDOS2019-0022,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.58,0.05,0.53,0.558,False,True,False,production_correct_adaptive_incorrect,-1,82.9074,0.1214,0.0008,0.1222
+EVAL-DDOS2019-0023,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.54,0.05,0.49,0.558,False,False,True,adaptive_correct_production_incorrect,1,97.8719,0.0789,0.0004,0.0793
+EVAL-DDOS2019-0024,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,78.7938,0.0621,0.0004,0.0625
+EVAL-DDOS2019-0025,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.54,0.05,0.49,0.558,False,False,True,adaptive_correct_production_incorrect,1,79.067,0.1148,0.001,0.1158
+EVAL-DDOS2019-0026,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.5867,0.05,0.5367,0.558,False,True,False,production_correct_adaptive_incorrect,-1,80.7671,0.0809,0.0007,0.0816
+EVAL-DDOS2019-0028,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,78.3594,0.077,0.0005,0.0775
+EVAL-DDOS2019-0029,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.5333,0.05,0.4833,0.558,False,False,True,adaptive_correct_production_incorrect,1,67.5184,0.1383,0.0009,0.1392
+EVAL-DDOS2019-0030,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.5867,0.05,0.5367,0.558,False,True,False,production_correct_adaptive_incorrect,-1,68.6182,0.0816,0.0007,0.0823
+EVAL-DDOS2019-0032,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.5733,0.05,0.5233,0.558,False,True,False,production_correct_adaptive_incorrect,-1,66.9846,0.0842,0.0007,0.0849
+EVAL-DDOS2019-0033,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.54,0.05,0.49,0.558,False,False,True,adaptive_correct_production_incorrect,1,73.4755,0.1074,0.0006,0.108
+EVAL-DDOS2019-0034,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,69.7542,0.085,0.0006,0.0856
+EVAL-DDOS2019-0035,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.5067,0.05,0.4567,0.558,False,False,True,adaptive_correct_production_incorrect,1,69.5461,0.0892,0.0009,0.0901
+EVAL-DDOS2019-0036,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,80.9715,0.0744,0.0004,0.0748
+EVAL-DDOS2019-0037,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.54,0.05,0.49,0.558,False,False,True,adaptive_correct_production_incorrect,1,80.3219,0.11,0.0008,0.1108
+EVAL-DDOS2019-0038,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,79.6656,0.0963,0.0007,0.097
+EVAL-DDOS2019-0040,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.5867,0.05,0.5367,0.558,False,True,False,production_correct_adaptive_incorrect,-1,80.6153,0.0729,0.0005,0.0734
+EVAL-DDOS2019-0041,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.54,0.05,0.49,0.558,False,False,True,adaptive_correct_production_incorrect,1,79.2292,0.1054,0.0006,0.106
+EVAL-DDOS2019-0042,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.58,0.05,0.53,0.558,False,True,False,production_correct_adaptive_incorrect,-1,61.8186,0.0829,0.0005,0.0834
+EVAL-DDOS2019-0043,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.52,0.05,0.47,0.558,False,False,True,adaptive_correct_production_incorrect,1,61.9572,0.0996,0.0007,0.1003
+EVAL-DDOS2019-0044,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.56,0.05,0.51,0.558,False,True,False,production_correct_adaptive_incorrect,-1,68.5622,0.1115,0.0007,0.1122
+EVAL-DDOS2019-0046,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.58,0.05,0.53,0.558,False,True,False,production_correct_adaptive_incorrect,-1,92.6259,0.1069,0.0006,0.1075
+EVAL-DDOS2019-0048,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.5867,0.05,0.5367,0.558,False,True,False,production_correct_adaptive_incorrect,-1,76.8422,0.138,0.0008,0.1388
+EVAL-DDOS2019-0049,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.54,0.05,0.49,0.558,False,False,True,adaptive_correct_production_incorrect,1,89.0786,0.1827,0.0007,0.1834
+EVAL-DDOS2019-0050,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.5733,0.05,0.5233,0.558,False,True,False,production_correct_adaptive_incorrect,-1,89.8106,0.0957,0.0006,0.0963
+EVAL-DDOS2019-0051,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.5333,0.05,0.4833,0.558,False,False,True,adaptive_correct_production_incorrect,1,80.1941,0.0871,0.0007,0.0878
+EVAL-DDOS2019-0052,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.5733,0.05,0.5233,0.558,False,True,False,production_correct_adaptive_incorrect,-1,79.3834,0.1043,0.0006,0.1049
+EVAL-DDOS2019-0053,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.5267,0.05,0.4767,0.558,False,False,True,adaptive_correct_production_incorrect,1,82.8365,0.0846,0.0007,0.0853
+EVAL-DDOS2019-0054,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,84.6124,0.0989,0.0027,0.1016
+EVAL-DDOS2019-0055,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.5333,0.05,0.4833,0.558,False,False,True,adaptive_correct_production_incorrect,1,80.5689,0.0936,0.0004,0.094
+EVAL-DDOS2019-0056,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,77.8719,0.0648,0.0006,0.0654
+EVAL-DDOS2019-0058,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,81.8427,0.1339,0.0009,0.1348
+EVAL-DDOS2019-0060,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.5933,0.05,0.5433,0.558,False,True,False,production_correct_adaptive_incorrect,-1,83.4075,0.153,0.0008,0.1538
+EVAL-DDOS2019-0061,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.5267,0.05,0.4767,0.558,False,False,True,adaptive_correct_production_incorrect,1,68.8515,0.0656,0.0004,0.066
+EVAL-DDOS2019-0062,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.5733,0.05,0.5233,0.558,False,True,False,production_correct_adaptive_incorrect,-1,78.5724,0.0947,0.0008,0.0955
+EVAL-DDOS2019-0064,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,78.9704,0.1056,0.0007,0.1063
+EVAL-DDOS2019-0065,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.54,0.05,0.49,0.558,False,False,True,adaptive_correct_production_incorrect,1,70.8487,0.074,0.0004,0.0744
+EVAL-DDOS2019-0066,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.5733,0.05,0.5233,0.558,False,True,False,production_correct_adaptive_incorrect,-1,80.9848,0.1389,0.0009,0.1398
+EVAL-DDOS2019-0068,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.5733,0.05,0.5233,0.558,False,True,False,production_correct_adaptive_incorrect,-1,77.9606,0.0944,0.0006,0.095
+EVAL-DDOS2019-0070,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,67.9089,0.0892,0.0006,0.0898
+EVAL-DDOS2019-0071,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.54,0.05,0.49,0.558,False,False,True,adaptive_correct_production_incorrect,1,83.6513,0.0972,0.0006,0.0978
+EVAL-DDOS2019-0072,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.5733,0.05,0.5233,0.558,False,True,False,production_correct_adaptive_incorrect,-1,91.739,0.8863,0.0005,0.8868
+EVAL-DDOS2019-0073,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.54,0.05,0.49,0.558,False,False,True,adaptive_correct_production_incorrect,1,83.7572,0.1176,0.0005,0.1181
+EVAL-DDOS2019-0074,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.5867,0.05,0.5367,0.558,False,True,False,production_correct_adaptive_incorrect,-1,99.5261,0.2684,0.0008,0.2692
+EVAL-DDOS2019-0075,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.54,0.05,0.49,0.558,False,False,True,adaptive_correct_production_incorrect,1,96.613,0.115,0.0008,0.1158
+EVAL-DDOS2019-0076,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.5733,0.05,0.5233,0.558,False,True,False,production_correct_adaptive_incorrect,-1,86.0386,0.0804,0.0006,0.081
+EVAL-DDOS2019-0077,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.54,0.05,0.49,0.558,False,False,True,adaptive_correct_production_incorrect,1,95.3224,0.1186,0.0008,0.1194
+EVAL-DDOS2019-0078,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.56,0.05,0.51,0.558,False,True,False,production_correct_adaptive_incorrect,-1,80.7945,0.0757,0.0006,0.0763
+EVAL-DDOS2019-0079,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.5333,0.05,0.4833,0.558,False,False,True,adaptive_correct_production_incorrect,1,79.7677,0.1015,0.0006,0.1021
+EVAL-DDOS2019-0080,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,80.844,0.0714,0.0004,0.0718
+EVAL-DDOS2019-0081,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.54,0.05,0.49,0.558,False,False,True,adaptive_correct_production_incorrect,1,79.9948,0.0772,0.0005,0.0777
+EVAL-DDOS2019-0082,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.56,0.05,0.51,0.558,False,True,False,production_correct_adaptive_incorrect,-1,81.3787,0.0616,0.0004,0.062
+EVAL-DDOS2019-0084,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,95.3682,0.066,0.0005,0.0665
+EVAL-DDOS2019-0085,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.5333,0.05,0.4833,0.558,False,False,True,adaptive_correct_production_incorrect,1,83.8067,0.0808,0.0004,0.0812
+EVAL-DDOS2019-0086,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.56,0.05,0.51,0.558,False,True,False,production_correct_adaptive_incorrect,-1,80.5925,0.09,0.0006,0.0906
+EVAL-DDOS2019-0087,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.54,0.05,0.49,0.558,False,False,True,adaptive_correct_production_incorrect,1,81.8652,0.0705,0.0005,0.071
+EVAL-DDOS2019-0088,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.58,0.05,0.53,0.558,False,True,False,production_correct_adaptive_incorrect,-1,82.0794,0.0579,0.0005,0.0584
+EVAL-DDOS2019-0089,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.54,0.05,0.49,0.558,False,False,True,adaptive_correct_production_incorrect,1,81.6882,0.0714,0.0005,0.0719
+EVAL-DDOS2019-0090,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,70.7862,0.0779,0.0005,0.0784
+EVAL-DDOS2019-0091,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.5067,0.05,0.4567,0.558,False,False,True,adaptive_correct_production_incorrect,1,58.5714,0.0829,0.0006,0.0835
+EVAL-DDOS2019-0092,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,86.4267,0.085,0.0004,0.0854
+EVAL-DDOS2019-0093,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.54,0.05,0.49,0.558,False,False,True,adaptive_correct_production_incorrect,1,80.2621,0.1314,0.0007,0.1321
+EVAL-DDOS2019-0094,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.56,0.05,0.51,0.558,False,True,False,production_correct_adaptive_incorrect,-1,81.7949,0.1248,0.001,0.1258
+EVAL-DDOS2019-0095,cicddos2019,BenignQuery,webpage-phishing,CatBoost,0,phishing,0,1,0,0.5267,0.05,0.4767,0.558,False,False,True,adaptive_correct_production_incorrect,1,80.8663,0.1063,0.0006,0.1069
+EVAL-DDOS2019-0096,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,77.8274,0.0601,0.0004,0.0605
+EVAL-DDOS2019-0098,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.5867,0.05,0.5367,0.558,False,True,False,production_correct_adaptive_incorrect,-1,80.7157,0.0911,0.0005,0.0916
+EVAL-DDOS2019-0100,cicddos2019,ReflectionDDoS/DNS,webpage-phishing,CatBoost,1,phishing,0,1,0,0.6067,0.05,0.5567,0.558,False,True,False,production_correct_adaptive_incorrect,-1,80.3528,0.0874,0.0005,0.0879
+EVAL-UNSW-0002,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,82.8392,0.1067,0.0005,0.1072
+EVAL-UNSW-0004,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.84,0.92,0.08,0.6333,False,False,True,adaptive_correct_production_incorrect,1,86.2152,0.0591,0.0003,0.0594
+EVAL-UNSW-0006,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8533,0.92,0.0667,0.6333,False,False,True,adaptive_correct_production_incorrect,1,81.8894,0.0808,0.0005,0.0813
+EVAL-UNSW-0008,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,80.6499,0.0783,0.0004,0.0787
+EVAL-UNSW-0010,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,85.7326,0.0656,0.0005,0.0661
+EVAL-UNSW-0012,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,81.1662,0.0945,0.0006,0.0951
+EVAL-UNSW-0014,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,84.6947,0.1092,0.0006,0.1098
+EVAL-UNSW-0016,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.84,0.92,0.08,0.6333,False,False,True,adaptive_correct_production_incorrect,1,101.3932,0.107,0.0005,0.1075
+EVAL-UNSW-0018,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,84.2394,0.0726,0.0005,0.0731
+EVAL-UNSW-0020,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,87.6689,0.0753,0.0005,0.0758
+EVAL-UNSW-0022,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.84,0.92,0.08,0.6333,False,False,True,adaptive_correct_production_incorrect,1,73.0137,0.0571,0.0005,0.0576
+EVAL-UNSW-0024,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8533,0.92,0.0667,0.6333,False,False,True,adaptive_correct_production_incorrect,1,81.5493,0.0719,0.0005,0.0724
+EVAL-UNSW-0026,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.84,0.92,0.08,0.6333,False,False,True,adaptive_correct_production_incorrect,1,83.5212,0.1371,0.0005,0.1376
+EVAL-UNSW-0028,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.84,0.92,0.08,0.6333,False,False,True,adaptive_correct_production_incorrect,1,79.7815,0.0846,0.0006,0.0852
+EVAL-UNSW-0030,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.84,0.92,0.08,0.6333,False,False,True,adaptive_correct_production_incorrect,1,83.8904,0.103,0.0007,0.1037
+EVAL-UNSW-0032,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.84,0.92,0.08,0.6333,False,False,True,adaptive_correct_production_incorrect,1,87.9708,0.1375,0.0008,0.1383
+EVAL-UNSW-0034,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,88.1761,0.1026,0.0008,0.1034
+EVAL-UNSW-0036,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,86.6977,0.1114,0.0006,0.112
+EVAL-UNSW-0038,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8533,0.92,0.0667,0.6333,False,False,True,adaptive_correct_production_incorrect,1,84.1934,0.1512,0.001,0.1522
+EVAL-UNSW-0040,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.84,0.92,0.08,0.6333,False,False,True,adaptive_correct_production_incorrect,1,85.9,0.1044,0.0007,0.1051
+EVAL-UNSW-0042,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.84,0.92,0.08,0.6333,False,False,True,adaptive_correct_production_incorrect,1,81.9748,0.0907,0.0006,0.0913
+EVAL-UNSW-0044,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.84,0.92,0.08,0.6333,False,False,True,adaptive_correct_production_incorrect,1,75.1598,0.081,0.0006,0.0816
+EVAL-UNSW-0046,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.84,0.92,0.08,0.6333,False,False,True,adaptive_correct_production_incorrect,1,71.1955,0.1213,0.0009,0.1222
+EVAL-UNSW-0048,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.84,0.92,0.08,0.6333,False,False,True,adaptive_correct_production_incorrect,1,72.3773,0.0873,0.0007,0.088
+EVAL-UNSW-0050,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,72.1195,0.0892,0.0005,0.0897
+EVAL-UNSW-0052,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,86.126,0.0718,0.0005,0.0723
+EVAL-UNSW-0054,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.84,0.92,0.08,0.6333,False,False,True,adaptive_correct_production_incorrect,1,85.5908,0.0878,0.0004,0.0882
+EVAL-UNSW-0056,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,71.9343,0.066,0.0005,0.0665
+EVAL-UNSW-0058,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,70.8042,0.0985,0.0006,0.0991
+EVAL-UNSW-0060,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8533,0.92,0.0667,0.6333,False,False,True,adaptive_correct_production_incorrect,1,62.387,0.0907,0.0005,0.0912
+EVAL-UNSW-0062,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,73.4,0.0888,0.0005,0.0893
+EVAL-UNSW-0064,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,74.3721,0.1551,0.0009,0.156
+EVAL-UNSW-0066,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,70.0577,0.0796,0.0006,0.0802
+EVAL-UNSW-0068,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,89.2024,0.1367,0.001,0.1377
+EVAL-UNSW-0070,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.84,0.92,0.08,0.6333,False,False,True,adaptive_correct_production_incorrect,1,82.7848,0.1396,0.0009,0.1405
+EVAL-UNSW-0072,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,101.1629,0.1246,0.0006,0.1252
+EVAL-UNSW-0074,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,85.0459,0.105,0.0006,0.1056
+EVAL-UNSW-0076,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,84.3451,0.1315,0.0008,0.1323
+EVAL-UNSW-0078,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.84,0.92,0.08,0.6333,False,False,True,adaptive_correct_production_incorrect,1,88.8512,0.1362,0.0006,0.1368
+EVAL-UNSW-0080,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.84,0.92,0.08,0.6333,False,False,True,adaptive_correct_production_incorrect,1,83.3975,0.1358,0.0009,0.1367
+EVAL-UNSW-0082,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,86.3716,0.1269,0.0008,0.1277
+EVAL-UNSW-0084,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.84,0.92,0.08,0.6333,False,False,True,adaptive_correct_production_incorrect,1,80.1067,0.0802,0.0005,0.0807
+EVAL-UNSW-0086,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,84.4053,0.076,0.0005,0.0765
+EVAL-UNSW-0088,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.84,0.92,0.08,0.6333,False,False,True,adaptive_correct_production_incorrect,1,89.8478,0.0715,0.0005,0.072
+EVAL-UNSW-0090,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,84.4388,0.0958,0.0034,0.0992
+EVAL-UNSW-0092,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,61.5117,0.0684,0.0005,0.0689
+EVAL-UNSW-0094,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,83.4713,0.077,0.0006,0.0776
+EVAL-UNSW-0096,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8533,0.92,0.0667,0.6333,False,False,True,adaptive_correct_production_incorrect,1,85.7096,0.1181,0.0007,0.1188
+EVAL-UNSW-0098,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.84,0.92,0.08,0.6333,False,False,True,adaptive_correct_production_incorrect,1,82.7018,0.0899,0.0005,0.0904
+EVAL-UNSW-0100,unsw,SpearPhishURL,phishing-url,XGBoost,1,0,1,0,1,0.8467,0.92,0.0733,0.6333,False,False,True,adaptive_correct_production_incorrect,1,84.5212,0.1109,0.0007,0.1116
+EVAL-MALWARE-0002,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,151.6299,0.1018,0.0007,0.1025
+EVAL-MALWARE-0004,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,144.3522,0.1237,0.0007,0.1244
+EVAL-MALWARE-0006,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,133.9487,0.1099,0.0007,0.1106
+EVAL-MALWARE-0008,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,160.14,0.1535,0.0008,0.1543
+EVAL-MALWARE-0010,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,123.1078,0.0957,0.0008,0.0965
+EVAL-MALWARE-0012,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,126.845,0.088,0.0007,0.0887
+EVAL-MALWARE-0014,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,134.0483,0.1018,0.0005,0.1023
+EVAL-MALWARE-0016,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,147.7156,0.1173,0.0006,0.1179
+EVAL-MALWARE-0018,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,120.6496,0.1123,0.0006,0.1129
+EVAL-MALWARE-0020,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,131.1997,0.1017,0.0007,0.1024
+EVAL-MALWARE-0022,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,147.5455,0.1035,0.0007,0.1042
+EVAL-MALWARE-0024,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,176.3483,0.1021,0.0008,0.1029
+EVAL-MALWARE-0026,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,170.3556,0.1229,0.0008,0.1237
+EVAL-MALWARE-0028,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,141.3129,0.1529,0.0009,0.1538
+EVAL-MALWARE-0030,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,158.61,0.1018,0.0008,0.1026
+EVAL-MALWARE-0032,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,138.7555,0.0874,0.0006,0.088
+EVAL-MALWARE-0034,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,118.3411,0.1085,0.0005,0.109
+EVAL-MALWARE-0036,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,144.1089,0.1178,0.0007,0.1185
+EVAL-MALWARE-0038,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,150.4086,0.0998,0.0007,0.1005
+EVAL-MALWARE-0040,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,133.1344,0.2138,0.0014,0.2152
+EVAL-MALWARE-0042,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,123.3515,0.0872,0.0007,0.0879
+EVAL-MALWARE-0044,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,192.4951,0.3965,0.0018,0.3983
+EVAL-MALWARE-0046,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,161.4532,0.1058,0.0006,0.1064
+EVAL-MALWARE-0048,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,153.0355,0.0979,0.0005,0.0984
+EVAL-MALWARE-0050,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,139.2908,0.0977,0.0007,0.0984
+EVAL-MALWARE-0052,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,142.485,0.3016,0.0005,0.3021
+EVAL-MALWARE-0054,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,117.8516,0.1285,0.0006,0.1291
+EVAL-MALWARE-0056,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,138.1958,0.0813,0.0007,0.082
+EVAL-MALWARE-0058,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,116.7363,0.0661,0.0006,0.0667
+EVAL-MALWARE-0060,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,120.7406,0.105,0.0007,0.1057
+EVAL-MALWARE-0062,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,132.3553,0.0978,0.0007,0.0985
+EVAL-MALWARE-0064,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,177.0566,0.1685,0.0008,0.1693
+EVAL-MALWARE-0066,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,157.7533,0.0747,0.0007,0.0754
+EVAL-MALWARE-0068,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,182.8473,0.069,0.0003,0.0693
+EVAL-MALWARE-0070,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,131.7021,0.0669,0.0007,0.0676
+EVAL-MALWARE-0072,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,119.2456,0.1032,0.0008,0.104
+EVAL-MALWARE-0074,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,133.9719,0.0843,0.0006,0.0849
+EVAL-MALWARE-0076,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,118.6272,0.1121,0.0009,0.113
+EVAL-MALWARE-0078,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,157.4987,0.1182,0.0007,0.1189
+EVAL-MALWARE-0080,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,121.4705,0.1435,0.0009,0.1444
+EVAL-MALWARE-0082,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,121.7888,0.0947,0.0006,0.0953
+EVAL-MALWARE-0084,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,123.859,0.0875,0.0007,0.0882
+EVAL-MALWARE-0086,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,117.2999,0.098,0.0006,0.0986
+EVAL-MALWARE-0088,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,116.2908,0.0942,0.0007,0.0949
+EVAL-MALWARE-0090,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,142.9872,0.0989,0.0007,0.0996
+EVAL-MALWARE-0092,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,157.6494,0.0877,0.0006,0.0883
+EVAL-MALWARE-0094,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,161.3019,0.1255,0.001,0.1265
+EVAL-MALWARE-0096,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,152.2139,0.0882,0.0007,0.0889
+EVAL-MALWARE-0098,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,168.6128,0.0863,0.0006,0.0869
+EVAL-MALWARE-0100,malwarebazaar,Trojan/DriftingSignature,phishing-email,Random Forest,1,0,1,0,1,0.8533,0.96,0.1067,0.7494,False,False,True,adaptive_correct_production_incorrect,1,176.6825,0.1143,0.0006,0.1149

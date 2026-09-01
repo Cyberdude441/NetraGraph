@@ -1,0 +1,50 @@
+[
+  {
+    "algorithm": "XGBoost",
+    "selection_count": 750,
+    "selection_pct": 60.0,
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "fpr": 0.0,
+    "fnr": 0.0,
+    "mean_confidence": 0.6039,
+    "median_confidence": 0.6067
+  },
+  {
+    "algorithm": "CatBoost",
+    "selection_count": 250,
+    "selection_pct": 20.0,
+    "f1": 0.0,
+    "precision": 0.0,
+    "recall": 0.0,
+    "fpr": 0.0,
+    "fnr": 1.0,
+    "mean_confidence": 0.558,
+    "median_confidence": 0.558
+  },
+  {
+    "algorithm": "Random Forest",
+    "selection_count": 250,
+    "selection_pct": 20.0,
+    "f1": 1.0,
+    "precision": 1.0,
+    "recall": 1.0,
+    "fpr": 0.0,
+    "fnr": 0.0,
+    "mean_confidence": 0.7494,
+    "median_confidence": 0.7494
+  },
+  {
+    "algorithm": "LightGBM",
+    "selection_count": 0,
+    "selection_pct": 0,
+    "f1": 0,
+    "precision": 0,
+    "recall": 0,
+    "fpr": 0,
+    "fnr": 0,
+    "mean_confidence": 0,
+    "median_confidence": 0
+  }
+]

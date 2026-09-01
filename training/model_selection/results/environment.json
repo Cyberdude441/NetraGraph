@@ -1,0 +1,13 @@
+{
+  "python_version": "3.12.13 (main, May 10 2026, 19:35:37) [MSC v.1944 64 bit (AMD64)]",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "cpu_count": 16,
+  "random_seed": 42,
+  "benchmark_source": "C:\\Users\\KIIT\\Desktop\\NetraGraph\\training\\benchmark\\results\\repeated_validation_results.json",
+  "numpy_version": "2.2.2",
+  "sklearn_version": "1.6.1",
+  "xgboost_version": "3.4.1",
+  "lightgbm_version": "4.7.0",
+  "catboost_version": "1.2.10",
+  "scipy_version": "1.18.1"
+}

@@ -1,0 +1,79 @@
+{
+  "execution_device": "CPU (Intel / AMD Multi-Core x86_64, Windows)",
+  "warmup_iterations": 100,
+  "measured_iterations": 1000,
+  "stages": {
+    "1_production_preprocessing_ms": {
+      "mean": 5.4565,
+      "median": 5.1665,
+      "p90": 6.8627,
+      "p95": 7.4894,
+      "p99": 8.6256,
+      "min": 4.1114,
+      "max": 9.7688
+    },
+    "2_production_inference_ms": {
+      "mean": 30.1849,
+      "median": 27.255,
+      "p90": 38.4967,
+      "p95": 39.1044,
+      "p99": 41.167,
+      "min": 24.7762,
+      "max": 54.2485
+    },
+    "3_adaptive_profiling_ms": {
+      "mean": 0.0014,
+      "median": 0.0013,
+      "p90": 0.0017,
+      "p95": 0.002,
+      "p99": 0.0037,
+      "min": 0.0007,
+      "max": 0.067
+    },
+    "4_adaptive_selection_ms": {
+      "mean": 0.101,
+      "median": 0.0949,
+      "p90": 0.1304,
+      "p95": 0.1504,
+      "p99": 0.2407,
+      "min": 0.0589,
+      "max": 0.3833
+    },
+    "5_adaptive_preprocessing_ms": {
+      "mean": 5.4786,
+      "median": 5.1897,
+      "p90": 6.9195,
+      "p95": 7.4078,
+      "p99": 8.6986,
+      "min": 4.1328,
+      "max": 10.9768
+    },
+    "6_adaptive_inference_ms": {
+      "mean": 30.3514,
+      "median": 27.2454,
+      "p90": 38.4588,
+      "p95": 38.9545,
+      "p99": 40.9748,
+      "min": 25.0788,
+      "max": 131.1976
+    },
+    "7_total_production_latency_ms": {
+      "mean": 35.6413,
+      "median": 32.8116,
+      "p90": 44.2013,
+      "p95": 45.5388,
+      "p99": 48.3699,
+      "min": 29.5502,
+      "max": 60.9245
+    },
+    "8_total_adaptive_latency_ms": {
+      "mean": 35.9324,
+      "median": 33.0244,
+      "p90": 44.2485,
+      "p95": 45.2806,
+      "p99": 49.6931,
+      "min": 29.8488,
+      "max": 137.6978
+    }
+  }
+}
