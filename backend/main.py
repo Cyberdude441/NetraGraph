@@ -17,7 +17,9 @@ from api.ncrb import router as ncrb_router
 from api.ai import router as ai_router
 from api.cyber_intelligence import router as cyber_router
 from api.system import router as system_router
+from api.auth import router as auth_router
 from app.api.router import api_router as legacy_api_router
+from app.database.postgres import check_db_health, init_db
 from services.graph_builder import graph_builder
 from services.investigation_graph import investigation_graph_service
 
@@ -27,10 +29,14 @@ logger = logging.getLogger("NetraGraphAI")
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):
-    logger.info("Initializing NetraGraph AI Backend Layer & Neo4j Graph Engine...")
+    logger.info("Initializing NetraGraph AI Backend Layer, PostgreSQL Schema & Neo4j Engine...")
+    try:
+        await init_db()
+    except Exception as e:
+        logger.warning(f"PostgreSQL initialization notice: {e}")
     graph_builder.rebuild_all_graphs()
     investigation_graph_service.initialize_formal_investigation_graph()
-    logger.info("Neo4j Knowledge Graph initialized successfully.")
+    logger.info("PostgreSQL & Neo4j Knowledge Graph initialized successfully.")
     yield
     logger.info("Shutting down NetraGraph AI Backend Layer.")
 
@@ -52,6 +58,7 @@ app.add_middleware(
 )
 
 # Mount Dedicated API Routers under /api
+app.include_router(auth_router, prefix="/api")
 app.include_router(ai_router, prefix="/api")
 app.include_router(ncrb_router, prefix="/api")
 app.include_router(crime_router, prefix="/api")
@@ -70,9 +77,10 @@ def root():
         "status": "ONLINE",
         "system": "NetraGraph AI Backend Intelligence Core",
         "version": "2.5.0",
-        "database": "Neo4j Knowledge Graph Engine",
+        "database": "Neo4j Knowledge Graph Engine & PostgreSQL Relational Layer",
         "connectors": "Open Government Data (data.gov.in) NCRB Feeds",
         "ai_engine": "Graph RAG (Google Gemini & NVIDIA Nemotron)",
+        "auth": "Passwordless Gmail OTP & RBAC",
         "docs_url": "/docs",
     }
 
@@ -80,6 +88,11 @@ def root():
 @app.get("/health")
 def health_check():
     return {"status": "HEALTHY", "code": 200}
+
+
+@app.get("/health/db", tags=["System"])
+async def db_health_check():
+    return await check_db_health()
 
 
 if __name__ == "__main__":
