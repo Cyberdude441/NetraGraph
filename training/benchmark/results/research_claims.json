@@ -1,0 +1,66 @@
+{
+  "audit_date": "2026-09-01T10:05:00Z",
+  "audit_status": "COMPLETED",
+  "supported_claims": [
+    {
+      "claim_id": "CLM-001",
+      "claim": "CatBoost provides superior boundary preservation on protocol-disjoint DDoS vectors.",
+      "evidence": "On CIC-DDoS2019 protocol-disjoint validation (DNS/LDAP -> NetBIOS/Syn), CatBoost maintained Mean F1 of 1.0000 (FPR 0.0000), while LightGBM experienced boundary compression (Mean F1 0.9874, FPR 0.0635).",
+      "status": "SUPPORTED"
+    },
+    {
+      "claim_id": "CLM-002",
+      "claim": "XGBoost and LightGBM offer the highest computational efficiency for real-time network flow scoring.",
+      "evidence": "XGBoost achieved 0.51 µs per-sample inference latency and 0.42s training time per 16k samples, outperforming Random Forest (4.97 µs latency, 3.31s training time) by an order of magnitude.",
+      "status": "SUPPORTED"
+    },
+    {
+      "claim_id": "CLM-003",
+      "claim": "Random Forest provides higher resilience against polymorphic concept drift in static malware classification.",
+      "evidence": "On MalwareBazaar temporal submission window splits, Random Forest achieved higher Macro F1 (0.1882 ± 0.0025) compared to gradient boosted decision trees (CatBoost: 0.1358 ± 0.0022, XGBoost: 0.1689 ± 0.0094).",
+      "status": "SUPPORTED"
+    },
+    {
+      "claim_id": "CLM-004",
+      "claim": "All explicit host and temporal leakage features were successfully purged prior to model training.",
+      "evidence": "Automated leakage audits confirmed 0.00% cross-partition duplicate rate and 100% removal of Source/Destination IPs, Ports, Flow IDs, and Timestamps across all folds.",
+      "status": "SUPPORTED"
+    }
+  ],
+  "unsupported_claims": [
+    {
+      "claim_id": "CLM-UNSUP-001",
+      "claim": "Any single algorithm is universally superior across all cybersecurity domains.",
+      "reason": "Empirical evidence proves distinct domain-specific advantages: CatBoost excels at protocol-disjoint DDoS, Random Forest at polymorphic evasion drift, and XGBoost/LightGBM at high-throughput network monitoring.",
+      "status": "REJECTED_AS_UNSUPPORTED"
+    },
+    {
+      "claim_id": "CLM-UNSUP-002",
+      "claim": "A 1.0000 F1 score guarantees zero errors in real-world production deployment.",
+      "reason": "1.0000 F1 reflects strong linear/orthogonal separability of volumetric and TCP flow metrics on the benchmark partition, not an absence of adversarial packet evasion in live network deployments.",
+      "status": "REJECTED_AS_UNSUPPORTED"
+    }
+  ],
+  "claims_requiring_more_evidence": [
+    {
+      "claim_id": "CLM-REQ-001",
+      "claim": "CatBoost is statistically significantly superior to XGBoost on CIC-DDoS2019 at alpha = 0.05.",
+      "reason": "With N=3 folds, the paired Wilcoxon test statistic yields p = 0.25 (minimum achievable p-value for N=3 is 0.25). While CatBoost achieved higher mean F1 (1.0000 vs 0.9997), confirming asymptotic statistical significance requires N >= 10 folds.",
+      "status": "REQUIRES_MORE_FOLDS"
+    }
+  ],
+  "limitations": [
+    {
+      "limitation": "Statistical power of paired non-parametric tests is bounded by N=3 folds.",
+      "impact": "Small fold count prevents rejection of null hypothesis at p < 0.05 despite observable mean differences."
+    },
+    {
+      "limitation": "Static metadata features alone are insufficient for fine-grained polymorphic malware family attribution.",
+      "impact": "MalwareBazaar Macro F1 of 0.1882 reflects fundamental feature space limitations of static PE headers without dynamic API tracing."
+    },
+    {
+      "limitation": "Synthetic/benchmark flow partitions lack ISP packet loss jitter and carrier-grade noise.",
+      "impact": "Network intrusion models achieve near-perfect separation on synthetic flow distributions."
+    }
+  ]
+}

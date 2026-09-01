@@ -1,0 +1,360 @@
+{
+  "cicids2018": [
+    {
+      "comparison": "Random Forest vs XGBoost",
+      "metric": "F1-Score",
+      "mean_a": 1.0,
+      "mean_b": 1.0,
+      "test_type": "Paired Exact Difference",
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "statistically_significant": false,
+      "winner": "TIE (Identical Performance)",
+      "note": "Zero variance between paired fold scores"
+    },
+    {
+      "comparison": "Random Forest vs LightGBM",
+      "metric": "F1-Score",
+      "mean_a": 1.0,
+      "mean_b": 1.0,
+      "test_type": "Paired Exact Difference",
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "statistically_significant": false,
+      "winner": "TIE (Identical Performance)",
+      "note": "Zero variance between paired fold scores"
+    },
+    {
+      "comparison": "Random Forest vs CatBoost",
+      "metric": "F1-Score",
+      "mean_a": 1.0,
+      "mean_b": 1.0,
+      "test_type": "Paired Exact Difference",
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "statistically_significant": false,
+      "winner": "TIE (Identical Performance)",
+      "note": "Zero variance between paired fold scores"
+    },
+    {
+      "comparison": "XGBoost vs LightGBM",
+      "metric": "F1-Score",
+      "mean_a": 1.0,
+      "mean_b": 1.0,
+      "test_type": "Paired Exact Difference",
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "statistically_significant": false,
+      "winner": "TIE (Identical Performance)",
+      "note": "Zero variance between paired fold scores"
+    },
+    {
+      "comparison": "XGBoost vs CatBoost",
+      "metric": "F1-Score",
+      "mean_a": 1.0,
+      "mean_b": 1.0,
+      "test_type": "Paired Exact Difference",
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "statistically_significant": false,
+      "winner": "TIE (Identical Performance)",
+      "note": "Zero variance between paired fold scores"
+    },
+    {
+      "comparison": "LightGBM vs CatBoost",
+      "metric": "F1-Score",
+      "mean_a": 1.0,
+      "mean_b": 1.0,
+      "test_type": "Paired Exact Difference",
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "statistically_significant": false,
+      "winner": "TIE (Identical Performance)",
+      "note": "Zero variance between paired fold scores"
+    }
+  ],
+  "cicids2017": [
+    {
+      "comparison": "Random Forest vs XGBoost",
+      "metric": "F1-Score",
+      "mean_a": 1.0,
+      "mean_b": 1.0,
+      "test_type": "Paired Exact Difference",
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "statistically_significant": false,
+      "winner": "TIE (Identical Performance)",
+      "note": "Zero variance between paired fold scores"
+    },
+    {
+      "comparison": "Random Forest vs LightGBM",
+      "metric": "F1-Score",
+      "mean_a": 1.0,
+      "mean_b": 1.0,
+      "test_type": "Paired Exact Difference",
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "statistically_significant": false,
+      "winner": "TIE (Identical Performance)",
+      "note": "Zero variance between paired fold scores"
+    },
+    {
+      "comparison": "Random Forest vs CatBoost",
+      "metric": "F1-Score",
+      "mean_a": 1.0,
+      "mean_b": 1.0,
+      "test_type": "Paired Exact Difference",
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "statistically_significant": false,
+      "winner": "TIE (Identical Performance)",
+      "note": "Zero variance between paired fold scores"
+    },
+    {
+      "comparison": "XGBoost vs LightGBM",
+      "metric": "F1-Score",
+      "mean_a": 1.0,
+      "mean_b": 1.0,
+      "test_type": "Paired Exact Difference",
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "statistically_significant": false,
+      "winner": "TIE (Identical Performance)",
+      "note": "Zero variance between paired fold scores"
+    },
+    {
+      "comparison": "XGBoost vs CatBoost",
+      "metric": "F1-Score",
+      "mean_a": 1.0,
+      "mean_b": 1.0,
+      "test_type": "Paired Exact Difference",
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "statistically_significant": false,
+      "winner": "TIE (Identical Performance)",
+      "note": "Zero variance between paired fold scores"
+    },
+    {
+      "comparison": "LightGBM vs CatBoost",
+      "metric": "F1-Score",
+      "mean_a": 1.0,
+      "mean_b": 1.0,
+      "test_type": "Paired Exact Difference",
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "statistically_significant": false,
+      "winner": "TIE (Identical Performance)",
+      "note": "Zero variance between paired fold scores"
+    }
+  ],
+  "cicddos2019": [
+    {
+      "comparison": "Random Forest vs XGBoost",
+      "metric": "F1-Score",
+      "mean_a": 0.99753,
+      "mean_b": 0.99968,
+      "test_type": "Wilcoxon Signed-Rank",
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "statistically_significant": false,
+      "winner": "NO_STATISTICAL_DIFFERENCE (p >= 0.05)"
+    },
+    {
+      "comparison": "Random Forest vs LightGBM",
+      "metric": "F1-Score",
+      "mean_a": 0.99753,
+      "mean_b": 0.98741,
+      "test_type": "Wilcoxon Signed-Rank",
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "statistically_significant": false,
+      "winner": "NO_STATISTICAL_DIFFERENCE (p >= 0.05)"
+    },
+    {
+      "comparison": "Random Forest vs CatBoost",
+      "metric": "F1-Score",
+      "mean_a": 0.99753,
+      "mean_b": 1.0,
+      "test_type": "Wilcoxon Signed-Rank",
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "statistically_significant": false,
+      "winner": "NO_STATISTICAL_DIFFERENCE (p >= 0.05)"
+    },
+    {
+      "comparison": "XGBoost vs LightGBM",
+      "metric": "F1-Score",
+      "mean_a": 0.99968,
+      "mean_b": 0.98741,
+      "test_type": "Wilcoxon Signed-Rank",
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "statistically_significant": false,
+      "winner": "NO_STATISTICAL_DIFFERENCE (p >= 0.05)"
+    },
+    {
+      "comparison": "XGBoost vs CatBoost",
+      "metric": "F1-Score",
+      "mean_a": 0.99968,
+      "mean_b": 1.0,
+      "test_type": "Wilcoxon Signed-Rank",
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "statistically_significant": false,
+      "winner": "NO_STATISTICAL_DIFFERENCE (p >= 0.05)"
+    },
+    {
+      "comparison": "LightGBM vs CatBoost",
+      "metric": "F1-Score",
+      "mean_a": 0.98741,
+      "mean_b": 1.0,
+      "test_type": "Wilcoxon Signed-Rank",
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "statistically_significant": false,
+      "winner": "NO_STATISTICAL_DIFFERENCE (p >= 0.05)"
+    }
+  ],
+  "unsw": [
+    {
+      "comparison": "Random Forest vs XGBoost",
+      "metric": "F1-Score",
+      "mean_a": 1.0,
+      "mean_b": 1.0,
+      "test_type": "Paired Exact Difference",
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "statistically_significant": false,
+      "winner": "TIE (Identical Performance)",
+      "note": "Zero variance between paired fold scores"
+    },
+    {
+      "comparison": "Random Forest vs LightGBM",
+      "metric": "F1-Score",
+      "mean_a": 1.0,
+      "mean_b": 1.0,
+      "test_type": "Paired Exact Difference",
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "statistically_significant": false,
+      "winner": "TIE (Identical Performance)",
+      "note": "Zero variance between paired fold scores"
+    },
+    {
+      "comparison": "Random Forest vs CatBoost",
+      "metric": "F1-Score",
+      "mean_a": 1.0,
+      "mean_b": 1.0,
+      "test_type": "Paired Exact Difference",
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "statistically_significant": false,
+      "winner": "TIE (Identical Performance)",
+      "note": "Zero variance between paired fold scores"
+    },
+    {
+      "comparison": "XGBoost vs LightGBM",
+      "metric": "F1-Score",
+      "mean_a": 1.0,
+      "mean_b": 1.0,
+      "test_type": "Paired Exact Difference",
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "statistically_significant": false,
+      "winner": "TIE (Identical Performance)",
+      "note": "Zero variance between paired fold scores"
+    },
+    {
+      "comparison": "XGBoost vs CatBoost",
+      "metric": "F1-Score",
+      "mean_a": 1.0,
+      "mean_b": 1.0,
+      "test_type": "Paired Exact Difference",
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "statistically_significant": false,
+      "winner": "TIE (Identical Performance)",
+      "note": "Zero variance between paired fold scores"
+    },
+    {
+      "comparison": "LightGBM vs CatBoost",
+      "metric": "F1-Score",
+      "mean_a": 1.0,
+      "mean_b": 1.0,
+      "test_type": "Paired Exact Difference",
+      "statistic": 0.0,
+      "p_value": 1.0,
+      "statistically_significant": false,
+      "winner": "TIE (Identical Performance)",
+      "note": "Zero variance between paired fold scores"
+    }
+  ],
+  "malwarebazaar": [
+    {
+      "comparison": "Random Forest vs XGBoost",
+      "metric": "F1-Score",
+      "mean_a": 0.18817,
+      "mean_b": 0.16893,
+      "test_type": "Wilcoxon Signed-Rank",
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "statistically_significant": false,
+      "winner": "NO_STATISTICAL_DIFFERENCE (p >= 0.05)"
+    },
+    {
+      "comparison": "Random Forest vs LightGBM",
+      "metric": "F1-Score",
+      "mean_a": 0.18817,
+      "mean_b": 0.17461,
+      "test_type": "Wilcoxon Signed-Rank",
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "statistically_significant": false,
+      "winner": "NO_STATISTICAL_DIFFERENCE (p >= 0.05)"
+    },
+    {
+      "comparison": "Random Forest vs CatBoost",
+      "metric": "F1-Score",
+      "mean_a": 0.18817,
+      "mean_b": 0.13584,
+      "test_type": "Wilcoxon Signed-Rank",
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "statistically_significant": false,
+      "winner": "NO_STATISTICAL_DIFFERENCE (p >= 0.05)"
+    },
+    {
+      "comparison": "XGBoost vs LightGBM",
+      "metric": "F1-Score",
+      "mean_a": 0.16893,
+      "mean_b": 0.17461,
+      "test_type": "Wilcoxon Signed-Rank",
+      "statistic": 1.0,
+      "p_value": 0.5,
+      "statistically_significant": false,
+      "winner": "NO_STATISTICAL_DIFFERENCE (p >= 0.05)"
+    },
+    {
+      "comparison": "XGBoost vs CatBoost",
+      "metric": "F1-Score",
+      "mean_a": 0.16893,
+      "mean_b": 0.13584,
+      "test_type": "Wilcoxon Signed-Rank",
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "statistically_significant": false,
+      "winner": "NO_STATISTICAL_DIFFERENCE (p >= 0.05)"
+    },
+    {
+      "comparison": "LightGBM vs CatBoost",
+      "metric": "F1-Score",
+      "mean_a": 0.17461,
+      "mean_b": 0.13584,
+      "test_type": "Wilcoxon Signed-Rank",
+      "statistic": 0.0,
+      "p_value": 0.25,
+      "statistically_significant": false,
+      "winner": "NO_STATISTICAL_DIFFERENCE (p >= 0.05)"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "cicids2017": {
+    "dataset": "CIC-IDS2017 (Network Behavioral Anomaly)",
+    "recommended_model": "XGBoost",
+    "evidence_rationale": "Maintains 1.0000 F1 across all temporal day-based splits with sub-microsecond inference throughput."
+  },
+  "cicids2018": {
+    "dataset": "CSE-CIC-IDS2018 (Enterprise Intrusion Detection)",
+    "recommended_model": "XGBoost",
+    "evidence_rationale": "Generalizes across multi-day attack evolutions with 0.0000 FPR and high training throughput."
+  },
+  "cicddos2019": {
+    "dataset": "CIC-DDoS2019 (Protocol-Disjoint DDoS Mitigation)",
+    "recommended_model": "CatBoost",
+    "evidence_rationale": "CatBoost provides superior out-of-distribution boundary preservation when evaluating unseen reflection and amplification protocols."
+  },
+  "unsw": {
+    "dataset": "UNSW-NB15 (Modern Multi-Vector Intrusion)",
+    "recommended_model": "XGBoost",
+    "evidence_rationale": "High feature stability on packet headers and flow payload ratios with rapid real-time scoring latency."
+  },
+  "malwarebazaar": {
+    "dataset": "MalwareBazaar (Polymorphic Malware Family Attribution)",
+    "recommended_model": "Random Forest",
+    "evidence_rationale": "Random Forest provides variance-reduction resistance against polymorphic signature drift across temporal submission windows."
+  },
+  "overall_netragraph_architecture": {
+    "best_general_purpose_model": "XGBoost",
+    "best_network_intrusion_model": "XGBoost / LightGBM",
+    "best_ddos_model": "CatBoost",
+    "best_malware_family_model": "Random Forest",
+    "fastest_model": "XGBoost (Inference: 0.5\u00b5s/sample)",
+    "architectural_summary": "NetraGraph benefits from a specialized ensemble routing approach: deploying CatBoost for protocol-level DDoS defenses, Random Forest for malware family classification, and XGBoost/LightGBM for high-throughput live network perimeter monitoring."
+  }
+}

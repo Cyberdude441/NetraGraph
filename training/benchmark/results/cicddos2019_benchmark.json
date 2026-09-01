@@ -1,0 +1,202 @@
+{
+  "dataset_name": "cicddos2019",
+  "validation_strategy": "Protocol-Disjoint Split: Train on DNS/LDAP/MSSQL DDoS, Test on NetBIOS/Syn/UDP-Lag DDoS",
+  "is_multiclass": false,
+  "target_column": "Label",
+  "num_features": 35,
+  "num_train_samples": 16000,
+  "num_test_samples": 8000,
+  "best_overall_model": "CatBoost",
+  "best_model_under_fpr_1pct": "Random Forest",
+  "best_model_under_fpr_01pct": "Random Forest",
+  "algorithm_results": [
+    {
+      "accuracy": 0.99675,
+      "precision": 0.99364,
+      "recall": 1.0,
+      "f1": 0.99681,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "fpr": 0.0066,
+      "fnr": 0.0,
+      "training_time_sec": 1.091,
+      "inference_time_sec": 0.0369,
+      "inference_per_sample_us": 4.61,
+      "num_features": 35,
+      "num_train_samples": 16000,
+      "num_test_samples": 8000,
+      "confusion_matrix": [
+        [
+          3914,
+          26
+        ],
+        [
+          0,
+          4060
+        ]
+      ],
+      "fpr_1pct_metrics": {
+        "recall_at_fpr_1pct": 1.0,
+        "f1_at_fpr_1pct": 1.0,
+        "threshold": 0.99
+      },
+      "fpr_01pct_metrics": {
+        "recall_at_fpr_01pct": 1.0,
+        "f1_at_fpr_01pct": 1.0,
+        "threshold": 0.99
+      },
+      "algorithm": "Random Forest",
+      "device_used": "CPU",
+      "hyperparameters": {
+        "n_estimators": 100,
+        "max_depth": 15,
+        "min_samples_split": 2,
+        "class_weight": "balanced",
+        "random_state": 42,
+        "n_jobs": -1
+      }
+    },
+    {
+      "accuracy": 0.99925,
+      "precision": 0.99852,
+      "recall": 1.0,
+      "f1": 0.99926,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "fpr": 0.00152,
+      "fnr": 0.0,
+      "training_time_sec": 0.316,
+      "inference_time_sec": 0.0045,
+      "inference_per_sample_us": 0.56,
+      "num_features": 35,
+      "num_train_samples": 16000,
+      "num_test_samples": 8000,
+      "confusion_matrix": [
+        [
+          3934,
+          6
+        ],
+        [
+          0,
+          4060
+        ]
+      ],
+      "fpr_1pct_metrics": {
+        "recall_at_fpr_1pct": 1.0,
+        "f1_at_fpr_1pct": 1.0,
+        "threshold": 0.99979
+      },
+      "fpr_01pct_metrics": {
+        "recall_at_fpr_01pct": 1.0,
+        "f1_at_fpr_01pct": 1.0,
+        "threshold": 0.99979
+      },
+      "algorithm": "XGBoost",
+      "device_used": "CPU",
+      "hyperparameters": {
+        "n_estimators": 100,
+        "max_depth": 6,
+        "learning_rate": 0.1,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "random_state": 42,
+        "eval_metric": "logloss",
+        "tree_method": "hist"
+      }
+    },
+    {
+      "accuracy": 0.96875,
+      "precision": 0.942,
+      "recall": 1.0,
+      "f1": 0.97013,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "fpr": 0.06345,
+      "fnr": 0.0,
+      "training_time_sec": 0.212,
+      "inference_time_sec": 0.0158,
+      "inference_per_sample_us": 1.98,
+      "num_features": 35,
+      "num_train_samples": 16000,
+      "num_test_samples": 8000,
+      "confusion_matrix": [
+        [
+          3690,
+          250
+        ],
+        [
+          0,
+          4060
+        ]
+      ],
+      "fpr_1pct_metrics": {
+        "recall_at_fpr_1pct": 1.0,
+        "f1_at_fpr_1pct": 1.0,
+        "threshold": 0.99997
+      },
+      "fpr_01pct_metrics": {
+        "recall_at_fpr_01pct": 1.0,
+        "f1_at_fpr_01pct": 1.0,
+        "threshold": 0.99997
+      },
+      "algorithm": "LightGBM",
+      "device_used": "CPU",
+      "hyperparameters": {
+        "n_estimators": 100,
+        "max_depth": 6,
+        "learning_rate": 0.1,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "random_state": 42,
+        "verbose": -1
+      }
+    },
+    {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "training_time_sec": 0.837,
+      "inference_time_sec": 0.0046,
+      "inference_per_sample_us": 0.57,
+      "num_features": 35,
+      "num_train_samples": 16000,
+      "num_test_samples": 8000,
+      "confusion_matrix": [
+        [
+          3940,
+          0
+        ],
+        [
+          0,
+          4060
+        ]
+      ],
+      "fpr_1pct_metrics": {
+        "recall_at_fpr_1pct": 1.0,
+        "f1_at_fpr_1pct": 1.0,
+        "threshold": 0.99885
+      },
+      "fpr_01pct_metrics": {
+        "recall_at_fpr_01pct": 1.0,
+        "f1_at_fpr_01pct": 1.0,
+        "threshold": 0.99885
+      },
+      "algorithm": "CatBoost",
+      "device_used": "CPU",
+      "hyperparameters": {
+        "iterations": 100,
+        "depth": 6,
+        "learning_rate": 0.1,
+        "random_seed": 42,
+        "verbose": 0,
+        "task_type": "CPU"
+      }
+    }
+  ],
+  "timestamp": "2026-09-01T04:21:30Z"
+}

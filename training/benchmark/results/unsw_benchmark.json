@@ -1,0 +1,202 @@
+{
+  "dataset_name": "unsw",
+  "validation_strategy": "UNSW-NB15 Official Train/Test Partition Split with out-of-distribution attack variants",
+  "is_multiclass": false,
+  "target_column": "label",
+  "num_features": 51,
+  "num_train_samples": 16000,
+  "num_test_samples": 8000,
+  "best_overall_model": "Random Forest",
+  "best_model_under_fpr_1pct": "Random Forest",
+  "best_model_under_fpr_01pct": "Random Forest",
+  "algorithm_results": [
+    {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "training_time_sec": 2.469,
+      "inference_time_sec": 0.0377,
+      "inference_per_sample_us": 4.72,
+      "num_features": 51,
+      "num_train_samples": 16000,
+      "num_test_samples": 8000,
+      "confusion_matrix": [
+        [
+          4375,
+          0
+        ],
+        [
+          0,
+          3625
+        ]
+      ],
+      "fpr_1pct_metrics": {
+        "recall_at_fpr_1pct": 1.0,
+        "f1_at_fpr_1pct": 1.0,
+        "threshold": 0.9
+      },
+      "fpr_01pct_metrics": {
+        "recall_at_fpr_01pct": 1.0,
+        "f1_at_fpr_01pct": 1.0,
+        "threshold": 0.9
+      },
+      "algorithm": "Random Forest",
+      "device_used": "CPU",
+      "hyperparameters": {
+        "n_estimators": 100,
+        "max_depth": 15,
+        "min_samples_split": 2,
+        "class_weight": "balanced",
+        "random_state": 42,
+        "n_jobs": -1
+      }
+    },
+    {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "training_time_sec": 0.311,
+      "inference_time_sec": 0.0039,
+      "inference_per_sample_us": 0.49,
+      "num_features": 51,
+      "num_train_samples": 16000,
+      "num_test_samples": 8000,
+      "confusion_matrix": [
+        [
+          4375,
+          0
+        ],
+        [
+          0,
+          3625
+        ]
+      ],
+      "fpr_1pct_metrics": {
+        "recall_at_fpr_1pct": 1.0,
+        "f1_at_fpr_1pct": 1.0,
+        "threshold": 0.99871
+      },
+      "fpr_01pct_metrics": {
+        "recall_at_fpr_01pct": 1.0,
+        "f1_at_fpr_01pct": 1.0,
+        "threshold": 0.99871
+      },
+      "algorithm": "XGBoost",
+      "device_used": "CPU",
+      "hyperparameters": {
+        "n_estimators": 100,
+        "max_depth": 6,
+        "learning_rate": 0.1,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "random_state": 42,
+        "eval_metric": "logloss",
+        "tree_method": "hist"
+      }
+    },
+    {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "training_time_sec": 0.336,
+      "inference_time_sec": 0.017,
+      "inference_per_sample_us": 2.13,
+      "num_features": 51,
+      "num_train_samples": 16000,
+      "num_test_samples": 8000,
+      "confusion_matrix": [
+        [
+          4375,
+          0
+        ],
+        [
+          0,
+          3625
+        ]
+      ],
+      "fpr_1pct_metrics": {
+        "recall_at_fpr_1pct": 1.0,
+        "f1_at_fpr_1pct": 1.0,
+        "threshold": 0.9998
+      },
+      "fpr_01pct_metrics": {
+        "recall_at_fpr_01pct": 1.0,
+        "f1_at_fpr_01pct": 1.0,
+        "threshold": 0.9998
+      },
+      "algorithm": "LightGBM",
+      "device_used": "CPU",
+      "hyperparameters": {
+        "n_estimators": 100,
+        "max_depth": 6,
+        "learning_rate": 0.1,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "random_state": 42,
+        "verbose": -1
+      }
+    },
+    {
+      "accuracy": 1.0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0,
+      "roc_auc": 1.0,
+      "pr_auc": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "training_time_sec": 0.972,
+      "inference_time_sec": 0.0062,
+      "inference_per_sample_us": 0.78,
+      "num_features": 51,
+      "num_train_samples": 16000,
+      "num_test_samples": 8000,
+      "confusion_matrix": [
+        [
+          4375,
+          0
+        ],
+        [
+          0,
+          3625
+        ]
+      ],
+      "fpr_1pct_metrics": {
+        "recall_at_fpr_1pct": 1.0,
+        "f1_at_fpr_1pct": 1.0,
+        "threshold": 0.99778
+      },
+      "fpr_01pct_metrics": {
+        "recall_at_fpr_01pct": 1.0,
+        "f1_at_fpr_01pct": 1.0,
+        "threshold": 0.99778
+      },
+      "algorithm": "CatBoost",
+      "device_used": "CPU",
+      "hyperparameters": {
+        "iterations": 100,
+        "depth": 6,
+        "learning_rate": 0.1,
+        "random_seed": 42,
+        "verbose": 0,
+        "task_type": "CPU"
+      }
+    }
+  ],
+  "timestamp": "2026-09-01T04:21:47Z"
+}
