@@ -386,6 +386,13 @@ class AuthService:
             await db.execute(
                 update(RefreshToken).where(RefreshToken.session_id == session_id).values(is_revoked=True)
             )
+        elif user_id:
+            await db.execute(
+                update(AuthSession).where(AuthSession.user_id == user_id).values(is_revoked=True)
+            )
+            await db.execute(
+                update(RefreshToken).where(RefreshToken.user_id == user_id).values(is_revoked=True)
+            )
 
         db.add(AuditLogRecord(
             user_id=user_id,

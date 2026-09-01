@@ -31,7 +31,7 @@ export const Route = createFileRoute("/")({
 function LoginPage() {
   const navigate = useNavigate();
   const [step, setStep] = useState<"EMAIL" | "OTP">("EMAIL");
-  const [email, setEmail] = useState("officer.investigator@gmail.com");
+  const [email, setEmail] = useState("");
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -84,26 +84,31 @@ function LoginPage() {
 
       const data = await res.json();
       if (!res.ok) {
-        setError(data.detail || "Unable to dispatch OTP. Please check your network.");
+        setError(data.detail || "Unable to dispatch OTP. Please try again.");
       } else {
         setStep("OTP");
         setCountdown(300);
         setCooldown(60);
         setOtp(["", "", "", "", "", ""]);
-        setInfoMessage("Verification code dispatched to your Gmail address.");
+        setInfoMessage("OTP sent to your email.");
       }
     } catch (err: any) {
-      // Fallback simulation for offline dev
-      setStep("OTP");
-      setCountdown(300);
-      setCooldown(60);
-      setInfoMessage("OTP dispatched (Mock Mode active for local development).");
+      setError("Network error connecting to NetraGraph authentication gateway.");
     } finally {
       setLoading(false);
     }
   };
 
   const handleOtpChange = (index: number, val: string) => {
+    // Handle paste of 6-digit code
+    if (val.length === 6 && /^\d+$/.test(val)) {
+      const digits = val.split("").slice(0, 6);
+      setOtp(digits);
+      const lastInput = document.getElementById("otp-input-5");
+      lastInput?.focus();
+      return;
+    }
+
     if (!/^\d*$/.test(val)) return;
     const newOtp = [...otp];
     newOtp[index] = val.slice(-1);
@@ -120,6 +125,16 @@ function LoginPage() {
     if (e.key === "Backspace" && !otp[index] && index > 0) {
       const prevInput = document.getElementById(`otp-input-${index - 1}`);
       prevInput?.focus();
+    }
+  };
+
+  const handlePaste = (e: React.ClipboardEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    const pastedData = e.clipboardData.getData("text").trim();
+    if (/^\d{6}$/.test(pastedData)) {
+      setOtp(pastedData.split(""));
+      const lastInput = document.getElementById("otp-input-5");
+      lastInput?.focus();
     }
   };
 
@@ -151,9 +166,9 @@ function LoginPage() {
 
       const data = await res.json();
       if (!res.ok) {
-        setError(data.detail || "Invalid verification code.");
+        setError(data.detail || "Invalid or expired verification code.");
       } else {
-        // Store session data
+        // Store session token in localStorage
         if (data.access_token) {
           localStorage.setItem("netragraph_token", data.access_token);
         }
@@ -163,8 +178,7 @@ function LoginPage() {
         navigate({ to: "/dashboard" });
       }
     } catch (err) {
-      // Direct navigation fallback in development
-      navigate({ to: "/dashboard" });
+      setError("Network error communicating with authentication service.");
     } finally {
       setLoading(false);
     }
@@ -253,11 +267,11 @@ function LoginPage() {
 
           <div className="mt-6">
             <h2 className="text-xl font-bold text-[#111827]">
-              {step === "EMAIL" ? "Officer Identification" : "Cryptographic OTP Verification"}
+              {step === "EMAIL" ? "Enter your Gmail address" : "Cryptographic OTP Verification"}
             </h2>
             <p className="mt-1 text-xs text-[#64748B]">
               {step === "EMAIL"
-                ? "Enter your designated Gmail account to receive a single-use token."
+                ? "Provide your authorized Gmail address to receive your authentication code."
                 : `Enter the 6-digit cryptographic code dispatched to ${email}`}
             </p>
           </div>
@@ -282,7 +296,7 @@ function LoginPage() {
             <form className="mt-6 space-y-4" onSubmit={handleRequestOtp}>
               <div>
                 <label className="block text-xs font-semibold text-[#111827] mb-1.5">
-                  Authorized Gmail Address
+                  Enter your Gmail address
                 </label>
                 <div className="flex items-center gap-2 rounded-md border border-[#E5E7EB] bg-[#F8FAF8] px-3.5 py-2.5 text-xs text-[#111827] focus-within:border-[#16A34A] focus-within:bg-white focus-within:ring-1 focus-within:ring-[#16A34A]">
                   <Mail className="size-4 text-[#64748B]" />
@@ -290,7 +304,7 @@ function LoginPage() {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="officer@gmail.com"
+                    placeholder="yourname@gmail.com"
                     required
                     className="w-full bg-transparent text-xs font-mono font-semibold outline-none text-[#111827]"
                   />
@@ -316,7 +330,7 @@ function LoginPage() {
                 ) : (
                   <KeyRound className="size-4" />
                 )}
-                <span>Request Cryptographic OTP</span>
+                <span>Send OTP</span>
               </button>
             </form>
           )}
@@ -344,6 +358,7 @@ function LoginPage() {
                       value={digit}
                       onChange={(e) => handleOtpChange(idx, e.target.value)}
                       onKeyDown={(e) => handleKeyDown(idx, e)}
+                      onPaste={handlePaste}
                       autoFocus={idx === 0}
                       className="size-12 rounded-md border border-[#E5E7EB] bg-[#F8FAF8] text-center font-mono text-lg font-bold text-[#111827] focus:border-[#16A34A] focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#16A34A]"
                     />

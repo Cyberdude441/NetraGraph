@@ -75,6 +75,21 @@ class LogoutResponse(BaseModel):
     message: str
 
 
+def extract_client_ip(request: Request) -> str:
+    """Extract real client IP address, properly handling reverse proxies (X-Forwarded-For, X-Real-IP)."""
+    forwarded = request.headers.get("x-forwarded-for")
+    if forwarded:
+        client_ip = forwarded.split(",")[0].strip()
+        if client_ip:
+            return client_ip
+    real_ip = request.headers.get("x-real-ip")
+    if real_ip:
+        client_ip = real_ip.strip()
+        if client_ip:
+            return client_ip
+    return request.client.host if request.client else "127.0.0.1"
+
+
 # ============================================================
 # API Endpoints
 # ============================================================
@@ -90,7 +105,7 @@ async def request_otp_endpoint(
     request: Request,
     db: AsyncSession = Depends(get_async_db),
 ):
-    client_ip = request.client.host if request.client else "127.0.0.1"
+    client_ip = extract_client_ip(request)
     user_agent = request.headers.get("user-agent", "Unknown")
 
     success, message = await auth_service.request_otp(
@@ -118,7 +133,7 @@ async def verify_otp_endpoint(
     response: Response,
     db: AsyncSession = Depends(get_async_db),
 ):
-    client_ip = request.client.host if request.client else "127.0.0.1"
+    client_ip = extract_client_ip(request)
     user_agent = request.headers.get("user-agent", "Unknown")
 
     success, auth_data, message = await auth_service.verify_otp(

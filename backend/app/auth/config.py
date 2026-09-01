@@ -6,22 +6,52 @@ from __future__ import annotations
 
 import os
 from typing import List
+from pathlib import Path
 from dotenv import load_dotenv
 
-load_dotenv()
+# Search for .env file across project hierarchy
+_file_path = Path(__file__).resolve()
+_backend_dir = _file_path.parents[2]  # backend/
+_root_dir = _file_path.parents[3]     # workspace root
+
+if (_root_dir / ".env").exists():
+    load_dotenv(dotenv_path=_root_dir / ".env", override=True)
+if (_backend_dir / ".env").exists():
+    load_dotenv(dotenv_path=_backend_dir / ".env", override=True)
+load_dotenv(override=False)
+
+
+import urllib.parse
+
+def _normalize_db_url(raw_url: str) -> str:
+    """Normalize database connection string, URL-encoding special characters in password."""
+    if not raw_url:
+        return raw_url
+    try:
+        if "://" in raw_url and "@" in raw_url:
+            scheme, rest = raw_url.split("://", 1)
+            creds, host_db = rest.rsplit("@", 1)
+            if ":" in creds:
+                user, password = creds.split(":", 1)
+                unquoted_pw = urllib.parse.unquote_plus(password)
+                encoded_pw = urllib.parse.quote_plus(unquoted_pw)
+                return f"{scheme}://{user}:{encoded_pw}@{host_db}"
+    except Exception:
+        pass
+    return raw_url
 
 
 class AuthConfig:
     # Database Settings
-    DATABASE_URL: str = os.getenv(
+    DATABASE_URL: str = _normalize_db_url(os.getenv(
         "DATABASE_URL",
         "postgresql+asyncpg://postgres:postgres@localhost:5432/netragraph"
-    )
+    ))
     # Synchronous DB URL for Alembic and sync health checks
-    DATABASE_SYNC_URL: str = os.getenv(
+    DATABASE_SYNC_URL: str = _normalize_db_url(os.getenv(
         "DATABASE_SYNC_URL",
         os.getenv("DATABASE_URL", "postgresql://postgres:postgres@localhost:5432/netragraph").replace("+asyncpg", "")
-    )
+    ))
     DB_POOL_SIZE: int = int(os.getenv("DB_POOL_SIZE", "10"))
     DB_MAX_OVERFLOW: int = int(os.getenv("DB_MAX_OVERFLOW", "20"))
     DB_POOL_TIMEOUT: int = int(os.getenv("DB_POOL_TIMEOUT", "30"))
@@ -47,9 +77,9 @@ class AuthConfig:
     EMAIL_PROVIDER: str = os.getenv("EMAIL_PROVIDER", "smtp")  # smtp, mock, console
     SMTP_HOST: str = os.getenv("SMTP_HOST", "smtp.gmail.com")
     SMTP_PORT: int = int(os.getenv("SMTP_PORT", "587"))
-    SMTP_USERNAME: str = os.getenv("SMTP_USERNAME", "")
-    SMTP_PASSWORD: str = os.getenv("SMTP_PASSWORD", "")
-    SMTP_FROM: str = os.getenv("SMTP_FROM", "netragraph-security@gmail.com")
+    SMTP_USERNAME: str = os.getenv("SMTP_USERNAME") or os.getenv("SMTP_USER") or os.getenv("GMAIL_USER") or ""
+    SMTP_PASSWORD: str = os.getenv("SMTP_PASSWORD") or os.getenv("SMTP_PASS") or os.getenv("GMAIL_APP_PASSWORD") or ""
+    SMTP_FROM: str = os.getenv("SMTP_FROM") or os.getenv("SMTP_USERNAME") or os.getenv("SMTP_USER") or "netragraph-security@gmail.com"
     SMTP_FROM_NAME: str = os.getenv("SMTP_FROM_NAME", "NetraGraph Security Division")
     SMTP_USE_TLS: bool = os.getenv("SMTP_USE_TLS", "True").lower() in ("true", "1", "t")
 

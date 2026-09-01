@@ -37,8 +37,13 @@ BACKEND_DIR = TEST_DIR.parent
 if str(BACKEND_DIR) not in sys.path:
     sys.path.insert(0, str(BACKEND_DIR))
 
+import os
+os.environ["TESTING"] = "1"
+os.environ["EMAIL_PROVIDER"] = "mock"
+
 from main import app
 from app.auth.config import auth_config
+auth_config.EMAIL_PROVIDER = "mock"
 from app.database.models import AuditLogRecord, AuthSession, OtpVerification, RefreshToken, Role, User
 from app.database.postgres import AsyncSessionLocal, init_db
 from app.services.auth_service import auth_service
@@ -49,6 +54,9 @@ from app.services.otp_service import otp_service
 @pytest.fixture(scope="module", autouse=True)
 def setup_database():
     """Initialize database tables and roles before running tests."""
+    import os
+    os.environ["EMAIL_PROVIDER"] = "mock"
+    auth_config.EMAIL_PROVIDER = "mock"
     asyncio.run(init_db())
     mock_email_provider.clear()
 

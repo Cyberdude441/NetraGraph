@@ -41,12 +41,43 @@ async def lifespan(app: FastAPI):
     logger.info("Shutting down NetraGraph AI Backend Layer.")
 
 
+from app.auth.config import auth_config
+
+
+class SecurityHeadersMiddleware:
+    """Production HTTP Security Headers Middleware (pure ASGI implementation)."""
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope["type"] != "http":
+            return await self.app(scope, receive, send)
+
+        async def send_wrapper(message):
+            if message["type"] == "http.response.start":
+                headers = list(message.get("headers", []))
+                headers.append((b"x-content-type-options", b"nosniff"))
+                headers.append((b"x-frame-options", b"DENY"))
+                headers.append((b"x-xss-protection", b"1; mode=block"))
+                headers.append((b"referrer-policy", b"strict-origin-when-cross-origin"))
+                headers.append((b"permissions-policy", b"geolocation=(), microphone=(), camera=()"))
+                if auth_config.COOKIE_SECURE:
+                    headers.append((b"strict-transport-security", b"max-age=31536000; includeSubDomains"))
+                message["headers"] = headers
+            await send(message)
+
+        await self.app(scope, receive, send_wrapper)
+
+
 app = FastAPI(
     title="NetraGraph AI — Backend Intelligence API Layer",
     description="Production-grade Cyber Cell & NCRB Open Government Data Intelligence Grid",
     version="2.5.0",
     lifespan=lifespan,
 )
+
+# Enable Security Headers
+app.add_middleware(SecurityHeadersMiddleware)
 
 # Enable CORS for frontend client
 app.add_middleware(

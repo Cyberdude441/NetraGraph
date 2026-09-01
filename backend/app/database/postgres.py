@@ -50,6 +50,11 @@ def _build_async_engine() -> AsyncEngine:
         return create_async_engine("sqlite+aiosqlite:///:memory:", echo=False)
 
     try:
+        import os
+        if os.getenv("TESTING") or os.getenv("PYTEST_CURRENT_TEST"):
+            from sqlalchemy.pool import NullPool
+            return create_async_engine(db_url, poolclass=NullPool, echo=False)
+
         engine = create_async_engine(
             db_url,
             pool_size=auth_config.DB_POOL_SIZE,
