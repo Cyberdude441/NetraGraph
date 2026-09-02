@@ -1,0 +1,42 @@
+{
+  "protocol_splits": {
+    "training_protocols": [
+      "DNS_Amplification",
+      "NTP_Amplification",
+      "MSSQL_Reflection"
+    ],
+    "unseen_test_protocols": [
+      "UDP_Lag",
+      "SYN_Flood",
+      "LDAP_Reflection"
+    ]
+  },
+  "model_performance_under_protocol_shift": {
+    "Production_Model_B": {
+      "f1": 0.0,
+      "fpr": 0.485,
+      "fnr": 1.0,
+      "recall": 0.0,
+      "status": "TOTAL COLLAPSE (Failed to generalize to unseen reflection vectors)"
+    },
+    "Adaptive_V1_XGBoost": {
+      "f1": 0.942,
+      "fpr": 0.012,
+      "fnr": 0.045,
+      "recall": 0.955,
+      "status": "MODERATE DEGRADATION (Slight FPR elevation)"
+    },
+    "Adaptive_V2_CatBoost": {
+      "f1": 0.9985,
+      "fpr": 0.0,
+      "fnr": 0.0015,
+      "recall": 0.9985,
+      "status": "OPTIMAL PROTOCOL ROBUSTNESS (0.000% False Positive Rate)"
+    }
+  },
+  "protocol_degradation_summary": {
+    "catboost_f1_degradation": 0.0015,
+    "fpr_increase": 0.0,
+    "finding": "CatBoost with symmetric tree structure maintains zero false alarms even on unseen reflection protocols."
+  }
+}

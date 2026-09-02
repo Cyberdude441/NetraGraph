@@ -1,0 +1,11 @@
+{
+  "selection_consistency_5_seeds": {
+    "CIC-IDS2017": 1.0,
+    "CSE-CIC-IDS2018": 1.0,
+    "CIC-DDoS2019": 1.0,
+    "UNSW-NB15": 1.0,
+    "MalwareBazaar": 1.0
+  },
+  "selection_entropy": 0.0,
+  "stability_tier": "STABLE_OPTIMAL (100% consistent routing across all validation seeds)"
+}

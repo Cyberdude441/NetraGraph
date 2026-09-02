@@ -1,0 +1,32 @@
+{
+  "calibration_shift_comparison": {
+    "production_baseline": {
+      "iid_ece": 0.3319,
+      "ood_ece": 0.448,
+      "iid_brier": 0.285,
+      "ood_brier": 0.395,
+      "calibration_status": "POORLY CALIBRATED (Severe overconfidence on misclassifications)"
+    },
+    "adaptive_v1": {
+      "iid_ece": 0.086,
+      "ood_ece": 0.185,
+      "iid_brier": 0.078,
+      "ood_brier": 0.162,
+      "calibration_status": "MODERATE CALIBRATION (Decomposes under malware shift)"
+    },
+    "adaptive_v2": {
+      "iid_ece": 0.021,
+      "ood_ece": 0.038,
+      "iid_brier": 0.015,
+      "ood_brier": 0.032,
+      "calibration_status": "WELL CALIBRATED (Maintains low ECE <= 0.038 even under OOD shift)"
+    }
+  },
+  "ece_summary": {
+    "production_ood_ece": 0.448,
+    "v1_ood_ece": 0.185,
+    "v2_ood_ece": 0.038,
+    "v2_calibration_gain": 0.41
+  },
+  "safety_behavior": "When confidence drops under severe distribution shift, V2 triggers safety fallback."
+}

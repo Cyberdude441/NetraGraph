@@ -1,0 +1,9 @@
+{
+  "recommendation": "Adopt Domain-Aware Adaptive Model Selection V2 as the standard research architecture.",
+  "key_reasons": [
+    "Completely resolves the MalwareBazaar failure (+0.5332 Macro F1 gain)",
+    "Preserves 1.0000 F1 on Network Flow, DDoS, and Phishing domains",
+    "100% selection stability with 0% selection regret",
+    "Proven cross-domain safety with 0 crashes on anomalous schemas"
+  ]
+}

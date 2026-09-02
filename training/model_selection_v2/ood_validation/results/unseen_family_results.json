@@ -1,0 +1,31 @@
+{
+  "known_families_evaluation": {
+    "families": [
+      "AgentTesla",
+      "RedLine",
+      "Formbook",
+      "LokiBot",
+      "Remcos",
+      "SnakeKeylogger",
+      "AsyncRAT",
+      "GuLoader"
+    ],
+    "macro_f1": 0.9845,
+    "weighted_f1": 0.989,
+    "minority_family_recall": 0.952,
+    "precision": 0.986,
+    "sample_count": 800
+  },
+  "unseen_families_evaluation": {
+    "holdout_unseen_families": [
+      "IcedID",
+      "Emotet"
+    ],
+    "sample_count": 200,
+    "novelty_detection_auc": 0.941,
+    "low_confidence_flag_rate": 0.915,
+    "overconfident_misattribution_rate": 0.085
+  },
+  "open_set_rejection_capability": "When presented with unseen malware families, the confidence engine correctly lowers prediction confidence below the 0.55 threshold for 91.5% of samples, triggering fallback inspection.",
+  "explicit_limitations": "In a closed-world multi-class setup without open-set rejection, unseen families will be assigned to the closest structural neighbor. V2 mitigates this via Shannon entropy and prediction margin thresholds."
+}

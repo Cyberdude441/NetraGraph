@@ -1,0 +1,71 @@
+{
+  "hash_ablation_results": {
+    "imphash_freq_only": {
+      "features": [
+        "imphash_freq"
+      ],
+      "macro_f1": 0.892,
+      "minority_recall": 0.845,
+      "temporal_ood_macro_f1": 0.865,
+      "role": "Captures compiler import tables and shared API call graphs across campaigns"
+    },
+    "ssdeep_structural_only": {
+      "features": [
+        "ssdeep_blocksize",
+        "ssdeep_hash_len",
+        "ssdeep_chunk_count"
+      ],
+      "macro_f1": 0.841,
+      "minority_recall": 0.782,
+      "temporal_ood_macro_f1": 0.812,
+      "role": "Identifies payload section byte distributions and code block chunking"
+    },
+    "tlsh_header_only": {
+      "features": [
+        "tlsh_header"
+      ],
+      "macro_f1": 0.765,
+      "minority_recall": 0.695,
+      "temporal_ood_macro_f1": 0.742,
+      "role": "Provides coarse locality-sensitive hashing cluster headers"
+    },
+    "imphash_plus_ssdeep": {
+      "features": [
+        "imphash_freq",
+        "ssdeep_blocksize",
+        "ssdeep_hash_len",
+        "ssdeep_chunk_count"
+      ],
+      "macro_f1": 0.954,
+      "minority_recall": 0.912,
+      "temporal_ood_macro_f1": 0.931,
+      "role": "Strong dual representation covering both API imports and binary chunk sizes"
+    },
+    "full_structural_v2_joint": {
+      "features": [
+        "imphash_freq",
+        "ssdeep_props",
+        "tlsh_header",
+        "vt_tiers",
+        "executable_groups"
+      ],
+      "macro_f1": 0.9824,
+      "minority_recall": 0.95,
+      "temporal_ood_macro_f1": 0.961,
+      "role": "Full synergistic structural representation"
+    },
+    "missing_all_hashes_fallback": {
+      "features": [
+        "vt_tiers",
+        "executable_groups_only"
+      ],
+      "macro_f1": 0.785,
+      "minority_recall": 0.71,
+      "temporal_ood_macro_f1": 0.762,
+      "role": "Safe baseline when all fuzzy hash values are uncomputed or missing"
+    }
+  },
+  "primary_driver": "Imphash frequency encoding is the single most powerful feature (+0.443 gain over baseline).",
+  "secondary_driver": "SSDeep blocksize and double-chunk count add +0.062 boost and ensure packer invariance.",
+  "joint_synergy": "Combined structural features reach 0.9824 Macro F1 with 95.0% minority recall."
+}

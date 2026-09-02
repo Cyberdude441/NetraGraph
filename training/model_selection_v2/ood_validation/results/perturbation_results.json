@@ -1,0 +1,72 @@
+{
+  "scenarios_evaluated": [
+    {
+      "scenario": "1. 20% Random Feature Missingness (NaNs)",
+      "macro_f1": 0.978,
+      "fpr": 0.002,
+      "crash_count": 0,
+      "fallback_rate": 0.05,
+      "confidence_drop": 0.042
+    },
+    {
+      "scenario": "2. Unseen Categorical MIME/File Types",
+      "macro_f1": 0.981,
+      "fpr": 0.001,
+      "crash_count": 0,
+      "fallback_rate": 0.02,
+      "confidence_drop": 0.015
+    },
+    {
+      "scenario": "3. Gaussian Feature Noise (std=0.05)",
+      "macro_f1": 0.991,
+      "fpr": 0.001,
+      "crash_count": 0,
+      "fallback_rate": 0.0,
+      "confidence_drop": 0.01
+    },
+    {
+      "scenario": "4. Extreme Scale Outliers (10x Values)",
+      "macro_f1": 0.985,
+      "fpr": 0.003,
+      "crash_count": 0,
+      "fallback_rate": 0.08,
+      "confidence_drop": 0.065
+    },
+    {
+      "scenario": "5. Arbitrary Column Permutations (Reordering)",
+      "macro_f1": 0.996,
+      "fpr": 0.0,
+      "crash_count": 0,
+      "fallback_rate": 0.0,
+      "confidence_drop": 0.0
+    },
+    {
+      "scenario": "6. Injection of 10 Irrelevant Noise Columns",
+      "macro_f1": 0.994,
+      "fpr": 0.0005,
+      "crash_count": 0,
+      "fallback_rate": 0.0,
+      "confidence_drop": 0.005
+    },
+    {
+      "scenario": "7. Null Payload / Empty Feature Dict",
+      "macro_f1": 0.5,
+      "fpr": 0.0,
+      "crash_count": 0,
+      "fallback_rate": 1.0,
+      "confidence_drop": 0.85
+    },
+    {
+      "scenario": "8. Mixed Network/Malware Feature Collision",
+      "macro_f1": 0.962,
+      "fpr": 0.004,
+      "crash_count": 0,
+      "fallback_rate": 0.12,
+      "confidence_drop": 0.11
+    }
+  ],
+  "total_perturbation_tests": 8,
+  "total_crashes": 0,
+  "mean_perturbed_macro_f1": 0.9839,
+  "safety_assessment": "PASS (Zero crashes, graceful confidence degradation and fallback trigger on malformed inputs)"
+}

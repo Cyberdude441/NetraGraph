@@ -1,0 +1,21 @@
+{
+  "benchmark_comparison": {
+    "production_iid_f1": 0.59195,
+    "production_ood_f1": 0.589,
+    "adaptive_v1_iid_f1": 0.88983,
+    "adaptive_v1_ood_f1": 0.887,
+    "adaptive_v2_iid_f1": 0.99648,
+    "adaptive_v2_ood_f1": 0.9955,
+    "v1_to_v2_ood_delta": 0.1085
+  },
+  "domain_breakdown": {
+    "network_intrusion_iid": 1.0,
+    "network_intrusion_ood": 0.9985,
+    "ddos_protection_iid": 1.0,
+    "ddos_protection_ood": 0.9985,
+    "url_phishing_iid": 1.0,
+    "url_phishing_ood": 0.985,
+    "malware_bazaar_iid": 0.9824,
+    "malware_bazaar_ood": 0.961
+  }
+}

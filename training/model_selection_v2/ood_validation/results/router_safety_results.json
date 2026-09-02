@@ -1,0 +1,141 @@
+{
+  "total_safety_tests": 12,
+  "passed_tests": 12,
+  "crashes": 0,
+  "silent_misroutings": 0,
+  "router_safety_status": "PASS",
+  "audit_details": [
+    {
+      "test_name": "1_valid_network_flow",
+      "status": "SUCCESS",
+      "domain": "network_intrusion",
+      "domain_confidence": 0.9926,
+      "representation": "NETWORK_FLOW_V1",
+      "model": "LightGBM",
+      "selection_confidence": 0.957,
+      "fallback_used": false,
+      "reason": "Strong domain alignment and decisive prediction margin."
+    },
+    {
+      "test_name": "2_valid_malware_record",
+      "status": "SUCCESS",
+      "domain": "malware_attribution",
+      "domain_confidence": 1.0,
+      "representation": "MALWARE_STRUCTURAL_V2",
+      "model": "CatBoost",
+      "selection_confidence": 0.96,
+      "fallback_used": false,
+      "reason": "Strong domain alignment and decisive prediction margin."
+    },
+    {
+      "test_name": "3_unknown_arbitrary_schema",
+      "status": "SUCCESS",
+      "domain": "unknown_domain",
+      "domain_confidence": 0.25,
+      "representation": "FALLBACK_TABULAR_V1",
+      "model": "Random Forest",
+      "selection_confidence": 0.66,
+      "fallback_used": true,
+      "reason": "Adequate domain alignment with moderate posterior confidence."
+    },
+    {
+      "test_name": "4_partial_flow_schema",
+      "status": "SUCCESS",
+      "domain": "network_intrusion",
+      "domain_confidence": 0.7112,
+      "representation": "NETWORK_FLOW_V1",
+      "model": "LightGBM",
+      "selection_confidence": 0.8445,
+      "fallback_used": false,
+      "reason": "Strong domain alignment and decisive prediction margin."
+    },
+    {
+      "test_name": "5_mixed_domain_schema",
+      "status": "SUCCESS",
+      "domain": "malware_attribution",
+      "domain_confidence": 0.839,
+      "representation": "MALWARE_STRUCTURAL_V2",
+      "model": "CatBoost",
+      "selection_confidence": 0.8956,
+      "fallback_used": false,
+      "reason": "Strong domain alignment and decisive prediction margin."
+    },
+    {
+      "test_name": "6_empty_dataframe",
+      "status": "SUCCESS",
+      "domain": "unknown_domain",
+      "domain_confidence": 0.25,
+      "representation": "FALLBACK_TABULAR_V1",
+      "model": "Random Forest",
+      "selection_confidence": 0.0,
+      "fallback_used": true,
+      "reason": "Empty input payload provided; triggered safety fallback."
+    },
+    {
+      "test_name": "7_single_row_dict",
+      "status": "SUCCESS",
+      "domain": "network_intrusion",
+      "domain_confidence": 0.7112,
+      "representation": "NETWORK_FLOW_V1",
+      "model": "LightGBM",
+      "selection_confidence": 0.8445,
+      "fallback_used": false,
+      "reason": "Strong domain alignment and decisive prediction margin."
+    },
+    {
+      "test_name": "8_batch_dataframe_100_rows",
+      "status": "SUCCESS",
+      "domain": "network_intrusion",
+      "domain_confidence": 0.7112,
+      "representation": "NETWORK_FLOW_V1",
+      "model": "LightGBM",
+      "selection_confidence": 0.8445,
+      "fallback_used": false,
+      "reason": "Strong domain alignment and decisive prediction margin."
+    },
+    {
+      "test_name": "9_unexpected_categoricals",
+      "status": "SUCCESS",
+      "domain": "malware_attribution",
+      "domain_confidence": 0.9479,
+      "representation": "MALWARE_STRUCTURAL_V2",
+      "model": "CatBoost",
+      "selection_confidence": 0.9392,
+      "fallback_used": false,
+      "reason": "Strong domain alignment and decisive prediction margin."
+    },
+    {
+      "test_name": "10_nan_matrix",
+      "status": "SUCCESS",
+      "domain": "network_intrusion",
+      "domain_confidence": 0.9479,
+      "representation": "NETWORK_FLOW_V1",
+      "model": "LightGBM",
+      "selection_confidence": 0.9392,
+      "fallback_used": false,
+      "reason": "Strong domain alignment and decisive prediction margin."
+    },
+    {
+      "test_name": "11_inf_matrix",
+      "status": "SUCCESS",
+      "domain": "network_intrusion",
+      "domain_confidence": 0.9479,
+      "representation": "NETWORK_FLOW_V1",
+      "model": "LightGBM",
+      "selection_confidence": 0.9392,
+      "fallback_used": false,
+      "reason": "Strong domain alignment and decisive prediction margin."
+    },
+    {
+      "test_name": "12_extreme_large_numbers",
+      "status": "SUCCESS",
+      "domain": "network_intrusion",
+      "domain_confidence": 0.7112,
+      "representation": "NETWORK_FLOW_V1",
+      "model": "LightGBM",
+      "selection_confidence": 0.8445,
+      "fallback_used": false,
+      "reason": "Strong domain alignment and decisive prediction margin."
+    }
+  ]
+}

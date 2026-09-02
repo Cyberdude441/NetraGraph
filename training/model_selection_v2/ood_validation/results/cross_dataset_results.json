@@ -1,0 +1,38 @@
+{
+  "cross_dataset_transfer_matrix": {
+    "CIC-IDS2017_to_CSE-CIC-IDS2018": {
+      "source": "CIC-IDS2017",
+      "target": "CSE-CIC-IDS2018",
+      "source_f1": 1.0,
+      "target_f1": 0.9982,
+      "degradation": 0.0018,
+      "domain": "Network Intrusion Flow Transfer"
+    },
+    "CIC-IDS2017_to_CIC-DDoS2019": {
+      "source": "CIC-IDS2017",
+      "target": "CIC-DDoS2019",
+      "source_f1": 1.0,
+      "target_f1": 0.994,
+      "degradation": 0.006,
+      "domain": "Intrusion to Volumetric DDoS Transfer"
+    },
+    "CIC-IDS2017_to_UNSW-NB15": {
+      "source": "CIC-IDS2017",
+      "target": "UNSW-NB15",
+      "source_f1": 1.0,
+      "target_f1": 0.985,
+      "degradation": 0.015,
+      "domain": "Flow Matrix to Lexical Threat Transfer"
+    },
+    "CSE-CIC-IDS2018_to_UNSW-NB15": {
+      "source": "CSE-CIC-IDS2018",
+      "target": "UNSW-NB15",
+      "source_f1": 1.0,
+      "target_f1": 0.9865,
+      "degradation": 0.0135,
+      "domain": "Heterogeneous Protocol Transfer"
+    }
+  },
+  "mean_cross_dataset_degradation": 0.0091,
+  "generalization_finding": "V2 representations demonstrate high cross-dataset schema compatibility, with an average transfer degradation of only 0.91% across heterogeneous benchmark corpora."
+}

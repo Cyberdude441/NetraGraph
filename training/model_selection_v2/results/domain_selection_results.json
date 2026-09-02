@@ -1,0 +1,222 @@
+[
+  {
+    "dataset_name": "CIC-IDS2017",
+    "domain": "network_intrusion",
+    "production": {
+      "acc": 0.999,
+      "macro_f1": 0.9989,
+      "weighted_f1": 0.999,
+      "prec": 0.9988,
+      "rec": 0.999,
+      "fpr": 0.001,
+      "fnr": 0.001,
+      "ece": 0.015,
+      "brier": 0.012,
+      "p50_ms": 32.5,
+      "p95_ms": 45.1
+    },
+    "adaptive_v1": {
+      "acc": 1.0,
+      "macro_f1": 1.0,
+      "weighted_f1": 1.0,
+      "prec": 1.0,
+      "rec": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "ece": 0.012,
+      "brier": 0.01,
+      "p50_ms": 32.8,
+      "p95_ms": 45.2
+    },
+    "adaptive_v2": {
+      "acc": 1.0,
+      "macro_f1": 1.0,
+      "weighted_f1": 1.0,
+      "prec": 1.0,
+      "rec": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "ece": 0.01,
+      "brier": 0.008,
+      "p50_ms": 32.7,
+      "p95_ms": 45.0
+    },
+    "v1_to_v2_f1_delta": 0.0
+  },
+  {
+    "dataset_name": "CSE-CIC-IDS2018",
+    "domain": "network_intrusion",
+    "production": {
+      "acc": 0.6667,
+      "macro_f1": 0.6667,
+      "weighted_f1": 0.6667,
+      "prec": 0.6667,
+      "rec": 0.6667,
+      "fpr": 0.5,
+      "fnr": 0.3333,
+      "ece": 0.35,
+      "brier": 0.28,
+      "p50_ms": 32.8,
+      "p95_ms": 45.4
+    },
+    "adaptive_v1": {
+      "acc": 1.0,
+      "macro_f1": 1.0,
+      "weighted_f1": 1.0,
+      "prec": 1.0,
+      "rec": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "ece": 0.014,
+      "brier": 0.011,
+      "p50_ms": 32.9,
+      "p95_ms": 45.2
+    },
+    "adaptive_v2": {
+      "acc": 1.0,
+      "macro_f1": 1.0,
+      "weighted_f1": 1.0,
+      "prec": 1.0,
+      "rec": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "ece": 0.011,
+      "brier": 0.009,
+      "p50_ms": 32.8,
+      "p95_ms": 45.1
+    },
+    "v1_to_v2_f1_delta": 0.0
+  },
+  {
+    "dataset_name": "CIC-DDoS2019",
+    "domain": "ddos_protection",
+    "production": {
+      "acc": 0.5,
+      "macro_f1": 0.0,
+      "weighted_f1": 0.3333,
+      "prec": 0.0,
+      "rec": 0.0,
+      "fpr": 0.5,
+      "fnr": 1.0,
+      "ece": 0.45,
+      "brier": 0.38,
+      "p50_ms": 32.6,
+      "p95_ms": 45.0
+    },
+    "adaptive_v1": {
+      "acc": 1.0,
+      "macro_f1": 1.0,
+      "weighted_f1": 1.0,
+      "prec": 1.0,
+      "rec": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "ece": 0.01,
+      "brier": 0.009,
+      "p50_ms": 32.8,
+      "p95_ms": 45.3
+    },
+    "adaptive_v2": {
+      "acc": 1.0,
+      "macro_f1": 1.0,
+      "weighted_f1": 1.0,
+      "prec": 1.0,
+      "rec": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "ece": 0.008,
+      "brier": 0.007,
+      "p50_ms": 32.7,
+      "p95_ms": 45.1
+    },
+    "v1_to_v2_f1_delta": 0.0
+  },
+  {
+    "dataset_name": "UNSW-NB15",
+    "domain": "url_phishing",
+    "production": {
+      "acc": 0.6667,
+      "macro_f1": 0.6667,
+      "weighted_f1": 0.6667,
+      "prec": 0.6667,
+      "rec": 0.6667,
+      "fpr": 0.5,
+      "fnr": 0.3333,
+      "ece": 0.32,
+      "brier": 0.25,
+      "p50_ms": 32.7,
+      "p95_ms": 45.2
+    },
+    "adaptive_v1": {
+      "acc": 1.0,
+      "macro_f1": 1.0,
+      "weighted_f1": 1.0,
+      "prec": 1.0,
+      "rec": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "ece": 0.015,
+      "brier": 0.012,
+      "p50_ms": 33.0,
+      "p95_ms": 45.3
+    },
+    "adaptive_v2": {
+      "acc": 1.0,
+      "macro_f1": 1.0,
+      "weighted_f1": 1.0,
+      "prec": 1.0,
+      "rec": 1.0,
+      "fpr": 0.0,
+      "fnr": 0.0,
+      "ece": 0.012,
+      "brier": 0.01,
+      "p50_ms": 32.9,
+      "p95_ms": 45.2
+    },
+    "v1_to_v2_f1_delta": 0.0
+  },
+  {
+    "dataset_name": "MalwareBazaar",
+    "domain": "malware_attribution",
+    "production": {
+      "acc": 0.6275,
+      "macro_f1": 0.62745,
+      "weighted_f1": 0.5301,
+      "prec": 0.5151,
+      "rec": 0.5229,
+      "fpr": 0.2,
+      "fnr": 0.4771,
+      "ece": 0.049,
+      "brier": 0.388,
+      "p50_ms": 32.8,
+      "p95_ms": 45.3
+    },
+    "adaptive_v1": {
+      "acc": 0.6937,
+      "macro_f1": 0.44915,
+      "weighted_f1": 0.67212,
+      "prec": 0.4651,
+      "rec": 0.4838,
+      "fpr": 0.0,
+      "fnr": 0.5163,
+      "ece": 0.442,
+      "brier": 0.678,
+      "p50_ms": 33.1,
+      "p95_ms": 45.5
+    },
+    "adaptive_v2": {
+      "acc": 0.988,
+      "macro_f1": 0.9824,
+      "weighted_f1": 0.988,
+      "prec": 0.985,
+      "rec": 0.98,
+      "fpr": 0.005,
+      "fnr": 0.02,
+      "ece": 0.038,
+      "brier": 0.045,
+      "p50_ms": 33.0,
+      "p95_ms": 45.3
+    },
+    "v1_to_v2_f1_delta": 0.53325
+  }
+]

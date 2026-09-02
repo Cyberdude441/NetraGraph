@@ -1,0 +1,6 @@
+{
+  "v1_selection_regret": 0.04213,
+  "v2_selection_regret": 0.0,
+  "regret_reduction": 0.04213,
+  "explanation": "Domain-aware V2 router selects oracle-optimal model (CatBoost/XGBoost) for all domains."
+}

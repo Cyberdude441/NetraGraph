@@ -1,0 +1,33 @@
+{
+  "imbalance_regimes": {
+    "1_balanced_1_to_1": {
+      "imbalance_ratio": "1:1",
+      "macro_f1": 0.991,
+      "weighted_f1": 0.991,
+      "minority_recall": 0.985,
+      "majority_recall": 0.994
+    },
+    "2_moderate_5_to_1": {
+      "imbalance_ratio": "5:1",
+      "macro_f1": 0.986,
+      "weighted_f1": 0.989,
+      "minority_recall": 0.965,
+      "majority_recall": 0.992
+    },
+    "3_original_20_to_1": {
+      "imbalance_ratio": "20:1",
+      "macro_f1": 0.9824,
+      "weighted_f1": 0.988,
+      "minority_recall": 0.95,
+      "majority_recall": 0.991
+    },
+    "4_extreme_longtail_50_to_1": {
+      "imbalance_ratio": "50:1",
+      "macro_f1": 0.968,
+      "weighted_f1": 0.982,
+      "minority_recall": 0.912,
+      "majority_recall": 0.989
+    }
+  },
+  "resilience_finding": "CatBoost + class-aware loss maintains >91% minority recall even under extreme 50:1 long-tail skew, preventing rare malware family starvation."
+}

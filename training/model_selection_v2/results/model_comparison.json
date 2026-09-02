@@ -1,0 +1,34 @@
+{
+  "candidate_evaluations": {
+    "XGBoost": {
+      "domains_preferred": [
+        "network_intrusion",
+        "url_phishing"
+      ],
+      "mean_f1": 0.996,
+      "latency_us": 1.8
+    },
+    "CatBoost": {
+      "domains_preferred": [
+        "ddos_protection",
+        "malware_attribution"
+      ],
+      "mean_f1": 0.994,
+      "latency_us": 1.2
+    },
+    "LightGBM": {
+      "domains_preferred": [
+        "network_intrusion"
+      ],
+      "mean_f1": 0.995,
+      "latency_us": 1.5
+    },
+    "Random Forest": {
+      "domains_preferred": [
+        "fallback_baseline"
+      ],
+      "mean_f1": 0.985,
+      "latency_us": 6.2
+    }
+  }
+}

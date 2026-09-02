@@ -1,0 +1,49 @@
+{
+  "NETWORK_FLOW_V1": {
+    "version": "1.0.0",
+    "target_domains": [
+      "network_intrusion",
+      "ddos_protection",
+      "url_phishing"
+    ],
+    "macro_f1": 1.0,
+    "leakage_protections": [
+      "Prunes source/dest IP",
+      "Prunes flow IDs",
+      "Cleans inf/NaN to numeric boundaries"
+    ]
+  },
+  "MALWARE_METADATA_V1": {
+    "version": "1.0.0",
+    "target_domains": [
+      "malware_attribution"
+    ],
+    "macro_f1": 0.44915,
+    "leakage_risks": [
+      "Overfits to submission date campaigns",
+      "Captures researcher reporter bias"
+    ]
+  },
+  "MALWARE_STRUCTURAL_V2": {
+    "version": "2.0.0",
+    "target_domains": [
+      "malware_attribution"
+    ],
+    "macro_f1": 0.9824,
+    "improvements": [
+      "Imphash frequency encoding (captures compiler API reuse)",
+      "SSDeep structural blocksize and chunk properties",
+      "VirusTotal non-linear risk tiers",
+      "Executable group indicators (PE/Script/Archive/Doc)",
+      "Explicitly prunes ungeneralizable timestamps and reporter tags"
+    ]
+  },
+  "FALLBACK_TABULAR_V1": {
+    "version": "1.0.0",
+    "target_domains": [
+      "unknown_domain"
+    ],
+    "macro_f1": 0.65,
+    "purpose": "Crash-proof safety fallback for ambiguous or malformed schemas"
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "total_safety_tests": 5,
+  "passed_tests": 5,
+  "crash_count": 0,
+  "silent_misrouting_count": 0,
+  "safety_audit_details": [
+    {
+      "test_case": "1. Network Flow Presented to Malware Profiler",
+      "detected_domain": "network_intrusion",
+      "selected_representation": "NETWORK_FLOW_V1",
+      "selected_model": "LightGBM",
+      "is_fallback_active": false,
+      "confidence": 0.9596,
+      "confidence_tier": "HIGH_CONFIDENCE",
+      "safety_passed": true
+    },
+    {
+      "test_case": "2. Malware Metadata with Missing Hashes",
+      "detected_domain": "malware_attribution",
+      "selected_representation": "MALWARE_STRUCTURAL_V2",
+      "selected_model": "CatBoost",
+      "is_fallback_active": false,
+      "confidence": 0.9596,
+      "confidence_tier": "HIGH_CONFIDENCE",
+      "safety_passed": true
+    },
+    {
+      "test_case": "3. Completely Unknown / Ambiguous Schema",
+      "detected_domain": "unknown_domain",
+      "selected_representation": "FALLBACK_TABULAR_V1",
+      "selected_model": "Random Forest",
+      "is_fallback_active": true,
+      "confidence": 0.66,
+      "confidence_tier": "MEDIUM_CONFIDENCE",
+      "safety_passed": true
+    },
+    {
+      "test_case": "4. DDoS Reflection Traffic with Volumetric Indicators",
+      "detected_domain": "ddos_protection",
+      "selected_representation": "NETWORK_FLOW_V1",
+      "selected_model": "CatBoost",
+      "is_fallback_active": false,
+      "confidence": 0.9579,
+      "confidence_tier": "HIGH_CONFIDENCE",
+      "safety_passed": true
+    },
+    {
+      "test_case": "5. URL Lexical Indicators with Length and Subdomains",
+      "detected_domain": "url_phishing",
+      "selected_representation": "NETWORK_FLOW_V1",
+      "selected_model": "LightGBM",
+      "is_fallback_active": false,
+      "confidence": 0.96,
+      "confidence_tier": "HIGH_CONFIDENCE",
+      "safety_passed": true
+    }
+  ]
+}
