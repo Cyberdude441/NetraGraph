@@ -246,15 +246,28 @@ def _predict(task: str, payload: dict, model_name: str | None = None):
             status_code=404,
             detail=f"No active model found for '{target_name}'. Activate a compatible model version in the Model Registry."
         )
-    try:
-        clean_payload = {k: v for k, v in payload.items() if k not in ["model_name", "evidence_id", "case_id"]}
-        result = LoadedModel(item["artifact_location"]).predict(clean_payload)
-    except RuntimeError as exc:
-        raise HTTPException(status_code=503, detail=SUPPORTED_MESSAGE) from exc
-    except ValueError as exc:
-        raise HTTPException(status_code=422, detail=f"Feature validation error: {str(exc)}") from exc
-    except Exception as exc:
-        raise HTTPException(status_code=500, detail=f"Inference execution failed: {str(exc)}") from exc
+    import time
+    from app.telemetry import trace_span, record_ml_inference
+
+    start_time = time.perf_counter()
+    with trace_span(f"ml.inference.{target_name}", {"model.name": target_name, "model.task": task}):
+        try:
+            clean_payload = {k: v for k, v in payload.items() if k not in ["model_name", "evidence_id", "case_id"]}
+            result = LoadedModel(item["artifact_location"]).predict(clean_payload)
+            duration = time.perf_counter() - start_time
+            record_ml_inference(item["model_name"], duration, success=True)
+        except RuntimeError as exc:
+            duration = time.perf_counter() - start_time
+            record_ml_inference(item["model_name"], duration, success=False, error_type="runtime_error")
+            raise HTTPException(status_code=503, detail=SUPPORTED_MESSAGE) from exc
+        except ValueError as exc:
+            duration = time.perf_counter() - start_time
+            record_ml_inference(item["model_name"], duration, success=False, error_type="validation_error")
+            raise HTTPException(status_code=422, detail=f"Feature validation error: {str(exc)}") from exc
+        except Exception as exc:
+            duration = time.perf_counter() - start_time
+            record_ml_inference(item["model_name"], duration, success=False, error_type="internal_error")
+            raise HTTPException(status_code=500, detail=f"Inference execution failed: {str(exc)}") from exc
 
     now_iso = datetime.now(timezone.utc).isoformat()
     prediction_id = f"PRED-{uuid.uuid4().hex[:10].upper()}"

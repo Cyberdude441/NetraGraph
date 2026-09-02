@@ -27,6 +27,7 @@ from ..database.models import (
 )
 from .email_provider import get_email_provider
 from .otp_service import otp_service
+from ..telemetry import record_auth_event
 
 logger = logging.getLogger("NetraGraphAuthService")
 
@@ -92,6 +93,7 @@ class AuthService:
         # 2. Check rate limit & cooldown
         allowed, rate_msg = otp_service.check_rate_limit(norm_email, ip_address)
         if not allowed:
+            record_auth_event("otp_request", "rate_limited")
             return False, rate_msg or "Rate limit exceeded. Please wait before retrying."
 
         # 3. Create fresh OTP in database
@@ -115,6 +117,7 @@ class AuthService:
         )
         db.add(audit)
         await db.commit()
+        record_auth_event("otp_request", "success")
 
         return True, "If eligible, an authentication OTP has been dispatched to your email."
 
@@ -264,6 +267,7 @@ class AuthService:
             metadata_json={"session_id": auth_session.id, "email": norm_email},
         ))
         await db.commit()
+        record_auth_event("otp_verify", "success")
 
         auth_data = {
             "access_token": access_token,
@@ -402,6 +406,7 @@ class AuthService:
             metadata_json={"session_id": session_id},
         ))
         await db.commit()
+        record_auth_event("logout", "success")
         return True
 
 

@@ -76,6 +76,11 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
+from app.telemetry import TelemetryMiddleware, get_metrics_payload
+
+# Enable Telemetry & Distributed Tracing
+app.add_middleware(TelemetryMiddleware)
+
 # Enable Security Headers
 app.add_middleware(SecurityHeadersMiddleware)
 
@@ -119,6 +124,17 @@ def root():
 @app.get("/health")
 def health_check():
     return {"status": "HEALTHY", "code": 200}
+
+
+@app.get("/metrics", tags=["System"])
+def metrics_endpoint():
+    """
+    Prometheus metrics exposition endpoint.
+    Returns standard Prometheus text format metrics for scraping.
+    """
+    from fastapi import Response
+    payload, content_type = get_metrics_payload()
+    return Response(content=payload, media_type=content_type)
 
 
 @app.get("/health/db", tags=["System"])

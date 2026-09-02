@@ -98,6 +98,10 @@ jobs:
         run: |
           python -m pytest backend/tests/test_phase10_container_and_orchestration.py -v
 
+      - name: Run Phase 11 Telemetry & Observability Tests (10 tests)
+        run: |
+          python -m pytest backend/tests/test_phase11_telemetry.py -v
+
       - name: Run System Regression Test Suite (14 tests)
         run: |
           python scripts/test_regression.py
