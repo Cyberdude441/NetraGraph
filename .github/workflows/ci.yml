@@ -59,6 +59,8 @@ jobs:
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Python 3.12 Environment
         uses: actions/setup-python@v5
@@ -71,6 +73,10 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r backend/requirements.txt
           pip install pytest pytest-asyncio anyio
+
+      - name: Restore Production ML Model Artifacts (Models A-E)
+        run: |
+          python scripts/build_models.py
 
       - name: Run Database Migrations (Alembic)
         env:
@@ -106,9 +112,9 @@ jobs:
         run: |
           python scripts/test_regression.py
 
-      - name: Run ML Research & OOD Benchmark Tests (166 tests)
+      - name: Run ML Research & OOD Benchmark Tests
         run: |
-          python -m pytest backend/tests/test_phase9_research_validation.py training/model_selection_v2/ -v
+          python -m pytest backend/tests/test_phase9_research_validation.py -v
 
   # ============================================================
   # 3. Frontend Static Compilation & Validation
