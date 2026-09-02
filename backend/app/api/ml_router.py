@@ -46,7 +46,11 @@ def _find_bundle(root: Path) -> Path:
 
 def _auto_register_local_artifacts() -> list[dict]:
     payload = registry._read()
-    known = {(item["model_name"], item["version"]) for item in payload.get("models", []) if isinstance(item, dict)}
+    known_models = {
+        (item["model_name"], item["version"]): item
+        for item in payload.get("models", [])
+        if isinstance(item, dict) and "model_name" in item and "version" in item
+    }
     registered: list[dict] = []
 
     search_roots = [output_root(), registry_root()]
@@ -68,14 +72,27 @@ def _auto_register_local_artifacts() -> list[dict]:
                 continue
 
             key = (model_name, version)
-            if key in known:
+            bundle_loc = str(bundle.parent)
+
+            # Check if already registered
+            if key in known_models:
+                existing_entry = known_models[key]
+                current_loc = existing_entry.get("artifact_location")
+                # Self-healing: If registered location does not exist or is missing model.joblib, repair it
+                if not current_loc or not Path(current_loc).exists() or not (Path(current_loc) / "model.joblib").exists():
+                    try:
+                        updated = registry.update_artifact_location(model_name, version, bundle_loc)
+                        known_models[key] = updated
+                        registered.append(updated)
+                    except (KeyError, OSError, ValueError):
+                        pass
                 continue
 
             artifact_hash = hashlib.sha256((bundle.parent / "model.joblib").read_bytes()).hexdigest()
             item = {
                 "model_name": model_name,
                 "version": version,
-                "artifact_location": str(bundle.parent),
+                "artifact_location": bundle_loc,
                 "artifact_sha256": artifact_hash,
                 "task_type": metadata.get("model_type"),
                 "framework": metadata.get("framework_versions", {}),
@@ -85,8 +102,9 @@ def _auto_register_local_artifacts() -> list[dict]:
                 "import_timestamp": metadata.get("training_timestamp") or datetime.now(timezone.utc).isoformat(),
             }
             try:
-                registered.append(registry.register(item))
-                known.add(key)
+                reg_item = registry.register(item)
+                registered.append(reg_item)
+                known_models[key] = reg_item
             except ValueError:
                 continue
 

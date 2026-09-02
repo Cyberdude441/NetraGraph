@@ -199,8 +199,8 @@ class TestPhase11TelemetryAndOperations:
         assert "no-new-privileges:true" in prod_services["prometheus"]["security_opt"]
         assert "no-new-privileges:true" in prod_services["grafana"]["security_opt"]
 
-    # 10. Production ML Models Isolation & Immutability
-    def test_10_production_ml_models_isolation_and_immutability(self):
+    # 10. Production ML Models Isolation & Immutability & Registry Self-Healing
+    def test_10_production_ml_models_isolation_and_immutability(self, tmp_path):
         artifacts_dir = ROOT_DIR / "artifacts"
         assert artifacts_dir.exists()
         for m in ["intrusion", "network-intrusion", "phishing-url", "webpage-phishing", "phishing-email"]:
@@ -208,3 +208,55 @@ class TestPhase11TelemetryAndOperations:
             assert m_dir.exists()
             assert (m_dir / "model.joblib").exists()
             assert (m_dir / "metadata.json").exists()
+
+        # Verify self-healing model registry resolution with clean isolation
+        from ml.registry.model_registry import ModelRegistry
+        from app.api.ml_router import _auto_register_local_artifacts, registry as global_registry
+
+        # 1. Test isolated ModelRegistry instance without touching persistent repository registry
+        test_registry_dir = tmp_path / "models" / "registry"
+        test_registry = ModelRegistry(test_registry_dir)
+
+        stale_item = {
+            "model_name": "intrusion",
+            "version": "v1",
+            "artifact_location": "/stale/machine/path/artifacts/intrusion/v1",
+            "active": True,
+            "task_type": "Session Intrusion Detection",
+        }
+        test_registry.register(stale_item)
+        assert test_registry.active("intrusion")["artifact_location"] == "/stale/machine/path/artifacts/intrusion/v1"
+        assert test_registry.active("intrusion")["active"] is True
+
+        valid_bundle_loc = str(artifacts_dir / "intrusion" / "v1")
+        updated = test_registry.update_artifact_location("intrusion", "v1", valid_bundle_loc)
+        assert updated["artifact_location"] == valid_bundle_loc
+        assert updated["active"] is True
+        assert Path(updated["artifact_location"]).exists()
+        assert (Path(updated["artifact_location"]) / "model.joblib").exists()
+        assert len(test_registry.get("intrusion")) == 1  # No duplicate entries created
+
+        # 2. Test global registry self-healing with guaranteed state restoration
+        orig_entry = global_registry.active("intrusion")
+        orig_location = orig_entry["artifact_location"] if orig_entry else None
+
+        try:
+            # Set stale path to verify _auto_register_local_artifacts repairs it
+            global_registry.update_artifact_location("intrusion", "v1", "/stale/test/path/artifacts/intrusion/v1")
+            assert global_registry.active("intrusion")["artifact_location"] == "/stale/test/path/artifacts/intrusion/v1"
+
+            # Execute auto-registration to repair stale path
+            _auto_register_local_artifacts()
+            repaired_entry = global_registry.active("intrusion")
+            assert Path(repaired_entry["artifact_location"]).exists()
+            assert (Path(repaired_entry["artifact_location"]) / "model.joblib").exists()
+            assert repaired_entry["active"] is True
+            assert len(global_registry.get("intrusion")) == 1
+
+            # Verify a valid existing location is NOT overwritten on subsequent runs
+            current_loc_before = repaired_entry["artifact_location"]
+            _auto_register_local_artifacts()
+            assert global_registry.active("intrusion")["artifact_location"] == current_loc_before
+        finally:
+            if orig_location:
+                global_registry.update_artifact_location("intrusion", "v1", orig_location)

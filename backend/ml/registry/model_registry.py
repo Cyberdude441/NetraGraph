@@ -60,6 +60,20 @@ class ModelRegistry:
         self._write(payload)
         return matches[0]
 
+    def update_artifact_location(self, name: str, version: str, new_location: str) -> dict:
+        """Update artifact location for an existing registered model version."""
+        payload = self._read()
+        target = None
+        for item in payload.get("models", []):
+            if item.get("model_name") == name and item.get("version") == version:
+                item["artifact_location"] = str(new_location)
+                target = item
+                break
+        if target is None:
+            raise KeyError(f"Unknown model version: {name}/{version}")
+        self._write(payload)
+        return target
+
     def active(self, name: str):
         models = self.list()
         # 1. Exact active model name match
