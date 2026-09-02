@@ -56,6 +56,12 @@ jobs:
           --health-timeout 5s
           --health-retries 5
 
+    env:
+      DATABASE_SYNC_URL: postgresql://postgres:postgres_ci_password@localhost:5432/netragraph_test
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres_ci_password@localhost:5432/netragraph_test
+      TESTING: "1"
+      EMAIL_PROVIDER: "mock"
+
     steps:
       - name: Checkout Source Code
         uses: actions/checkout@v4
@@ -79,20 +85,12 @@ jobs:
           python scripts/build_models.py
 
       - name: Run Database Migrations (Alembic)
-        env:
-          DATABASE_SYNC_URL: postgresql://postgres:postgres_ci_password@localhost:5432/netragraph_test
-          DATABASE_URL: postgresql+asyncpg://postgres:postgres_ci_password@localhost:5432/netragraph_test
         run: |
           cd backend
           alembic upgrade head
           cd ..
 
       - name: Run Auth & Database Security Tests (33 tests)
-        env:
-          DATABASE_SYNC_URL: postgresql://postgres:postgres_ci_password@localhost:5432/netragraph_test
-          DATABASE_URL: postgresql+asyncpg://postgres:postgres_ci_password@localhost:5432/netragraph_test
-          TESTING: "1"
-          EMAIL_PROVIDER: "mock"
         run: |
           python -m pytest backend/tests/test_auth_and_database.py -v
 
