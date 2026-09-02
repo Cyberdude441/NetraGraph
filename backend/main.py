@@ -126,6 +126,44 @@ async def db_health_check():
     return await check_db_health()
 
 
+@app.get("/health/ready", tags=["System"])
+async def readiness_check():
+    """
+    Readiness probe for container orchestration.
+    Validates database and graph engine readiness without leaking internal secrets.
+    """
+    from fastapi import Response, status
+    from database.neo4j import neo4j_db
+    
+    db_status = await check_db_health()
+    is_db_ready = db_status.get("status") == "HEALTHY" and db_status.get("connected", False)
+    
+    # Graph engine readiness (live Neo4j connection or synchronized in-memory NetworkX graph)
+    is_graph_ready = (
+        len(neo4j_db._nx_ncrb.nodes) > 0 or 
+        len(neo4j_db._nx_evidence.nodes) > 0 or 
+        neo4j_db.is_connected
+    )
+    
+    if is_db_ready and is_graph_ready:
+        return {
+            "status": "READY",
+            "code": 200,
+            "services": {
+                "database": "HEALTHY",
+                "graph_engine": "HEALTHY",
+            },
+        }
+    
+    db_state = "HEALTHY" if is_db_ready else "DEGRADED"
+    graph_state = "HEALTHY" if is_graph_ready else "DEGRADED"
+    return Response(
+        content=f'{{"status":"NOT_READY","code":503,"services":{{"database":"{db_state}","graph_engine":"{graph_state}"}}}}',
+        status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+        media_type="application/json",
+    )
+
+
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

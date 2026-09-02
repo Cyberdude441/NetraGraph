@@ -1,26 +1,78 @@
-# Production FastAPI Cyber Intelligence Workstation Backend
-FROM python:3.12-slim
+# ============================================================
+# NetraGraph Backend Production Multi-Stage Dockerfile
+# Framework: FastAPI + SQLAlchemy + Alembic + Scikit-Learn
+# ============================================================
 
-WORKDIR /app
+# Stage 1: Build & Dependency Resolution Stage
+FROM python:3.12-slim AS builder
 
-# Install system dependencies
+WORKDIR /build
+
+# Install build tools & header dependencies
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
     curl \
+    libpq-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Copy backend requirements
+# Copy dependency definition
 COPY backend/requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy source code and ML models
-COPY backend/ /app/backend/
-COPY models/ /app/models/
-COPY scripts/ /app/scripts/
+# Install Python packages into isolated directory
+RUN pip install --no-cache-dir --upgrade pip && \
+    pip install --no-cache-dir --prefix=/install -r requirements.txt
 
-ENV PYTHONPATH=/app/backend
-ENV PORT=8000
 
+# Stage 2: Production Non-Root Runtime Stage
+FROM python:3.12-slim AS runner
+
+# Security metadata & container labels
+LABEL org.opencontainers.image.title="NetraGraph Backend Core" \
+      org.opencontainers.image.description="Cyber Cell & NCRB Threat Intelligence Analysis Engine" \
+      org.opencontainers.image.version="2.5.0" \
+      org.opencontainers.image.vendor="NetraGraph Security Division"
+
+WORKDIR /app/backend
+
+# Install minimal runtime shared libraries
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    libpq5 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create unprivileged non-root user & group
+RUN groupadd -g 10001 netragraph && \
+    useradd -u 10001 -g netragraph -s /bin/sh -d /app -M netragraph
+
+# Copy installed Python packages from builder stage
+COPY --from=builder /install /usr/local
+
+# Copy application source, configuration, and ML artifacts
+COPY --chown=netragraph:netragraph backend/ /app/backend/
+COPY --chown=netragraph:netragraph models/ /app/models/
+COPY --chown=netragraph:netragraph artifacts/ /app/artifacts/
+COPY --chown=netragraph:netragraph scripts/ /app/scripts/
+
+# Create runtime directories with proper permissions
+RUN mkdir -p /app/evidence_vault /app/logs && \
+    chown -R netragraph:netragraph /app && \
+    chmod +x /app/backend/entrypoint.sh
+
+# Environment configuration
+ENV PYTHONPATH=/app/backend \
+    PORT=8000 \
+    HOST=0.0.0.0 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1
+
+# Expose API gateway port
 EXPOSE 8000
 
-CMD ["python", "backend/main.py"]
+# Container liveness healthcheck probe
+HEALTHCHECK --interval=15s --timeout=5s --start-period=10s --retries=3 \
+    CMD curl -f http://localhost:8000/health || exit 1
+
+# Drop to non-root execution
+USER netragraph
+
+ENTRYPOINT ["/app/backend/entrypoint.sh"]

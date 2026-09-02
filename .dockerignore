@@ -1,0 +1,53 @@
+# Git & Version Control
+.git
+.gitignore
+.github
+
+# Environment Variables & Secrets (CRITICAL SECURITY PROTECTION)
+.env
+.env.*
+*.env
+backend/.env
+backend/.env.*
+certs/
+*.pem
+*.key
+*.pfx
+
+# Python Virtual Environments & Cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+.venv/
+.venv*/
+.venv-ml/
+venv/
+.pytest_cache/
+.coverage
+htmlcov/
+*.joblib.bak
+
+# Node & Frontend Build Artifacts
+node_modules/
+frontend/node_modules/
+dist/
+frontend/dist/
+.output/
+frontend/.output/
+.vinxi/
+frontend/.vinxi/
+.nitro/
+frontend/.nitro/
+
+# Temporary & Log Files
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# IDE & OS Metadata
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
