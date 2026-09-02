@@ -29,6 +29,8 @@ if str(BACKEND_DIR) not in sys.path:
 os.environ["TESTING"] = "1"
 os.environ["EMAIL_PROVIDER"] = "mock"
 
+from app.auth.config import auth_config
+auth_config.EMAIL_PROVIDER = "mock"
 from app.database.postgres import init_db
 from app.telemetry.config import telemetry_config
 from app.telemetry.metrics import (
@@ -48,6 +50,7 @@ from scripts.test_ml_diagnostics import SAMPLE_PAYLOADS
 
 @pytest.fixture(scope="module", autouse=True)
 def setup_database():
+    auth_config.EMAIL_PROVIDER = "mock"
     asyncio.run(init_db())
 
 
@@ -147,6 +150,7 @@ class TestPhase11TelemetryAndOperations:
 
     # 7. Authentication Lifecycle Telemetry Emission
     def test_07_auth_lifecycle_telemetry_emission(self, client):
+        auth_config.EMAIL_PROVIDER = "mock"
         email = "telemetry.officer@gmail.com"
         res_req = client.post("/api/auth/request-otp", json={"email": email})
         assert res_req.status_code == 200
