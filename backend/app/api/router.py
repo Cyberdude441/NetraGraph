@@ -14,6 +14,7 @@ from .ai_endpoints import router as ai_endpoints_router
 from .ml_router import router as ml_router
 from .research_router import router as research_router
 from .gnn_router import router as gnn_router
+from .threat_fusion_router import router as threat_fusion_router
 
 api_router = APIRouter(prefix="/api")
 
@@ -32,3 +33,4 @@ api_router.include_router(ai_endpoints_router)
 api_router.include_router(ml_router)
 api_router.include_router(research_router)
 api_router.include_router(gnn_router)
+api_router.include_router(threat_fusion_router)
