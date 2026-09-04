@@ -18,6 +18,7 @@ from .threat_fusion_router import router as threat_fusion_router
 from .emerging_threat_router import router as emerging_threat_router
 from .investigation_timeline_router import router as investigation_timeline_router
 from .threat_intelligence_router import router as threat_intelligence_router
+from .drift_router import router as drift_router
 
 api_router = APIRouter(prefix="/api")
 
@@ -40,3 +41,4 @@ api_router.include_router(threat_fusion_router)
 api_router.include_router(emerging_threat_router)
 api_router.include_router(investigation_timeline_router)
 api_router.include_router(threat_intelligence_router)
+api_router.include_router(drift_router)
