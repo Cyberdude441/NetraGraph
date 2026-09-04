@@ -16,6 +16,7 @@ from .research_router import router as research_router
 from .gnn_router import router as gnn_router
 from .threat_fusion_router import router as threat_fusion_router
 from .emerging_threat_router import router as emerging_threat_router
+from .investigation_timeline_router import router as investigation_timeline_router
 
 api_router = APIRouter(prefix="/api")
 
@@ -36,3 +37,4 @@ api_router.include_router(research_router)
 api_router.include_router(gnn_router)
 api_router.include_router(threat_fusion_router)
 api_router.include_router(emerging_threat_router)
+api_router.include_router(investigation_timeline_router)
